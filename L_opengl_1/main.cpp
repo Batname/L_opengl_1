@@ -51,13 +51,19 @@ int main(int argc, const char * argv[]) {
         // check evants
         glfwPollEvents();
         
-        // render here
+        // clear
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        // draw
+        triangle.render();
         
         glfwSwapBuffers(window);
     }
 
+    // reallocate
+    triangle.clear();
+    
     // success exit
     glfwTerminate();
     return EXIT_SUCCESS;

@@ -12,11 +12,14 @@ public:
     Triangle(GLint verticesSize, GLfloat * vertices, GLchar * vertexPath, GLchar * fragmentPath);
     
     void render();
+    void clear();
 protected:
 private:
     GLint verticesSize;
     GLfloat * vertices;
     ShaderLoader shader;
+    
+    GLuint VBO, VAO;
     
 };
 
