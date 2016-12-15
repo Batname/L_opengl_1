@@ -17,6 +17,8 @@ class KeyInput : public Input
 public:
     KeyInput(GLFWwindow *window);
     
+    void registerAll();
+    
 protected:
     
 private:

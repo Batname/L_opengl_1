@@ -24,6 +24,7 @@ int main(int argc, const char * argv[]) {
     
     // init user input
     KeyInput keyInput(window);
+    keyInput.registerAll();
     
     // init glew
     glfwMakeContextCurrent(window);

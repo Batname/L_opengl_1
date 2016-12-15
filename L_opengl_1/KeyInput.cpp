@@ -11,6 +11,10 @@
 KeyInput::KeyInput(GLFWwindow *window) :
     Input(window)
 {
+}
+
+void KeyInput::registerAll()
+{
     glfwSetKeyCallback(window, keyCallback);
 }
 
