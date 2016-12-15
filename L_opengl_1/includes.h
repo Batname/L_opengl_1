@@ -23,4 +23,7 @@
 // SOIL2
 #include <SOIL2/SOIL2.h>
 
+// custom
+#include "constants.h"
+
 #endif /* includes_h */

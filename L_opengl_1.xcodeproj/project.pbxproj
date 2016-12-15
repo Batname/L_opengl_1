@@ -11,6 +11,8 @@
 		1832DD5C1E02BF480007A458 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5B1E02BF480007A458 /* OpenGL.framework */; };
 		1832DD5E1E02BF5C0007A458 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */; };
 		1832DD601E02BF8B0007A458 /* libglfw3.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */; };
+		1832DD671E02CD1C0007A458 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD651E02CD1C0007A458 /* Input.cpp */; };
+		1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD681E02CD290007A458 /* KeyInput.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +34,11 @@
 		1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<group>"; };
 		1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw3.3.2.dylib; sourceTree = "<group>"; };
 		1832DD611E02C06E0007A458 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = includes.h; sourceTree = "<group>"; };
+		1832DD621E02C5C00007A458 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		1832DD651E02CD1C0007A458 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
+		1832DD661E02CD1C0007A458 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
+		1832DD681E02CD290007A458 /* KeyInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyInput.cpp; sourceTree = "<group>"; };
+		1832DD691E02CD290007A458 /* KeyInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyInput.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +75,10 @@
 		1832DD521E02BAE90007A458 /* L_opengl_1 */ = {
 			isa = PBXGroup;
 			children = (
+				1832DD631E02CC940007A458 /* src */,
 				1832DD531E02BAE90007A458 /* main.cpp */,
 				1832DD611E02C06E0007A458 /* includes.h */,
+				1832DD621E02C5C00007A458 /* constants.h */,
 			);
 			path = L_opengl_1;
 			sourceTree = "<group>";
@@ -82,6 +91,25 @@
 				1832DD5B1E02BF480007A458 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1832DD631E02CC940007A458 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1832DD641E02CC9A0007A458 /* Intput */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		1832DD641E02CC9A0007A458 /* Intput */ = {
+			isa = PBXGroup;
+			children = (
+				1832DD651E02CD1C0007A458 /* Input.cpp */,
+				1832DD661E02CD1C0007A458 /* Input.hpp */,
+				1832DD681E02CD290007A458 /* KeyInput.cpp */,
+				1832DD691E02CD290007A458 /* KeyInput.hpp */,
+			);
+			name = Intput;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */,
+				1832DD671E02CD1C0007A458 /* Input.cpp in Sources */,
 				1832DD541E02BAE90007A458 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
