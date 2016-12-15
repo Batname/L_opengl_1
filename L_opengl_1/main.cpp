@@ -1,5 +1,9 @@
 #include "includes.h"
+#include "basic_vertices.h"
+#include "Triangle.hpp"
+
 #include "KeyInput.hpp"
+
 using namespace std;
 
 int SCREEN_WIDTH, SCREEN_HEIGHT;
@@ -38,6 +42,9 @@ int main(int argc, const char * argv[]) {
     // init viewpoint
     glfwGetFramebufferSize(window, &SCREEN_WIDTH, &SCREEN_HEIGHT);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
+    // init custom Triangle
+    Triangle triangle(sizeof(basic_vertices), basic_vertices, "resources/shaders/core.vs", "resources/shaders/core.frag");
     
     // game loop
     while (!glfwWindowShouldClose(window)) {

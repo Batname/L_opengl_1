@@ -13,17 +13,21 @@
 		1832DD601E02BF8B0007A458 /* libglfw3.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */; };
 		1832DD671E02CD1C0007A458 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD651E02CD1C0007A458 /* Input.cpp */; };
 		1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD681E02CD290007A458 /* KeyInput.cpp */; };
+		1832DD6D1E02DEDF0007A458 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1832DD6C1E02DEBF0007A458 /* resources */; };
+		1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */; };
+		1832DD751E02E0A50007A458 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD731E02E0A50007A458 /* Triangle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		1832DD4E1E02BAE90007A458 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				1832DD6D1E02DEDF0007A458 /* resources in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -39,6 +43,12 @@
 		1832DD661E02CD1C0007A458 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
 		1832DD681E02CD290007A458 /* KeyInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyInput.cpp; sourceTree = "<group>"; };
 		1832DD691E02CD290007A458 /* KeyInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyInput.hpp; sourceTree = "<group>"; };
+		1832DD6B1E02DD0D0007A458 /* basic_vertices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_vertices.h; sourceTree = "<group>"; };
+		1832DD6C1E02DEBF0007A458 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
+		1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
+		1832DD701E02DFA00007A458 /* ShaderLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
+		1832DD731E02E0A50007A458 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
+		1832DD741E02E0A50007A458 /* Triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Triangle.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +85,9 @@
 		1832DD521E02BAE90007A458 /* L_opengl_1 */ = {
 			isa = PBXGroup;
 			children = (
+				1832DD6C1E02DEBF0007A458 /* resources */,
 				1832DD631E02CC940007A458 /* src */,
 				1832DD531E02BAE90007A458 /* main.cpp */,
-				1832DD611E02C06E0007A458 /* includes.h */,
-				1832DD621E02C5C00007A458 /* constants.h */,
 			);
 			path = L_opengl_1;
 			sourceTree = "<group>";
@@ -96,7 +105,12 @@
 		1832DD631E02CC940007A458 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				1832DD721E02E08F0007A458 /* Model */,
+				1832DD6E1E02DEF70007A458 /* helpers */,
 				1832DD641E02CC9A0007A458 /* Intput */,
+				1832DD621E02C5C00007A458 /* constants.h */,
+				1832DD611E02C06E0007A458 /* includes.h */,
+				1832DD6B1E02DD0D0007A458 /* basic_vertices.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -110,6 +124,24 @@
 				1832DD691E02CD290007A458 /* KeyInput.hpp */,
 			);
 			name = Intput;
+			sourceTree = "<group>";
+		};
+		1832DD6E1E02DEF70007A458 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */,
+				1832DD701E02DFA00007A458 /* ShaderLoader.hpp */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
+		1832DD721E02E08F0007A458 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1832DD731E02E0A50007A458 /* Triangle.cpp */,
+				1832DD741E02E0A50007A458 /* Triangle.hpp */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +204,8 @@
 				1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */,
 				1832DD671E02CD1C0007A458 /* Input.cpp in Sources */,
 				1832DD541E02BAE90007A458 /* main.cpp in Sources */,
+				1832DD751E02E0A50007A458 /* Triangle.cpp in Sources */,
+				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
