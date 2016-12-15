@@ -9,7 +9,7 @@
 class Triangle
 {
 public:
-    Triangle(GLint verticesSize, GLfloat * vertices, GLchar * vertexPath, GLchar * fragmentPath);
+    Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
     
     void render();
     void clear();
@@ -17,6 +17,8 @@ protected:
 private:
     GLint verticesSize;
     GLfloat * vertices;
+    GLsizei verticesQty;
+
     ShaderLoader shader;
     
     GLuint VBO, VAO;

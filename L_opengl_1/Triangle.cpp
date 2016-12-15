@@ -1,8 +1,9 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLchar * vertexPath, GLchar * fragmentPath) :
+Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath) :
     verticesSize(verticesSize),
     vertices(vertices),
+    verticesQty(verticesQty),
     shader(ShaderLoader(vertexPath, fragmentPath))
 {
     // 0. Buffer to OpenGl use
@@ -26,7 +27,7 @@ void Triangle::render()
 {
     shader.use();
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES, 0, verticesQty);
     glBindVertexArray(0);
 }
 

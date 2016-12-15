@@ -44,7 +44,7 @@ int main(int argc, const char * argv[]) {
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
     // init custom Triangle
-    Triangle triangle(sizeof(basic_vertices), basic_vertices, "resources/shaders/core.vs", "resources/shaders/core.frag");
+    Triangle triangle(sizeof(basic_vertices), basic_vertices, 6, "resources/shaders/core.vs", "resources/shaders/core.frag");
     
     // game loop
     while (!glfwWindowShouldClose(window)) {
