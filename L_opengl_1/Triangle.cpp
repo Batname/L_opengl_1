@@ -49,9 +49,18 @@ void Triangle::bindEBO()
 
 void Triangle::setAttributesPointers()
 {
-    GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position");
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-    glEnableVertexAttribArray(positionAttrib); // 0
+    GLint stride = 6 * sizeof(GLfloat);
+    
+    // position
+    GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0);
+    glEnableVertexAttribArray(positionAttrib);
+    
+    // color
+    GLint colorAttrib = glGetAttribLocation(shader.getProgram(), "color"); // 1
+    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(3 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(colorAttrib);
+    
 }
 
 void Triangle::unbind()
@@ -64,11 +73,13 @@ void Triangle::render()
 {
     shader.use();
     
+    /*
     // update uniform color
     GLfloat timeValue = glfwGetTime();
     GLfloat greenValue = (sin(timeValue) / 2) + 0.5;
     GLint vertexColorLocation = glGetUniformLocation(shader.getProgram(), "ourColor");
     glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
+    */
     
     
     glBindVertexArray(VAO);
