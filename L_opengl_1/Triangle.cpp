@@ -106,6 +106,14 @@ void Triangle::render()
 {
     shader.use();
     
+    /* transform test */
+    glm::mat4 trans;
+    trans = glm::rotate(trans, glm::radians((GLfloat)glfwGetTime() * 50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+    GLuint transformLoc = glGetUniformLocation(shader.getProgram(), "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+    /* transform test */
+    
     // bind textures
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture1);
