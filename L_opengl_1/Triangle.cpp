@@ -8,9 +8,9 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, 
 {
     bindVBO();
     bindVAO();
-    bindTexture();
     setAttributesPointers();
-    loadTexture("resources/textures/container.jpg");
+    loadTexture("resources/textures/container.jpg", &texture1);
+    loadTexture("resources/textures/awesomeface.png", &texture2);
     unbind();
 }
 
@@ -25,9 +25,9 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint indicesSize, GL
     bindVBO();
     bindVAO();
     bindEBO();
-    bindTexture();
     setAttributesPointers();
-    loadTexture("resources/textures/container.jpg");
+    loadTexture("resources/textures/container.jpg", &texture1);
+    loadTexture("resources/textures/awesomeface.png", &texture2);
     unbind();
 }
 
@@ -51,12 +51,6 @@ void Triangle::bindEBO()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize, indices, GL_STATIC_DRAW);
 }
 
-void Triangle::bindTexture()
-{
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-}
-
 void Triangle::setAttributesPointers()
 {
     GLint stride = 8 * sizeof(GLfloat);
@@ -72,7 +66,7 @@ void Triangle::setAttributesPointers()
     glEnableVertexAttribArray(colorAttrib);
     
     // texture
-    GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texture"); // 2
+    GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texCoord"); // 2
     glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(6 * sizeof(GLfloat)));
     glEnableVertexAttribArray(textureAttrib);
     
@@ -82,14 +76,18 @@ void Triangle::unbind()
 {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Triangle::loadTexture(char * texturePath)
+void Triangle::loadTexture(char * texturePath, GLuint * texture)
 {
+    glGenTextures(1, texture);
+    glBindTexture(GL_TEXTURE_2D, *texture);
+    
+    // texture filters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
+    // texture mipmaps
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     
@@ -101,14 +99,20 @@ void Triangle::loadTexture(char * texturePath)
     
     // clear
     SOIL_free_image_data(image);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void Triangle::render()
 {
-    // bind textures
-    glBindTexture(GL_TEXTURE_2D, texture);
-    
     shader.use();
+    
+    // bind textures
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture1"), 0);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture2"), 1);
     
     glBindVertexArray(VAO);
     if (indices != nullptr) {

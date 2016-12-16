@@ -25,7 +25,7 @@ private:
 
     ShaderLoader shader;
     
-    GLuint VBO, VAO, EBO, texture;
+    GLuint VBO, VAO, EBO, texture1, texture2;
     
     // methods
     void bindVBO();
@@ -34,7 +34,7 @@ private:
     void bindTexture();
     void setAttributesPointers();
     void unbind();
-    void loadTexture(char * texturePath);
+    void loadTexture(char * texturePath, GLuint * texture);
 };
 
 #endif /* Triangle_hpp */
