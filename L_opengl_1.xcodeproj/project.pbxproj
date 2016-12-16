@@ -16,6 +16,10 @@
 		1832DD6D1E02DEDF0007A458 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1832DD6C1E02DEBF0007A458 /* resources */; };
 		1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */; };
 		1832DD751E02E0A50007A458 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD731E02E0A50007A458 /* Triangle.cpp */; };
+		18B081BC1E0462D700669944 /* etc1_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A71E0462D700669944 /* etc1_utils.c */; };
+		18B081BD1E0462D700669944 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A91E0462D700669944 /* image_DXT.c */; };
+		18B081BE1E0462D700669944 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081AB1E0462D700669944 /* image_helper.c */; };
+		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +53,27 @@
 		1832DD701E02DFA00007A458 /* ShaderLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
 		1832DD731E02E0A50007A458 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		1832DD741E02E0A50007A458 /* Triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Triangle.hpp; sourceTree = "<group>"; };
+		18B081A71E0462D700669944 /* etc1_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = etc1_utils.c; sourceTree = "<group>"; };
+		18B081A81E0462D700669944 /* etc1_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = etc1_utils.h; sourceTree = "<group>"; };
+		18B081A91E0462D700669944 /* image_DXT.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image_DXT.c; sourceTree = "<group>"; };
+		18B081AA1E0462D700669944 /* image_DXT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_DXT.h; sourceTree = "<group>"; };
+		18B081AB1E0462D700669944 /* image_helper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = image_helper.c; sourceTree = "<group>"; };
+		18B081AC1E0462D700669944 /* image_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image_helper.h; sourceTree = "<group>"; };
+		18B081AD1E0462D700669944 /* jo_jpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jo_jpeg.h; sourceTree = "<group>"; };
+		18B081AE1E0462D700669944 /* pkm_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pkm_helper.h; sourceTree = "<group>"; };
+		18B081AF1E0462D700669944 /* pvr_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvr_helper.h; sourceTree = "<group>"; };
+		18B081B01E0462D700669944 /* SOIL2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SOIL2.c; sourceTree = "<group>"; };
+		18B081B11E0462D700669944 /* SOIL2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOIL2.h; sourceTree = "<group>"; };
+		18B081B21E0462D700669944 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		18B081B31E0462D700669944 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		18B081B41E0462D700669944 /* stbi_DDS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_DDS.h; sourceTree = "<group>"; };
+		18B081B51E0462D700669944 /* stbi_DDS_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_DDS_c.h; sourceTree = "<group>"; };
+		18B081B61E0462D700669944 /* stbi_ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_ext.h; sourceTree = "<group>"; };
+		18B081B71E0462D700669944 /* stbi_ext_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_ext_c.h; sourceTree = "<group>"; };
+		18B081B81E0462D700669944 /* stbi_pkm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pkm.h; sourceTree = "<group>"; };
+		18B081B91E0462D700669944 /* stbi_pkm_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pkm_c.h; sourceTree = "<group>"; };
+		18B081BA1E0462D700669944 /* stbi_pvr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr.h; sourceTree = "<group>"; };
+		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +110,7 @@
 		1832DD521E02BAE90007A458 /* L_opengl_1 */ = {
 			isa = PBXGroup;
 			children = (
+				18B081A61E0462D700669944 /* SOIL2 */,
 				1832DD6C1E02DEBF0007A458 /* resources */,
 				1832DD631E02CC940007A458 /* src */,
 				1832DD531E02BAE90007A458 /* main.cpp */,
@@ -142,6 +168,35 @@
 				1832DD741E02E0A50007A458 /* Triangle.hpp */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		18B081A61E0462D700669944 /* SOIL2 */ = {
+			isa = PBXGroup;
+			children = (
+				18B081A71E0462D700669944 /* etc1_utils.c */,
+				18B081A81E0462D700669944 /* etc1_utils.h */,
+				18B081A91E0462D700669944 /* image_DXT.c */,
+				18B081AA1E0462D700669944 /* image_DXT.h */,
+				18B081AB1E0462D700669944 /* image_helper.c */,
+				18B081AC1E0462D700669944 /* image_helper.h */,
+				18B081AD1E0462D700669944 /* jo_jpeg.h */,
+				18B081AE1E0462D700669944 /* pkm_helper.h */,
+				18B081AF1E0462D700669944 /* pvr_helper.h */,
+				18B081B01E0462D700669944 /* SOIL2.c */,
+				18B081B11E0462D700669944 /* SOIL2.h */,
+				18B081B21E0462D700669944 /* stb_image.h */,
+				18B081B31E0462D700669944 /* stb_image_write.h */,
+				18B081B41E0462D700669944 /* stbi_DDS.h */,
+				18B081B51E0462D700669944 /* stbi_DDS_c.h */,
+				18B081B61E0462D700669944 /* stbi_ext.h */,
+				18B081B71E0462D700669944 /* stbi_ext_c.h */,
+				18B081B81E0462D700669944 /* stbi_pkm.h */,
+				18B081B91E0462D700669944 /* stbi_pkm_c.h */,
+				18B081BA1E0462D700669944 /* stbi_pvr.h */,
+				18B081BB1E0462D700669944 /* stbi_pvr_c.h */,
+			);
+			name = SOIL2;
+			path = ../../../../../../usr/local/include/SOIL2;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,9 +257,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */,
+				18B081BE1E0462D700669944 /* image_helper.c in Sources */,
 				1832DD671E02CD1C0007A458 /* Input.cpp in Sources */,
 				1832DD541E02BAE90007A458 /* main.cpp in Sources */,
 				1832DD751E02E0A50007A458 /* Triangle.cpp in Sources */,
+				18B081BD1E0462D700669944 /* image_DXT.c in Sources */,
+				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
+				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
 				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
