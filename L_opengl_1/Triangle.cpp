@@ -107,11 +107,23 @@ void Triangle::render()
     shader.use();
     
     /* transform test */
-    glm::mat4 trans;
-    trans = glm::rotate(trans, glm::radians((GLfloat)glfwGetTime() * 50.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
-    GLuint transformLoc = glGetUniformLocation(shader.getProgram(), "transform");
-    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+    glm::mat4 model;
+    glm::mat4 view;
+    glm::mat4 projection;
+
+    model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+    projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+    
+    GLuint modelLoc = glGetUniformLocation(shader.getProgram(), "model");
+    GLuint viewLoc = glGetUniformLocation(shader.getProgram(), "view");
+    GLuint projectionLoc = glGetUniformLocation(shader.getProgram(), "projection");
+    
+    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+    
     /* transform test */
     
     // bind textures
