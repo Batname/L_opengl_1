@@ -12,7 +12,7 @@ public:
     Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
     Triangle(GLint verticesSize, GLfloat * vertices, GLint indicesSize, GLuint * indices, GLchar * vertexPath, GLchar * fragmentPath);
     
-    void render();
+    void render(glm::vec3 * cubePositions = nullptr, GLint cubesSize = 0);
     void clear();
 protected:
 private:
@@ -35,7 +35,8 @@ private:
     void setAttributesPointers();
     void unbind();
     void loadTexture(char * texturePath, GLuint * texture);
-    void transformationRender();
+    void transformationRender(glm::vec3 * cubePositions, GLint cubesSize);
+    void draw();
 };
 
 #endif /* Triangle_hpp */

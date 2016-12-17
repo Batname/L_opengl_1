@@ -48,7 +48,7 @@ int main(int argc, const char * argv[]) {
     
     // init custom Triangle
     Triangle triangle(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/core.vs", "resources/shaders/core.frag");
-
+    
     // game loop
     while (!glfwWindowShouldClose(window)) {
         // check evants
@@ -59,7 +59,7 @@ int main(int argc, const char * argv[]) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // draw
-        triangle.render();
+        triangle.render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
         
         glfwSwapBuffers(window);
     }

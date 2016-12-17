@@ -97,30 +97,53 @@ void Triangle::loadTexture(char * texturePath, GLuint * texture)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Triangle::transformationRender()
+void Triangle::transformationRender(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 model;
     glm::mat4 view;
     glm::mat4 projection;
     
-    model = glm::rotate(model, glm::radians((GLfloat)glfwGetTime() * 30.0f), glm::vec3(1.0f, 0.5f, 0.0f));
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-    projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
-    
     GLuint modelLoc = glGetUniformLocation(shader.getProgram(), "model");
     GLuint viewLoc = glGetUniformLocation(shader.getProgram(), "view");
     GLuint projectionLoc = glGetUniformLocation(shader.getProgram(), "projection");
     
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+    projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+    
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+    glBindVertexArray(VAO);
+    if (cubePositions != nullptr) {
+        GLfloat time = (GLfloat)glfwGetTime();
+        for (GLuint i = 0; i < cubesSize; i++) {
+            glm::mat4 model;
+            model = glm::translate(model, cubePositions[i]);
+            GLfloat angle = time * 20.0f * (i + 1);
+            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+            draw();
+        }
+    } else {
+        model = glm::rotate(model, glm::radians((GLfloat)glfwGetTime() * 30.0f), glm::vec3(1.0f, 0.5f, 0.0f));
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        draw();
+    }
+    
+    glBindVertexArray(0);
 }
 
-void Triangle::render()
+void Triangle::draw() {
+    if (indices != nullptr) {
+        glDrawElements(GL_TRIANGLES, verticesQty, GL_UNSIGNED_INT, 0);
+    } else {
+        glDrawArrays(GL_TRIANGLES, 0, verticesQty);
+    }
+}
+
+void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
 {
     shader.use();
-    
-    transformationRender();
 
     // bind textures
     glActiveTexture(GL_TEXTURE0);
@@ -130,12 +153,8 @@ void Triangle::render()
     glBindTexture(GL_TEXTURE_2D, texture2);
     glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture2"), 1);
     
-    glBindVertexArray(VAO);
-    if (indices != nullptr) {
-        glDrawElements(GL_TRIANGLES, verticesQty, GL_UNSIGNED_INT, 0);
-    } else {
-        glDrawArrays(GL_TRIANGLES, 0, verticesQty);
-    }
+    transformationRender(cubePositions, cubesSize);
+    
     glBindVertexArray(0);
 }
 
