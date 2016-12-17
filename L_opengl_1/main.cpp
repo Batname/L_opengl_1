@@ -43,8 +43,11 @@ int main(int argc, const char * argv[]) {
     glfwGetFramebufferSize(window, &SCREEN_WIDTH, &SCREEN_HEIGHT);
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     
+    // openGl options
+    glEnable(GL_DEPTH_TEST);
+    
     // init custom Triangle
-    Triangle triangle(sizeof(basic_vertices), basic_vertices, sizeof(basic_indices), basic_indices, "resources/shaders/core.vs", "resources/shaders/core.frag");
+    Triangle triangle(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/core.vs", "resources/shaders/core.frag");
 
     // game loop
     while (!glfwWindowShouldClose(window)) {
@@ -53,7 +56,7 @@ int main(int argc, const char * argv[]) {
         
         // clear
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // draw
         triangle.render();

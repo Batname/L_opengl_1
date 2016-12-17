@@ -35,6 +35,7 @@ private:
     void setAttributesPointers();
     void unbind();
     void loadTexture(char * texturePath, GLuint * texture);
+    void transformationRender();
 };
 
 #endif /* Triangle_hpp */

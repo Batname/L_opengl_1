@@ -53,21 +53,16 @@ void Triangle::bindEBO()
 
 void Triangle::setAttributesPointers()
 {
-    GLint stride = 8 * sizeof(GLfloat);
+    GLint stride = 5 * sizeof(GLfloat);
     
     // position
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
     glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
-    
-    // color
-    GLint colorAttrib = glGetAttribLocation(shader.getProgram(), "color"); // 1
-    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(3 * sizeof(GLfloat)));
-    glEnableVertexAttribArray(colorAttrib);
-    
+
     // texture
-    GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texCoord"); // 2
-    glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(6 * sizeof(GLfloat)));
+    GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texCoord"); // 1
+    glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(textureAttrib);
     
 }
@@ -102,15 +97,12 @@ void Triangle::loadTexture(char * texturePath, GLuint * texture)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Triangle::render()
+void Triangle::transformationRender()
 {
-    shader.use();
-    
-    /* transform test */
     glm::mat4 model;
     glm::mat4 view;
     glm::mat4 projection;
-
+    
     model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
     projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
@@ -122,10 +114,14 @@ void Triangle::render()
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+}
 
+void Triangle::render()
+{
+    shader.use();
     
-    /* transform test */
-    
+    transformationRender();
+
     // bind textures
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture1);
