@@ -37,6 +37,8 @@ private:
     void loadTexture(char * texturePath, GLuint * texture);
     void transformationRender(glm::vec3 * cubePositions, GLint cubesSize);
     void draw();
+    
+    glm::mat4 getCamera();
 };
 
 #endif /* Triangle_hpp */

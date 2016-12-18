@@ -97,20 +97,29 @@ void Triangle::loadTexture(char * texturePath, GLuint * texture)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+glm::mat4 Triangle::getCamera()
+{
+    glm::mat4 view;
+    GLfloat radius = 10.0f;
+    GLfloat camX = sin(glfwGetTime()) * radius;
+    GLfloat camZ = cos(glfwGetTime()) * radius;
+    view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    
+    return view;
+}
+
 void Triangle::transformationRender(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 model;
-    glm::mat4 view;
     glm::mat4 projection;
     
     GLuint modelLoc = glGetUniformLocation(shader.getProgram(), "model");
     GLuint viewLoc = glGetUniformLocation(shader.getProgram(), "view");
     GLuint projectionLoc = glGetUniformLocation(shader.getProgram(), "projection");
     
-    view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
     projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
     
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(getCamera()));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
     glBindVertexArray(VAO);
