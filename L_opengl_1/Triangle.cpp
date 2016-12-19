@@ -13,30 +13,9 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, 
     loadTexture("resources/textures/awesomeface.png", &texture2);
     unbind();
     
-    cameraCoords.cameraPos = glm::vec3(0.0f, 0.0f,  3.0f);
-    cameraCoords.cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    cameraCoords.cameraUp = glm::vec3(0.0f, 1.0f,  0.0f);
-}
-
-Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint indicesSize, GLuint * indices, GLchar * vertexPath, GLchar * fragmentPath) :
-    verticesSize(verticesSize),
-    vertices(vertices),
-    indicesSize(indicesSize),
-    indices(indices),
-    verticesQty(indicesSize / sizeof(GLuint)),
-    shader(ShaderLoader(vertexPath, fragmentPath))
-{
-    bindVBO();
-    bindVAO();
-    bindEBO();
-    setAttributesPointers();
-    loadTexture("resources/textures/container.jpg", &texture1);
-    loadTexture("resources/textures/awesomeface.png", &texture2);
-    unbind();
-    
-    cameraCoords.cameraPos = glm::vec3(0.0f, 0.0f,  3.0f);
-    cameraCoords.cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    cameraCoords.cameraUp = glm::vec3(0.0f, 1.0f,  0.0f);
+    camera.pos = glm::vec3(0.0f, 0.0f,  3.0f);
+    camera.front = glm::vec3(0.0f, 0.0f, -1.0f);
+    camera.up = glm::vec3(0.0f, 1.0f,  0.0f);
 }
 
 void Triangle::bindVBO()
@@ -52,12 +31,6 @@ void Triangle::bindVAO()
     glBufferData(GL_ARRAY_BUFFER, verticesSize, vertices, GL_STATIC_DRAW);
 }
 
-void Triangle::bindEBO()
-{
-    glGenBuffers(1, &EBO);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSize, indices, GL_STATIC_DRAW);
-}
 
 void Triangle::setAttributesPointers()
 {
@@ -107,26 +80,46 @@ void Triangle::loadTexture(char * texturePath, GLuint * texture)
 
 void Triangle::cameraCallback(int key, int scancode, int action, int mode)
 {
-GLfloat cameraSpeed = 0.05f;
-    if(key == GLFW_KEY_W) {
-        cameraCoords.cameraPos += cameraSpeed * cameraCoords.cameraFront;
-    }
-    if(key == GLFW_KEY_S) {
-        cameraCoords.cameraPos -= cameraSpeed * cameraCoords.cameraFront;
-    }
-    if(key == GLFW_KEY_A) {
-        cameraCoords.cameraPos -= glm::normalize(glm::cross(cameraCoords.cameraFront, cameraCoords.cameraUp)) * cameraSpeed;
-    }
-    if(key == GLFW_KEY_D) {
-        cameraCoords.cameraPos += glm::normalize(glm::cross(cameraCoords.cameraFront, cameraCoords.cameraUp)) * cameraSpeed;
-    }
+//GLfloat cameraSpeed = 0.05f;
+//    if(key == GLFW_KEY_W) {
+//        camera.pos += cameraSpeed * camera.front;
+//    }
+//    if(key == GLFW_KEY_S) {
+//        camera.pos -= cameraSpeed * camera.front;
+//    }
+//    if(key == GLFW_KEY_A) {
+//        camera.pos -= glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
+//    }
+//    if(key == GLFW_KEY_D) {
+//        camera.pos += glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
+//    }
 };
+
+void Triangle::movement(float deltaTime)
+{
+    GLfloat cameraSpeed = 5.0f * deltaTime;
+    if (keyInput->keys[GLFW_KEY_W]) {
+        camera.pos += cameraSpeed * camera.front;
+    }
+    
+    if (keyInput->keys[GLFW_KEY_S]) {
+        camera.pos -= cameraSpeed * camera.front;
+    }
+    
+    if (keyInput->keys[GLFW_KEY_A]) {
+        camera.pos -= glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
+    }
+    
+    if (keyInput->keys[GLFW_KEY_D]) {
+        camera.pos += glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
+    }
+}
 
 void Triangle::transformationRender(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 model;
     glm::mat4 projection;
-    glm::mat4 view = glm::lookAt(cameraCoords.cameraPos, cameraCoords.cameraPos + cameraCoords.cameraFront, cameraCoords.cameraUp);
+    glm::mat4 view = glm::lookAt(camera.pos, camera.pos + camera.front, camera.up);
 
     
     GLuint modelLoc = glGetUniformLocation(shader.getProgram(), "model");
@@ -147,23 +140,15 @@ void Triangle::transformationRender(glm::vec3 * cubePositions, GLint cubesSize)
             GLfloat angle = time * 20.0f * (i + 1);
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-            draw();
+            glDrawArrays(GL_TRIANGLES, 0, verticesQty);
         }
     } else {
         model = glm::rotate(model, glm::radians((GLfloat)glfwGetTime() * 30.0f), glm::vec3(1.0f, 0.5f, 0.0f));
         glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-        draw();
+        glDrawArrays(GL_TRIANGLES, 0, verticesQty);
     }
     
     glBindVertexArray(0);
-}
-
-void Triangle::draw() {
-    if (indices != nullptr) {
-        glDrawElements(GL_TRIANGLES, verticesQty, GL_UNSIGNED_INT, 0);
-    } else {
-        glDrawArrays(GL_TRIANGLES, 0, verticesQty);
-    }
 }
 
 void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
@@ -187,5 +172,4 @@ void Triangle::clear()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &EBO);
 }

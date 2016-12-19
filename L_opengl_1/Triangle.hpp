@@ -9,47 +9,43 @@
 
 extern KeyInput *keyInput;
 
-struct CameraCoords {
-    glm::vec3 cameraPos;
-    glm::vec3 cameraFront;
-    glm::vec3 cameraUp;
+struct Camera {
+    glm::vec3 pos;
+    glm::vec3 front;
+    glm::vec3 up;
 };
 
 class Triangle
 {
 public:
     Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
-    Triangle(GLint verticesSize, GLfloat * vertices, GLint indicesSize, GLuint * indices, GLchar * vertexPath, GLchar * fragmentPath);
     
     void render(glm::vec3 * cubePositions = nullptr, GLint cubesSize = 0);
     void clear();
     void cameraCallback(int key, int scancode, int action, int mode);
+    void movement(float deltaTime);
 
 protected:
 private:
     GLint verticesSize;
     GLfloat * vertices;
-    GLint indicesSize = 0;
-    GLuint * indices = nullptr;
     
     GLsizei verticesQty;
 
     ShaderLoader shader;
     
-    GLuint VBO, VAO, EBO, texture1, texture2;
+    GLuint VBO, VAO, texture1, texture2;
     
-    CameraCoords cameraCoords;
+    Camera camera;
     
     // methods
     void bindVBO();
     void bindVAO();
-    void bindEBO();
     void bindTexture();
     void setAttributesPointers();
     void unbind();
     void loadTexture(char * texturePath, GLuint * texture);
     void transformationRender(glm::vec3 * cubePositions, GLint cubesSize);
-    void draw();
 };
 
 #endif /* Triangle_hpp */

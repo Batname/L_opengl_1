@@ -3,6 +3,7 @@
 #include "Triangle.hpp"
 
 #include "KeyInput.hpp"
+#include "Frame.hpp"
 
 using namespace std;
 using namespace std::placeholders;
@@ -53,6 +54,9 @@ int main(int argc, const char * argv[]) {
     // init custom Triangle
     Triangle triangle(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/core.vs", "resources/shaders/core.frag");
     
+    // init frame
+    Frame frame;
+    
     // init user input
     keyInput = new KeyInput(window);
     keyInput->addListener(mainInputKeybordCallback);
@@ -61,8 +65,11 @@ int main(int argc, const char * argv[]) {
     
     // game loop
     while (!glfwWindowShouldClose(window)) {
+        frame.calculateFrame();
+        
         // check evants
         glfwPollEvents();
+        triangle.movement(frame.getDeltaTime());
         
         // clear
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -84,6 +91,14 @@ int main(int argc, const char * argv[]) {
 
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
 {
+    if (key >= 0 && key < 1024) {
+        if (GLFW_PRESS == action) {
+            keyInput->keys[key] = true;
+        } else if (GLFW_RELEASE == action) {
+            keyInput->keys[key] = false;
+        }
+    }
+
     keyInput->emitEvent(key, scancode, action, mode);
 }
 

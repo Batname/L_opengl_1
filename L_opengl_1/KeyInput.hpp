@@ -23,6 +23,7 @@ public:
     
     void addListener(keyInputListener listener);
     void emitEvent(int key, int scancode, int action, int mode);
+    bool keys[1024] = {};
 protected:
     
 private:
