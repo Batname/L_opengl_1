@@ -5,8 +5,15 @@
 #include "KeyInput.hpp"
 
 using namespace std;
+using namespace std::placeholders;
 
 int SCREEN_WIDTH, SCREEN_HEIGHT;
+
+void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
+void mainInputKeybordCallback(int key, int scancode, int action, int mode);
+
+KeyInput *keyInput;
+GLFWwindow *window;
 
 int main(int argc, const char * argv[]) {
 
@@ -19,7 +26,7 @@ int main(int argc, const char * argv[]) {
     glfwWindowHint(GLFW_RELEASE, GL_FALSE);
 
     // init window
-    GLFWwindow *window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGS", nullptr, nullptr);
+    window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OpenGS", nullptr, nullptr);
     if (window == nullptr) {
         cout << "Failed to create window"  << endl;
         glfwTerminate();
@@ -27,8 +34,9 @@ int main(int argc, const char * argv[]) {
     }
     
     // init user input
-    KeyInput keyInput(window);
-    keyInput.registerAll();
+    keyInput = new KeyInput(window);
+    keyInput->addListener(mainInputKeybordCallback);
+    glfwSetKeyCallback(window, keyCallback);
     
     // init glew
     glfwMakeContextCurrent(window);
@@ -45,6 +53,7 @@ int main(int argc, const char * argv[]) {
     
     // openGl options
     glEnable(GL_DEPTH_TEST);
+    
     
     // init custom Triangle
     Triangle triangle(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/core.vs", "resources/shaders/core.frag");
@@ -71,3 +80,17 @@ int main(int argc, const char * argv[]) {
     glfwTerminate();
     return EXIT_SUCCESS;
 }
+
+void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
+{
+    keyInput->emitEvent(key, scancode, action, mode);
+}
+
+void mainInputKeybordCallback(int key, int scancode, int action, int mode)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+}
+
+

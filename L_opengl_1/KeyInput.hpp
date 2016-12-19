@@ -12,19 +12,21 @@
 #include "includes.h"
 #include "Input.hpp"
 
+using namespace std;
+using namespace std::placeholders;
+
 class KeyInput : public Input
 {
+    typedef function<void (int key, int scancode, int action, int mode)> keyInputListener;
 public:
     KeyInput(GLFWwindow *window);
     
-    void registerAll();
-    
+    void addListener(keyInputListener listener);
+    void emitEvent(int key, int scancode, int action, int mode);
 protected:
     
 private:
-    // methods
-    static void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-
+    vector<keyInputListener> listeners;
 };
 
 #endif /* KeyInput_hpp */

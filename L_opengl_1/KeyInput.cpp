@@ -8,20 +8,22 @@
 
 #include "KeyInput.hpp"
 
+using namespace std;
+
 KeyInput::KeyInput(GLFWwindow *window) :
     Input(window)
 {
 }
 
-void KeyInput::registerAll()
+void KeyInput::addListener(keyInputListener listener)
 {
-    glfwSetKeyCallback(window, keyCallback);
+    listeners.push_back(listener);
 }
 
-// typedef void (* GLFWkeyfun)(GLFWwindow*,int,int,int,int);
-void KeyInput::keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
+void KeyInput::emitEvent(int key, int scancode, int action, int mode)
 {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-        glfwSetWindowShouldClose(window, GL_TRUE);
+    for (vector<keyInputListener>::iterator it = listeners.begin(); it != listeners.end(); it++) {
+        
+        (*it)(key, scancode, action, mode);
     }
 }
