@@ -33,11 +33,6 @@ int main(int argc, const char * argv[]) {
         return EXIT_FAILURE;
     }
     
-    // init user input
-    keyInput = new KeyInput(window);
-    keyInput->addListener(mainInputKeybordCallback);
-    glfwSetKeyCallback(window, keyCallback);
-    
     // init glew
     glfwMakeContextCurrent(window);
     glewExperimental = GL_TRUE;
@@ -57,6 +52,12 @@ int main(int argc, const char * argv[]) {
     
     // init custom Triangle
     Triangle triangle(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/core.vs", "resources/shaders/core.frag");
+    
+    // init user input
+    keyInput = new KeyInput(window);
+    keyInput->addListener(mainInputKeybordCallback);
+    keyInput->addListener(bind(&Triangle::cameraCallback, &triangle, _1, _2, _3, _4));
+    glfwSetKeyCallback(window, keyCallback);
     
     // game loop
     while (!glfwWindowShouldClose(window)) {

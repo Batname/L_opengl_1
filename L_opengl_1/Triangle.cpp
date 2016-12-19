@@ -12,6 +12,10 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, 
     loadTexture("resources/textures/container.jpg", &texture1);
     loadTexture("resources/textures/awesomeface.png", &texture2);
     unbind();
+    
+    cameraCoords.cameraPos = glm::vec3(0.0f, 0.0f,  3.0f);
+    cameraCoords.cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    cameraCoords.cameraUp = glm::vec3(0.0f, 1.0f,  0.0f);
 }
 
 Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint indicesSize, GLuint * indices, GLchar * vertexPath, GLchar * fragmentPath) :
@@ -29,6 +33,10 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint indicesSize, GL
     loadTexture("resources/textures/container.jpg", &texture1);
     loadTexture("resources/textures/awesomeface.png", &texture2);
     unbind();
+    
+    cameraCoords.cameraPos = glm::vec3(0.0f, 0.0f,  3.0f);
+    cameraCoords.cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    cameraCoords.cameraUp = glm::vec3(0.0f, 1.0f,  0.0f);
 }
 
 void Triangle::bindVBO()
@@ -97,21 +105,29 @@ void Triangle::loadTexture(char * texturePath, GLuint * texture)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-glm::mat4 Triangle::getCamera()
+void Triangle::cameraCallback(int key, int scancode, int action, int mode)
 {
-    glm::mat4 view;
-    GLfloat radius = 10.0f;
-    GLfloat camX = sin(glfwGetTime()) * radius;
-    GLfloat camZ = cos(glfwGetTime()) * radius;
-    view = glm::lookAt(glm::vec3(camX, 0.0f, camZ), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-    
-    return view;
-}
+GLfloat cameraSpeed = 0.05f;
+    if(key == GLFW_KEY_W) {
+        cameraCoords.cameraPos += cameraSpeed * cameraCoords.cameraFront;
+    }
+    if(key == GLFW_KEY_S) {
+        cameraCoords.cameraPos -= cameraSpeed * cameraCoords.cameraFront;
+    }
+    if(key == GLFW_KEY_A) {
+        cameraCoords.cameraPos -= glm::normalize(glm::cross(cameraCoords.cameraFront, cameraCoords.cameraUp)) * cameraSpeed;
+    }
+    if(key == GLFW_KEY_D) {
+        cameraCoords.cameraPos += glm::normalize(glm::cross(cameraCoords.cameraFront, cameraCoords.cameraUp)) * cameraSpeed;
+    }
+};
 
 void Triangle::transformationRender(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 model;
     glm::mat4 projection;
+    glm::mat4 view = glm::lookAt(cameraCoords.cameraPos, cameraCoords.cameraPos + cameraCoords.cameraFront, cameraCoords.cameraUp);
+
     
     GLuint modelLoc = glGetUniformLocation(shader.getProgram(), "model");
     GLuint viewLoc = glGetUniformLocation(shader.getProgram(), "view");
@@ -119,7 +135,7 @@ void Triangle::transformationRender(glm::vec3 * cubePositions, GLint cubesSize)
     
     projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
     
-    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(getCamera()));
+    glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
     glBindVertexArray(VAO);

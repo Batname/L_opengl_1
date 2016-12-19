@@ -5,6 +5,15 @@
 #include "ShaderLoader.hpp"
 
 #include "includes.h"
+#include "KeyInput.hpp"
+
+extern KeyInput *keyInput;
+
+struct CameraCoords {
+    glm::vec3 cameraPos;
+    glm::vec3 cameraFront;
+    glm::vec3 cameraUp;
+};
 
 class Triangle
 {
@@ -14,6 +23,8 @@ public:
     
     void render(glm::vec3 * cubePositions = nullptr, GLint cubesSize = 0);
     void clear();
+    void cameraCallback(int key, int scancode, int action, int mode);
+
 protected:
 private:
     GLint verticesSize;
@@ -27,6 +38,8 @@ private:
     
     GLuint VBO, VAO, EBO, texture1, texture2;
     
+    CameraCoords cameraCoords;
+    
     // methods
     void bindVBO();
     void bindVAO();
@@ -37,8 +50,6 @@ private:
     void loadTexture(char * texturePath, GLuint * texture);
     void transformationRender(glm::vec3 * cubePositions, GLint cubesSize);
     void draw();
-    
-    glm::mat4 getCamera();
 };
 
 #endif /* Triangle_hpp */
