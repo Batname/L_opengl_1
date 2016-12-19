@@ -6,52 +6,37 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, 
     verticesQty(verticesQty),
     shader(ShaderLoader(vertexPath, fragmentPath))
 {
-    bindVBO();
-    bindVAO();
-    setAttributesPointers();
-    loadTexture("resources/textures/container.jpg", &texture1);
-    loadTexture("resources/textures/awesomeface.png", &texture2);
-    unbind();
-    
-    camera.pos = glm::vec3(0.0f, 0.0f, 3.0f);
-    camera.front = glm::vec3(0.0f, 0.0f, -1.0f);
-    camera.up = glm::vec3(0.0f, 1.0f,  0.0f);
-}
-
-void Triangle::bindVBO()
-{
+    /* --- bindVBO ---*/
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-}
-
-void Triangle::bindVAO()
-{
+    
+    /* --- bindVAO ---*/
     glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
     glBufferData(GL_ARRAY_BUFFER, verticesSize, vertices, GL_STATIC_DRAW);
-}
-
-
-void Triangle::setAttributesPointers()
-{
-    GLint stride = 5 * sizeof(GLfloat);
     
+    /* --- bindTexture ---*/
+    GLint stride = 5 * sizeof(GLfloat);
     // position
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
     glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
-
+    
     // texture
     GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texCoord"); // 1
     glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(textureAttrib);
     
-}
-
-void Triangle::unbind()
-{
+    loadTexture("resources/textures/container.jpg", &texture1);
+    loadTexture("resources/textures/awesomeface.png", &texture2);
+    
+    /* --- unbind ---*/
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+    
+    camera.pos = glm::vec3(0.0f, 0.0f, 3.0f);
+    camera.front = glm::vec3(0.0f, 0.0f, -1.0f);
+    camera.up = glm::vec3(0.0f, 1.0f,  0.0f);
 }
 
 void Triangle::loadTexture(char * texturePath, GLuint * texture)
@@ -120,8 +105,8 @@ void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
     glBindTexture(GL_TEXTURE_2D, texture2);
     glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture2"), 1);
     
+    // draw
     glBindVertexArray(VAO);
-    
     GLfloat time = (GLfloat)glfwGetTime();
     for (GLuint i = 0; i < cubesSize; i++) {
         model = glm::translate(model, cubePositions[i]);
@@ -135,7 +120,6 @@ void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
         glDrawArrays(GL_TRIANGLES, 0, verticesQty);
         model = glm::mat4();
     }
-    
     glBindVertexArray(0);
 }
 
