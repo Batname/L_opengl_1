@@ -20,7 +20,7 @@ class Triangle
 public:
     Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
     
-    void render(glm::vec3 * cubePositions = nullptr, GLint cubesSize = 0);
+    void render(glm::vec3 * cubePositions, GLint cubesSize);
     void clear();
     void cameraCallback(int key, int scancode, int action, int mode);
     void movement(float deltaTime);
@@ -45,7 +45,6 @@ private:
     void setAttributesPointers();
     void unbind();
     void loadTexture(char * texturePath, GLuint * texture);
-    void transformationRender(glm::vec3 * cubePositions, GLint cubesSize);
 };
 
 #endif /* Triangle_hpp */

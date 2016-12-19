@@ -92,9 +92,9 @@ int main(int argc, const char * argv[]) {
 void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
 {
     if (key >= 0 && key < 1024) {
-        if (GLFW_PRESS == action) {
+        if (action == GLFW_PRESS) {
             keyInput->keys[key] = true;
-        } else if (GLFW_RELEASE == action) {
+        } else if (action == GLFW_RELEASE) {
             keyInput->keys[key] = false;
         }
     }
