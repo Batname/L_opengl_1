@@ -91,7 +91,7 @@ void Triangle::movement(float deltaTime)
 void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 fullMatrix;
-    glm::mat4 model;
+    glm::mat4 model(1.0f);
     glm::mat4 projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
     glm::mat4 view = glm::lookAt(camera.pos, camera.pos + camera.front, camera.up);
     
@@ -107,18 +107,18 @@ void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
     
     // draw
     glBindVertexArray(VAO);
-    GLfloat time = (GLfloat)glfwGetTime();
     for (GLuint i = 0; i < cubesSize; i++) {
+        // model to view
+        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
         model = glm::translate(model, cubePositions[i]);
-        GLfloat angle = time * 20.0f * (i + 1);
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+        model = glm::rotate(model, glm::radians(20.0f * (i + 1)), glm::vec3(1.0f, 0.3f, 0.5f));
         
         fullMatrix = projection * view * model;
         glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, glm::value_ptr(fullMatrix));
         
         // draw and reset model
         glDrawArrays(GL_TRIANGLES, 0, verticesQty);
-        model = glm::mat4();
+        model = glm::mat4(1.0f);
     }
     glBindVertexArray(0);
 }
