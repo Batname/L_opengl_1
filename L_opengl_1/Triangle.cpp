@@ -91,9 +91,12 @@ void Triangle::movement(float deltaTime)
 void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 fullMatrix;
+    // model to world
     glm::mat4 model(1.0f);
-    glm::mat4 projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+    // world to view
     glm::mat4 view = glm::lookAt(camera.pos, camera.pos + camera.front, camera.up);
+    // view to clip space
+    glm::mat4 projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
     
     shader.use();
 
