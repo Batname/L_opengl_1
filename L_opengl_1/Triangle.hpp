@@ -22,6 +22,7 @@ public:
     
     // public member
     void cameraCallback(int key, int scancode, int action, int mode);
+    void mouseCallback(GLFWwindow* window, double xpos, double ypos);
     void clear();
     void render(glm::vec3 * cubePositions, GLint cubesSize);
     void movement(float deltaTime);

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18121D8B1E157E99006FAF10 /* MouseInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18121D891E157E99006FAF10 /* MouseInput.cpp */; };
 		1832DD541E02BAE90007A458 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD531E02BAE90007A458 /* main.cpp */; };
 		1832DD5C1E02BF480007A458 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5B1E02BF480007A458 /* OpenGL.framework */; };
 		1832DD5E1E02BF5C0007A458 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */; };
@@ -37,6 +38,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18121D891E157E99006FAF10 /* MouseInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseInput.cpp; sourceTree = "<group>"; };
+		18121D8A1E157E99006FAF10 /* MouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MouseInput.hpp; sourceTree = "<group>"; };
+		18121D8C1E15836D006FAF10 /* callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callbacks.h; sourceTree = "<group>"; };
 		1832DD501E02BAE90007A458 /* L_opengl_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = L_opengl_1; sourceTree = BUILT_PRODUCTS_DIR; };
 		1832DD531E02BAE90007A458 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1832DD5B1E02BF480007A458 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -151,6 +155,9 @@
 				1832DD661E02CD1C0007A458 /* Input.hpp */,
 				1832DD681E02CD290007A458 /* KeyInput.cpp */,
 				1832DD691E02CD290007A458 /* KeyInput.hpp */,
+				18121D891E157E99006FAF10 /* MouseInput.cpp */,
+				18121D8A1E157E99006FAF10 /* MouseInput.hpp */,
+				18121D8C1E15836D006FAF10 /* callbacks.h */,
 			);
 			name = Intput;
 			sourceTree = "<group>";
@@ -271,6 +278,7 @@
 				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
 				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
 				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,
+				18121D8B1E157E99006FAF10 /* MouseInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

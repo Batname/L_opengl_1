@@ -3,6 +3,9 @@
 #include "Triangle.hpp"
 
 #include "KeyInput.hpp"
+#include "MouseInput.hpp"
+#include "callbacks.h"
+
 #include "Frame.hpp"
 
 using namespace std;
@@ -10,10 +13,8 @@ using namespace std::placeholders;
 
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
-void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode);
-void mainInputKeybordCallback(int key, int scancode, int action, int mode);
-
 KeyInput *keyInput;
+MouseInput *mouseInput;
 GLFWwindow *window;
 
 int main(int argc, const char * argv[]) {
@@ -33,6 +34,9 @@ int main(int argc, const char * argv[]) {
         glfwTerminate();
         return EXIT_FAILURE;
     }
+    
+    // glfw options
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     
     // init glew
     glfwMakeContextCurrent(window);
@@ -58,10 +62,15 @@ int main(int argc, const char * argv[]) {
     Frame frame;
     
     // init user input
-    keyInput = new KeyInput(window);
-    keyInput->addListener(mainInputKeybordCallback);
-    keyInput->addListener(bind(&Triangle::cameraCallback, &triangle, _1, _2, _3, _4));
     glfwSetKeyCallback(window, keyCallback);
+    glfwSetCursorPosCallback(window, mouseCallback);
+    
+    mouseInput = new MouseInput(window);
+    mouseInput->addListener(bind(&Triangle::mouseCallback, &triangle, _1, _2, _3));
+
+    keyInput = new KeyInput(window);
+    keyInput->addListener(bind(&Triangle::cameraCallback, &triangle, _1, _2, _3, _4));
+
     
     // game loop
     while (!glfwWindowShouldClose(window)) {
@@ -88,25 +97,3 @@ int main(int argc, const char * argv[]) {
     glfwTerminate();
     return EXIT_SUCCESS;
 }
-
-void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
-{
-    if (key >= 0 && key < 1024) {
-        if (action == GLFW_PRESS) {
-            keyInput->keys[key] = true;
-        } else if (action == GLFW_RELEASE) {
-            keyInput->keys[key] = false;
-        }
-    }
-
-    keyInput->emitEvent(key, scancode, action, mode);
-}
-
-void mainInputKeybordCallback(int key, int scancode, int action, int mode)
-{
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-        glfwSetWindowShouldClose(window, GL_TRUE);
-    }
-}
-
-

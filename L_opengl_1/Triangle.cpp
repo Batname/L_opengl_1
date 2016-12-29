@@ -68,6 +68,11 @@ void Triangle::cameraCallback(int key, int scancode, int action, int mode)
 
 };
 
+void Triangle::mouseCallback(GLFWwindow* window, double xpos, double ypos)
+{
+    std::cout << "Triangle::mouseCallback" << std::endl;
+};
+
 void Triangle::movement(float deltaTime)
 {
     GLfloat cameraSpeed = 5.0f * deltaTime;
