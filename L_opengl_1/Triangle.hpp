@@ -31,6 +31,11 @@ private:
     ShaderLoader shader;
     GLuint VBO, VAO, texture1, texture2;
     Camera camera;
+    bool firstMouse;
+    GLfloat yaw;
+    GLfloat pitch;
+    GLfloat lastX;
+    GLfloat lastY;
     
     // private member
     void loadTexture(char * texturePath, GLuint * texture);

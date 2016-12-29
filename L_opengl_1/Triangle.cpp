@@ -1,5 +1,6 @@
 #include "Triangle.hpp"
 #include "Game.hpp"
+#include "constants.h"
 
 extern Game *game;
 
@@ -40,6 +41,12 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, 
     camera.pos = glm::vec3(0.0f, 0.0f, 3.0f);
     camera.front = glm::vec3(0.0f, 0.0f, -1.0f);
     camera.up = glm::vec3(0.0f, 1.0f,  0.0f);
+    
+    firstMouse = true;
+    yaw   = -90.0f;
+    pitch =   0.0f;
+    lastX =  WINDOW_WIDTH  / 2.0;
+    lastY =  WINDOW_HEIGHT / 2.0;
 }
 
 void Triangle::loadTexture(char * texturePath, GLuint * texture)
@@ -73,7 +80,35 @@ void Triangle::cameraCallback(int key, int scancode, int action, int mode)
 
 void Triangle::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 {
-    std::cout << "Triangle::mouseCallback" << std::endl;
+    if(firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+    
+    GLfloat xoffset = xpos - lastX;
+    GLfloat yoffset = lastY - ypos;
+    lastX = xpos;
+    lastY = ypos;
+    
+    GLfloat sensitivity = 0.05;
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+    
+    yaw   += xoffset;
+    pitch += yoffset;
+    
+    if(pitch > 89.0f)
+        pitch = 89.0f;
+    if(pitch < -89.0f)
+        pitch = -89.0f;
+    
+    glm::vec3 front;
+    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.y = sin(glm::radians(pitch));
+    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    camera.front = glm::normalize(front);
 };
 
 void Triangle::movement(float deltaTime)
