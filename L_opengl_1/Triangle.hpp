@@ -1,13 +1,9 @@
 #ifndef Triangle_hpp
 #define Triangle_hpp
 
-
 #include "ShaderLoader.hpp"
 
 #include "includes.h"
-#include "KeyInput.hpp"
-
-extern KeyInput *keyInput;
 
 struct Camera {
     glm::vec3 pos;

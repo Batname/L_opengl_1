@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 class MouseInput : public Input
 {
     typedef function<void (GLFWwindow* window, double xpos, double ypos)> MouseCallback;

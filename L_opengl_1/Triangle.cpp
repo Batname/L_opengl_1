@@ -1,4 +1,7 @@
 #include "Triangle.hpp"
+#include "Game.hpp"
+
+extern Game *game;
 
 Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath) :
     verticesSize(verticesSize),
@@ -76,19 +79,19 @@ void Triangle::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 void Triangle::movement(float deltaTime)
 {
     GLfloat cameraSpeed = 5.0f * deltaTime;
-    if (keyInput->keys[GLFW_KEY_W]) {
+    if (game->getKeyInput()->keys[GLFW_KEY_W]) {
         camera.pos += cameraSpeed * camera.front;
     }
     
-    if (keyInput->keys[GLFW_KEY_S]) {
+    if (game->getKeyInput()->keys[GLFW_KEY_S]) {
         camera.pos -= cameraSpeed * camera.front;
     }
     
-    if (keyInput->keys[GLFW_KEY_A]) {
+    if (game->getKeyInput()->keys[GLFW_KEY_A]) {
         camera.pos -= glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
     }
     
-    if (keyInput->keys[GLFW_KEY_D]) {
+    if (game->getKeyInput()->keys[GLFW_KEY_D]) {
         camera.pos += glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
     }
 }

@@ -12,8 +12,6 @@ void MouseInput::addListener(MouseCallback cb)
 
 void MouseInput::emitEvent(GLFWwindow* window, double xpos, double ypos)
 {
-    std::cout << "event emit" << std::endl;
-
     for(auto it : callbacks){
         it(window, xpos, ypos);
     }
