@@ -1,5 +1,5 @@
-#ifndef Triangle_hpp
-#define Triangle_hpp
+#ifndef Cube_hpp
+#define Cube_hpp
 
 #include "ShaderLoader.hpp"
 
@@ -11,10 +11,10 @@ struct Camera {
     glm::vec3 up;
 };
 
-class Triangle
+class Cube
 {
 public:
-    Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
+    Cube(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
     
     // public member
     void cameraCallback(int key, int scancode, int action, int mode);
@@ -41,4 +41,4 @@ private:
     void loadTexture(char * texturePath, GLuint * texture);
 };
 
-#endif /* Triangle_hpp */
+#endif /* Cube_hpp */

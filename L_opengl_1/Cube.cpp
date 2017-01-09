@@ -1,10 +1,10 @@
-#include "Triangle.hpp"
+#include "Cube.hpp"
 #include "Game.hpp"
 #include "constants.h"
 
 extern Game *game;
 
-Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath) :
+Cube::Cube(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath) :
     verticesSize(verticesSize),
     vertices(vertices),
     verticesQty(verticesQty),
@@ -49,7 +49,7 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, 
     lastY =  WINDOW_HEIGHT / 2.0;
 }
 
-void Triangle::loadTexture(char * texturePath, GLuint * texture)
+void Cube::loadTexture(char * texturePath, GLuint * texture)
 {
     glGenTextures(1, texture);
     glBindTexture(GL_TEXTURE_2D, *texture);
@@ -73,12 +73,12 @@ void Triangle::loadTexture(char * texturePath, GLuint * texture)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Triangle::cameraCallback(int key, int scancode, int action, int mode)
+void Cube::cameraCallback(int key, int scancode, int action, int mode)
 {
 
 };
 
-void Triangle::mouseCallback(GLFWwindow* window, double xpos, double ypos)
+void Cube::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 {
     if(firstMouse)
     {
@@ -111,7 +111,7 @@ void Triangle::mouseCallback(GLFWwindow* window, double xpos, double ypos)
     camera.front = glm::normalize(front);
 };
 
-void Triangle::movement(float deltaTime)
+void Cube::movement(float deltaTime)
 {
     GLfloat cameraSpeed = 5.0f * deltaTime;
     if (game->getKeyInput()->keys[GLFW_KEY_W]) {
@@ -139,7 +139,7 @@ void Triangle::movement(float deltaTime)
     }
 }
 
-void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
+void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
 {
     glm::mat4 fullMatrix;
     // model to world
@@ -177,7 +177,7 @@ void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
     glBindVertexArray(0);
 }
 
-void Triangle::clear()
+void Cube::clear()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);

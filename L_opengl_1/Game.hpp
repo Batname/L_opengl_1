@@ -8,7 +8,7 @@
 #include "callbacks.hpp"
 
 #include "Frame.hpp"
-#include "Triangle.hpp"
+#include "Cube.hpp"
 
 
 class Game
@@ -29,7 +29,7 @@ private:
     KeyInput * keyInput;
     MouseInput * mouseInput;
     GLFWwindow * window;
-    Triangle * triangle;
+    Cube * cube;
     Frame * frame;
 };
 

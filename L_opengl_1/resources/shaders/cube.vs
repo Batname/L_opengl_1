@@ -4,10 +4,6 @@ layout (location = 1) in vec2 texCoord;
 
 out vec2 TexCoord;
 
-uniform mat4 view;
-uniform mat4 model;
-uniform mat4 projection;
-
 uniform mat4 fullMatrix;
 
 void main()

@@ -42,8 +42,8 @@ Game::Game()
     // openGl options
     glEnable(GL_DEPTH_TEST);
     
-    // init custom Triangle
-    triangle = new Triangle(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/core.vs", "resources/shaders/core.frag");
+    // init custom Cube
+    cube = new Cube(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/cube.vs", "resources/shaders/cube.frag");
     
     // init frame
     frame = new Frame;
@@ -53,10 +53,10 @@ Game::Game()
     glfwSetCursorPosCallback(window, mouseCallback);
     
     mouseInput = new MouseInput(window);
-    mouseInput->addListener(bind(&Triangle::mouseCallback, triangle, _1, _2, _3));
+    mouseInput->addListener(bind(&Cube::mouseCallback, cube, _1, _2, _3));
     
     keyInput = new KeyInput(window);
-    keyInput->addListener(bind(&Triangle::cameraCallback, triangle, _1, _2, _3, _4));
+    keyInput->addListener(bind(&Cube::cameraCallback, cube, _1, _2, _3, _4));
 }
 
 int Game::render()
@@ -67,20 +67,20 @@ int Game::render()
         
         // check evants
         glfwPollEvents();
-        triangle->movement(frame->getDeltaTime());
+        cube->movement(frame->getDeltaTime());
         
         // clear
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // draw
-        triangle->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
+        cube->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
         
         glfwSwapBuffers(window);
     }
     
     // reallocate
-    triangle->clear();
+    cube->clear();
     
     // success exit
     glfwTerminate();

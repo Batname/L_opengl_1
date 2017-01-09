@@ -18,7 +18,7 @@
 		1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD681E02CD290007A458 /* KeyInput.cpp */; };
 		1832DD6D1E02DEDF0007A458 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1832DD6C1E02DEBF0007A458 /* resources */; };
 		1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */; };
-		1832DD751E02E0A50007A458 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD731E02E0A50007A458 /* Triangle.cpp */; };
+		1832DD751E02E0A50007A458 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD731E02E0A50007A458 /* Cube.cpp */; };
 		185DD0291E0873DC0014CB12 /* Frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 185DD0271E0873DC0014CB12 /* Frame.cpp */; };
 		18B081BC1E0462D700669944 /* etc1_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A71E0462D700669944 /* etc1_utils.c */; };
 		18B081BD1E0462D700669944 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A91E0462D700669944 /* image_DXT.c */; };
@@ -61,8 +61,8 @@
 		1832DD6C1E02DEBF0007A458 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
 		1832DD701E02DFA00007A458 /* ShaderLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
-		1832DD731E02E0A50007A458 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
-		1832DD741E02E0A50007A458 /* Triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Triangle.hpp; sourceTree = "<group>"; };
+		1832DD731E02E0A50007A458 /* Cube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		1832DD741E02E0A50007A458 /* Cube.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
 		185DD0271E0873DC0014CB12 /* Frame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Frame.cpp; sourceTree = "<group>"; };
 		185DD0281E0873DC0014CB12 /* Frame.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Frame.hpp; sourceTree = "<group>"; };
 		18B081A71E0462D700669944 /* etc1_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = etc1_utils.c; sourceTree = "<group>"; };
@@ -184,8 +184,8 @@
 		1832DD721E02E08F0007A458 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1832DD731E02E0A50007A458 /* Triangle.cpp */,
-				1832DD741E02E0A50007A458 /* Triangle.hpp */,
+				1832DD731E02E0A50007A458 /* Cube.cpp */,
+				1832DD741E02E0A50007A458 /* Cube.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				18121D8F1E158E82006FAF10 /* Game.cpp in Sources */,
 				185DD0291E0873DC0014CB12 /* Frame.cpp in Sources */,
 				1832DD541E02BAE90007A458 /* main.cpp in Sources */,
-				1832DD751E02E0A50007A458 /* Triangle.cpp in Sources */,
+				1832DD751E02E0A50007A458 /* Cube.cpp in Sources */,
 				18B081BD1E0462D700669944 /* image_DXT.c in Sources */,
 				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,
