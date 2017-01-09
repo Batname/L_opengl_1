@@ -1,7 +1,6 @@
 #include "Game.hpp"
 #include "basic_vertices.h"
 
-
 using namespace std;
 using namespace std::placeholders;
 

@@ -9,7 +9,7 @@
 
 #include "Frame.hpp"
 #include "Cube.hpp"
-
+#include "Camera.hpp"
 
 class Game
 {

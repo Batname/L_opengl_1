@@ -5,7 +5,7 @@
 
 #include "includes.h"
 
-struct Camera {
+struct CameraStruct {
     glm::vec3 pos;
     glm::vec3 front;
     glm::vec3 up;
@@ -30,7 +30,7 @@ private:
     GLsizei verticesQty;
     ShaderLoader shader;
     GLuint VBO, VAO, texture1, texture2;
-    Camera camera;
+    CameraStruct camera;
     bool firstMouse;
     GLfloat yaw;
     GLfloat pitch;

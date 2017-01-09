@@ -24,6 +24,7 @@
 		18B081BD1E0462D700669944 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A91E0462D700669944 /* image_DXT.c */; };
 		18B081BE1E0462D700669944 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081AB1E0462D700669944 /* image_helper.c */; };
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
+		18FF56431E243FCB00070095 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56411E243FCB00070095 /* Camera.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,6 +87,8 @@
 		18B081B91E0462D700669944 /* stbi_pkm_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pkm_c.h; sourceTree = "<group>"; };
 		18B081BA1E0462D700669944 /* stbi_pvr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr.h; sourceTree = "<group>"; };
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
+		18FF56411E243FCB00070095 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		18FF56421E243FCB00070095 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 				18121D8A1E157E99006FAF10 /* MouseInput.hpp */,
 				18121D901E159454006FAF10 /* callbacks.cpp */,
 				18121D911E159454006FAF10 /* callbacks.hpp */,
+				18FF56411E243FCB00070095 /* Camera.cpp */,
+				18FF56421E243FCB00070095 /* Camera.hpp */,
 			);
 			name = Intput;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 			files = (
 				1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */,
 				18B081BE1E0462D700669944 /* image_helper.c in Sources */,
+				18FF56431E243FCB00070095 /* Camera.cpp in Sources */,
 				1832DD671E02CD1C0007A458 /* Input.cpp in Sources */,
 				18121D8F1E158E82006FAF10 /* Game.cpp in Sources */,
 				185DD0291E0873DC0014CB12 /* Frame.cpp in Sources */,
