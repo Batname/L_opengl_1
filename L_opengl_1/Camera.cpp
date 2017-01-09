@@ -29,7 +29,7 @@ Camera::Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat up
 }
 
 mat4 Camera::GetViewMatrix() {
-    return lookAt(Position, Position + Front, UP);
+    return lookAt(Position, Position + Front, Up);
 }
 
 void Camera::ProcessKeybord(CameraMovement direction, GLfloat deltaTime) {
@@ -44,9 +44,9 @@ void Camera::ProcessKeybord(CameraMovement direction, GLfloat deltaTime) {
     if (direction == RIGHT)
         Position += Right * velocity;
     if (direction == UPWARD)
-        Position += UP * velocity;
+        Position += Up * velocity;
     if (direction == DOWN)
-        Position -= UP * velocity;
+        Position -= Up * velocity;
 }
 
 void Camera::ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch){

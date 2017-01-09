@@ -37,7 +37,7 @@ public:
         GLfloat pitch = PITCH
     );
     
-    Camera(
+    explicit Camera(
         GLfloat posX,
         GLfloat posY,
         GLfloat posZ,
