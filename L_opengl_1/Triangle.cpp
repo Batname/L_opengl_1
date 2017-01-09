@@ -129,6 +129,14 @@ void Triangle::movement(float deltaTime)
     if (game->getKeyInput()->keys[GLFW_KEY_D]) {
         camera.pos += glm::normalize(glm::cross(camera.front, camera.up)) * cameraSpeed;
     }
+    
+    if (game->getKeyInput()->keys[GLFW_KEY_R]) {
+        camera.pos += cameraSpeed * camera.up;
+    }
+    
+    if (game->getKeyInput()->keys[GLFW_KEY_F]) {
+        camera.pos -= cameraSpeed * camera.up;
+    }
 }
 
 void Triangle::render(glm::vec3 * cubePositions, GLint cubesSize)
