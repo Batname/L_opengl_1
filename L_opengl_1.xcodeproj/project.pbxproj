@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18121D8B1E157E99006FAF10 /* MouseInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18121D891E157E99006FAF10 /* MouseInput.cpp */; };
 		18121D8F1E158E82006FAF10 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18121D8D1E158E82006FAF10 /* Game.cpp */; };
 		18121D921E159454006FAF10 /* callbacks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18121D901E159454006FAF10 /* callbacks.cpp */; };
 		1832DD541E02BAE90007A458 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD531E02BAE90007A458 /* main.cpp */; };
 		1832DD5C1E02BF480007A458 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5B1E02BF480007A458 /* OpenGL.framework */; };
 		1832DD5E1E02BF5C0007A458 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */; };
 		1832DD601E02BF8B0007A458 /* libglfw3.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */; };
-		1832DD671E02CD1C0007A458 /* Input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD651E02CD1C0007A458 /* Input.cpp */; };
-		1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD681E02CD290007A458 /* KeyInput.cpp */; };
 		1832DD6D1E02DEDF0007A458 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1832DD6C1E02DEBF0007A458 /* resources */; };
 		1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */; };
 		1832DD751E02E0A50007A458 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD731E02E0A50007A458 /* Cube.cpp */; };
@@ -41,8 +38,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		18121D891E157E99006FAF10 /* MouseInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MouseInput.cpp; sourceTree = "<group>"; };
-		18121D8A1E157E99006FAF10 /* MouseInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MouseInput.hpp; sourceTree = "<group>"; };
 		18121D8D1E158E82006FAF10 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		18121D8E1E158E82006FAF10 /* Game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		18121D901E159454006FAF10 /* callbacks.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = callbacks.cpp; sourceTree = "<group>"; };
@@ -54,10 +49,6 @@
 		1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw3.3.2.dylib; sourceTree = "<group>"; };
 		1832DD611E02C06E0007A458 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = includes.h; sourceTree = "<group>"; };
 		1832DD621E02C5C00007A458 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
-		1832DD651E02CD1C0007A458 /* Input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input.cpp; sourceTree = "<group>"; };
-		1832DD661E02CD1C0007A458 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
-		1832DD681E02CD290007A458 /* KeyInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KeyInput.cpp; sourceTree = "<group>"; };
-		1832DD691E02CD290007A458 /* KeyInput.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = KeyInput.hpp; sourceTree = "<group>"; };
 		1832DD6B1E02DD0D0007A458 /* basic_vertices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_vertices.h; sourceTree = "<group>"; };
 		1832DD6C1E02DEBF0007A458 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
@@ -161,12 +152,6 @@
 		1832DD641E02CC9A0007A458 /* Intput */ = {
 			isa = PBXGroup;
 			children = (
-				1832DD651E02CD1C0007A458 /* Input.cpp */,
-				1832DD661E02CD1C0007A458 /* Input.hpp */,
-				1832DD681E02CD290007A458 /* KeyInput.cpp */,
-				1832DD691E02CD290007A458 /* KeyInput.hpp */,
-				18121D891E157E99006FAF10 /* MouseInput.cpp */,
-				18121D8A1E157E99006FAF10 /* MouseInput.hpp */,
 				18121D901E159454006FAF10 /* callbacks.cpp */,
 				18121D911E159454006FAF10 /* callbacks.hpp */,
 				18FF56411E243FCB00070095 /* Camera.cpp */,
@@ -281,10 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1832DD6A1E02CD290007A458 /* KeyInput.cpp in Sources */,
 				18B081BE1E0462D700669944 /* image_helper.c in Sources */,
 				18FF56431E243FCB00070095 /* Camera.cpp in Sources */,
-				1832DD671E02CD1C0007A458 /* Input.cpp in Sources */,
 				18121D8F1E158E82006FAF10 /* Game.cpp in Sources */,
 				185DD0291E0873DC0014CB12 /* Frame.cpp in Sources */,
 				1832DD541E02BAE90007A458 /* main.cpp in Sources */,
@@ -294,7 +277,6 @@
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,
 				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
 				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,
-				18121D8B1E157E99006FAF10 /* MouseInput.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

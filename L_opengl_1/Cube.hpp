@@ -5,23 +5,14 @@
 
 #include "includes.h"
 
-struct CameraStruct {
-    glm::vec3 pos;
-    glm::vec3 front;
-    glm::vec3 up;
-};
-
 class Cube
 {
 public:
     Cube(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
     
     // public member
-    void cameraCallback(int key, int scancode, int action, int mode);
-    void mouseCallback(GLFWwindow* window, double xpos, double ypos);
     void clear();
     void render(glm::vec3 * cubePositions, GLint cubesSize);
-    void movement(float deltaTime);
 
 protected:
 private:
@@ -30,7 +21,6 @@ private:
     GLsizei verticesQty;
     ShaderLoader shader;
     GLuint VBO, VAO, texture1, texture2;
-    CameraStruct camera;
     bool firstMouse;
     GLfloat yaw;
     GLfloat pitch;

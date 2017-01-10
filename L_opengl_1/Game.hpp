@@ -3,8 +3,6 @@
 
 #include "includes.h"
 
-#include "KeyInput.hpp"
-#include "MouseInput.hpp"
 #include "callbacks.hpp"
 
 #include "Frame.hpp"
@@ -19,18 +17,16 @@ public:
     int render();
     
     // getters
-    KeyInput * getKeyInput();
-    MouseInput * getMouseInput();
     GLFWwindow * getWindow();
+    Camera* getCamera();
     
 private:
     int SCREEN_WIDTH, SCREEN_HEIGHT;
-    
-    KeyInput * keyInput;
-    MouseInput * mouseInput;
+
     GLFWwindow * window;
-    Cube * cube;
-    Frame * frame;
+    Cube* cube;
+    Frame* frame;
+    Camera* camera;
 };
 
 #endif /* Game_hpp */

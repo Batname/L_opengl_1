@@ -44,18 +44,17 @@ Game::Game()
     // init custom Cube
     cube = new Cube(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/cube.vs", "resources/shaders/cube.frag");
     
+    // init camera
+    camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
+    
     // init frame
     frame = new Frame;
     
     // init user input
     glfwSetKeyCallback(window, keyCallback);
     glfwSetCursorPosCallback(window, mouseCallback);
-    
-    mouseInput = new MouseInput(window);
-    mouseInput->addListener(bind(&Cube::mouseCallback, cube, _1, _2, _3));
-    
-    keyInput = new KeyInput(window);
-    keyInput->addListener(bind(&Cube::cameraCallback, cube, _1, _2, _3, _4));
+    glfwSetScrollCallback(window, scrollCallback);
+
 }
 
 int Game::render()
@@ -66,7 +65,7 @@ int Game::render()
         
         // check evants
         glfwPollEvents();
-        cube->movement(frame->getDeltaTime());
+        camera->DoMovement(frame->getDeltaTime());
         
         // clear
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -86,17 +85,11 @@ int Game::render()
     return EXIT_SUCCESS;
 }
 
-KeyInput * Game::getKeyInput()
-{
-    return keyInput;
-}
-
-MouseInput * Game::getMouseInput()
-{
-    return mouseInput;
-}
-
 GLFWwindow * Game::getWindow()
 {
     return window;
+}
+
+Camera* Game::getCamera() {
+    return camera;
 }

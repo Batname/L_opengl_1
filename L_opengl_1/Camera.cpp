@@ -2,6 +2,7 @@
 
 using namespace glm;
 
+bool Camera::keys[1024] = {};
 
 Camera::Camera(vec3 position, vec3 up, GLfloat yaw, GLfloat pitch) :
     Front({0.0f, 0.0f, -1.0f}),
@@ -32,7 +33,7 @@ mat4 Camera::GetViewMatrix() {
     return lookAt(Position, Position + Front, Up);
 }
 
-void Camera::ProcessKeybord(CameraMovement direction, GLfloat deltaTime) {
+void Camera::ProcessKeyboard(CameraMovement direction, GLfloat deltaTime) {
     GLfloat velocity = MovementSpeed * deltaTime;
 
     if (direction == FORWARD)
@@ -70,14 +71,29 @@ void Camera::ProcessMouseScroll(GLfloat yoffset) {
     if (Zoom >= 45.0f) Zoom = 45.0f;
 }
 
+void Camera::DoMovement(GLfloat deltaTime) {
+    if(Camera::keys[GLFW_KEY_W])
+        ProcessKeyboard(FORWARD, deltaTime);
+    if(Camera::keys[GLFW_KEY_S])
+        ProcessKeyboard(BACKWARD, deltaTime);
+    if(Camera::keys[GLFW_KEY_A])
+        ProcessKeyboard(LEFT, deltaTime);
+    if(Camera::keys[GLFW_KEY_D])
+        ProcessKeyboard(RIGHT, deltaTime);
+    if(Camera::keys[GLFW_KEY_R])
+        ProcessKeyboard(UPWARD, deltaTime);
+    if(Camera::keys[GLFW_KEY_F])
+        ProcessKeyboard(DOWN, deltaTime);
+}
+
 
 void Camera::updateCameraVectors() {
     vec3 front;
     front.x = cos(radians(Yaw)) * cos(radians(Pitch));
     front.y = sin(radians(Pitch));
-    front.z = sin(radians(Yaw)) * cos(Pitch);
+    front.z = sin(radians(Yaw)) * cos(radians(Pitch));
     
-    front = normalize(front);
+    Front = normalize(front);
     
     Right = normalize(cross(Front, WorldUp));
     Up = normalize(cross(Right, Front));

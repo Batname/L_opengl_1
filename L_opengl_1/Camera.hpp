@@ -7,6 +7,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <GLFW/glfw3.h>
+
 using namespace glm;
 
 class Camera {
@@ -26,13 +28,11 @@ public:
     constexpr static GLfloat SENSITIVITY    =  0.25f;
     constexpr static GLfloat ZOOM           =  45.0f;
     
-    constexpr static vec3 POSITION {0.0f, 0.0f,  0.0f};
-    constexpr static vec3 UP       {0.0f, 1.0f,  0.0f};
-    constexpr static vec3 FRONT    {0.0f, 0.0f, -1.0f};
+    static bool keys[1024];
     
     explicit Camera(
-        vec3 position = POSITION,
-        vec3 up = UP,
+        vec3 position = {0.0f, 0.0f,  0.0f},
+        vec3 up = {0.0f, 1.0f,  0.0f},
         GLfloat yaw = YAW,
         GLfloat pitch = PITCH
     );
@@ -49,9 +49,11 @@ public:
     );
     
     mat4 GetViewMatrix();
-    void ProcessKeybord(CameraMovement direction, GLfloat deltaTime);
+    void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime);
     void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
     void ProcessMouseScroll(GLfloat yoffset);
+    
+    void DoMovement(GLfloat deltaTime);
     
 private:
     vec3 Position;
