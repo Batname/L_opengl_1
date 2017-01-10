@@ -3,9 +3,12 @@
 using namespace glm;
 
 bool Camera::keys[1024] = {};
+const vec3 Camera::FRONT = vec3(0.0f, 0.0f, -1.0f);
+const vec3 Camera::UP = vec3(0.0f, 1.0f,  0.0);
+const vec3 Camera::POSITION = vec3(0.0f, 0.0f,  0.0f);
 
 Camera::Camera(vec3 position, vec3 up, GLfloat yaw, GLfloat pitch) :
-    Front({0.0f, 0.0f, -1.0f}),
+    Front(Camera::FRONT),
     MovementSpeed(SPEED),
     MouseSensitivity(SENSITIVITY),
     Zoom(ZOOM),

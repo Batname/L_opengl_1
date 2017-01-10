@@ -28,11 +28,15 @@ public:
     constexpr static GLfloat SENSITIVITY    =  0.25f;
     constexpr static GLfloat ZOOM           =  45.0f;
     
+    const static vec3 FRONT;
+    const static vec3 UP;
+    const static vec3 POSITION;
+
     static bool keys[1024];
     
     explicit Camera(
-        vec3 position = {0.0f, 0.0f,  0.0f},
-        vec3 up = {0.0f, 1.0f,  0.0f},
+        vec3 position = POSITION,
+        vec3 up = UP,
         GLfloat yaw = YAW,
         GLfloat pitch = PITCH
     );
