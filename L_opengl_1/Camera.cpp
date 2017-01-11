@@ -65,13 +65,24 @@ void Camera::ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean co
         if (Pitch < -89.0f) Pitch = -89.0f;
     }
     
-    updateCameraVectors();
+    myUpdateCameraVectors(xoffset, yoffset);
+//    updateCameraVectors();
+}
+
+void Camera::myUpdateCameraVectors(GLfloat xoffset, GLfloat yoffset) {
+    mat4 rotator, pitch, yaw;
+    pitch = rotate(radians(yoffset), Right);
+    yaw = rotate(radians(-xoffset), Up);
+    rotator = pitch * yaw;
+
+    Front = normalize(mat3(rotator) * Front);
+    Right = normalize(cross(Front, Up));
+    Up = normalize(cross(Right, Front));
 }
 
 void Camera::ProcessMouseScroll(GLfloat yoffset) {
-    if (Zoom >= 1.0f && Zoom <= 45.0f) Zoom -= yoffset;
-    if (Zoom <= 1.0f) Zoom = 1.0f;
-    if (Zoom >= 45.0f) Zoom = 45.0f;
+    mat4 roll = rotate(radians(yoffset), cross(Right, Up));
+    Up = normalize(mat3(roll) * Up);
 }
 
 void Camera::DoMovement(GLfloat deltaTime) {

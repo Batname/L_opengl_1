@@ -2,10 +2,14 @@
 #define Camera_hpp
 
 #include <vector>
+#include <iostream>
 
 #include <gl/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>
+#include <glm/gtx/transform.hpp>
 
 #include <GLFW/glfw3.h>
 
@@ -74,6 +78,8 @@ private:
     GLfloat Zoom;
     
     void updateCameraVectors();
+    void myUpdateCameraVectors(GLfloat xoffset, GLfloat yoffset);
+
 };
 
 #endif /* Camera_hpp */
