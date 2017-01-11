@@ -1,6 +1,7 @@
 #include "Camera.hpp"
 
 using namespace glm;
+using namespace std;
 
 bool Camera::keys[1024] = {};
 const vec3 Camera::FRONT = vec3(0.0f, 0.0f, -1.0f);
@@ -11,11 +12,11 @@ Camera::Camera(vec3 position, vec3 up, GLfloat yaw, GLfloat pitch) :
     Front(Camera::FRONT),
     MovementSpeed(SPEED),
     MouseSensitivity(SENSITIVITY),
-    Zoom(ZOOM),
     Position(position),
     WorldUp(up),
     Yaw(yaw),
-    Pitch(pitch)
+    Pitch(pitch),
+    Roll(0.0f)
 {
     updateCameraVectors();
 }
@@ -23,11 +24,11 @@ Camera::Camera(vec3 position, vec3 up, GLfloat yaw, GLfloat pitch) :
 Camera::Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch) :
     MovementSpeed(SPEED),
     MouseSensitivity(SENSITIVITY),
-    Zoom(ZOOM),
     Position(vec3(posX, posY, posZ)),
     WorldUp(vec3(upX, upY, upZ)),
     Yaw(yaw),
-    Pitch(pitch)
+    Pitch(pitch),
+    Roll(0.0f)
 {
     updateCameraVectors();
 }
@@ -57,32 +58,44 @@ void Camera::ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean co
     xoffset *= MouseSensitivity;
     yoffset *= MouseSensitivity;
     
+    cout << xoffset << endl;
+    
     Yaw   += xoffset;
     Pitch += yoffset;
     
     if (constrainPitch) {
-        if (Pitch > 89.0f) Pitch = 89.0f;
-        if (Pitch < -89.0f) Pitch = -89.0f;
+        if (Pitch > 89.0f) {
+            Pitch = 89.0f;
+            yoffset = 0.0f;
+        }
+        if (Pitch < -89.0f) {
+            Pitch = -89.0f;
+            yoffset = 0.0f;
+        }
     }
     
-    myUpdateCameraVectors(xoffset, yoffset);
-//    updateCameraVectors();
+    this->xoffset = xoffset;
+    this->yoffset = yoffset;
+    
+//    myUpdatessssCameraVectors();
+    updateCameraVectors();
 }
 
-void Camera::myUpdateCameraVectors(GLfloat xoffset, GLfloat yoffset) {
+void Camera::myUpdateCameraVectors() {
     mat4 rotator, pitch, yaw;
     pitch = rotate(radians(yoffset), Right);
     yaw = rotate(radians(-xoffset), Up);
     rotator = pitch * yaw;
 
     Front = normalize(mat3(rotator) * Front);
-    Right = normalize(cross(Front, Up));
+    Right = normalize(cross(Front, WorldUp));
     Up = normalize(cross(Right, Front));
 }
 
 void Camera::ProcessMouseScroll(GLfloat yoffset) {
-    mat4 roll = rotate(radians(yoffset), cross(Right, Up));
+    mat4 roll = rotate(radians(yoffset), Front);
     Up = normalize(mat3(roll) * Up);
+    Right = normalize(cross(Front, Up));
 }
 
 void Camera::DoMovement(GLfloat deltaTime) {

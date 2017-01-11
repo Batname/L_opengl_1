@@ -30,7 +30,6 @@ public:
     constexpr static GLfloat PITCH          =  0.0f;
     constexpr static GLfloat SPEED          =  3.0f;
     constexpr static GLfloat SENSITIVITY    =  0.25f;
-    constexpr static GLfloat ZOOM           =  45.0f;
     
     const static vec3 FRONT;
     const static vec3 UP;
@@ -75,10 +74,13 @@ private:
 
     GLfloat MovementSpeed;
     GLfloat MouseSensitivity;
-    GLfloat Zoom;
+    GLfloat Roll;
+    
+    GLfloat xoffset;
+    GLfloat yoffset;
     
     void updateCameraVectors();
-    void myUpdateCameraVectors(GLfloat xoffset, GLfloat yoffset);
+    void myUpdateCameraVectors();
 
 };
 
