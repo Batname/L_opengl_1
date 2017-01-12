@@ -90,15 +90,15 @@ void Light::render() {
     glm::mat4 fullMatrix, model, view, projection;
     
     /* --- model to view --- */
-    model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-    model = glm::translate(model, vec3(0.0f));
-    model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    model = glm::scale(model, glm::vec3(0.2f));
+    model = glm::translate(model, vec3(1.2f, 1.0f, 3.0f));
+    model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
 
     /* --- world to view --- */
     view = game->getCamera()->GetViewMatrix();
 
     /* --- view to clip space --- */
-    projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+    projection = game->getCamera()->GetProjection();
     
     /* use uniform matrix transformation */
     fullMatrix = projection * view * model;
@@ -108,7 +108,6 @@ void Light::render() {
     glBindVertexArray(lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, numVertices);
     glBindVertexArray(0);
-    
 }
 
 void Light::clear() {

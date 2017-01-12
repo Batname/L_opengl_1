@@ -13,6 +13,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "constants.h"
+
 using namespace glm;
 
 class Camera {
@@ -56,6 +58,7 @@ public:
     );
     
     mat4 GetViewMatrix();
+    mat4 GetProjection();
     void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime);
     void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
     void ProcessMouseScroll(GLfloat yoffset);

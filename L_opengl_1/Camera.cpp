@@ -37,6 +37,10 @@ mat4 Camera::GetViewMatrix() {
     return lookAt(Position, Position + Front, Up);
 }
 
+mat4 Camera::GetProjection() {
+    return glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+}
+
 void Camera::ProcessKeyboard(CameraMovement direction, GLfloat deltaTime) {
     GLfloat velocity = MovementSpeed * deltaTime;
 

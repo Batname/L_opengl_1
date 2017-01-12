@@ -75,7 +75,7 @@ int Game::render()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // draw
-//        cube->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
+        cube->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
         light->render();
         
         glfwSwapBuffers(window);

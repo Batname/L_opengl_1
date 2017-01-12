@@ -71,7 +71,7 @@ void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
     // world to view
     glm::mat4 view = game->getCamera()->GetViewMatrix();
     // view to clip space
-    glm::mat4 projection = glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+    glm::mat4 projection = game->getCamera()->GetProjection();
     
     shader.use();
 
