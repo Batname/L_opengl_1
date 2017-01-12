@@ -25,7 +25,7 @@ public:
     Light();
 
     void render();
-    void clean();
+    void clear();
 private:
     GLuint lightVAO;
     GLuint lightVBO;
