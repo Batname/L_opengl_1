@@ -22,6 +22,7 @@
 		18B081BE1E0462D700669944 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081AB1E0462D700669944 /* image_helper.c */; };
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
 		18FF56431E243FCB00070095 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56411E243FCB00070095 /* Camera.cpp */; };
+		18FF56471E26E60F00070095 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56451E26E60F00070095 /* Light.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,8 @@
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
 		18FF56411E243FCB00070095 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		18FF56421E243FCB00070095 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		18FF56451E26E60F00070095 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
+		18FF56461E26E60F00070095 /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,8 @@
 			children = (
 				1832DD731E02E0A50007A458 /* Cube.cpp */,
 				1832DD741E02E0A50007A458 /* Cube.hpp */,
+				18FF56451E26E60F00070095 /* Light.cpp */,
+				18FF56461E26E60F00070095 /* Light.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				185DD0291E0873DC0014CB12 /* Frame.cpp in Sources */,
 				1832DD541E02BAE90007A458 /* main.cpp in Sources */,
 				1832DD751E02E0A50007A458 /* Cube.cpp in Sources */,
+				18FF56471E26E60F00070095 /* Light.cpp in Sources */,
 				18B081BD1E0462D700669944 /* image_DXT.c in Sources */,
 				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,

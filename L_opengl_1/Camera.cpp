@@ -57,9 +57,7 @@ void Camera::ProcessKeyboard(CameraMovement direction, GLfloat deltaTime) {
 void Camera::ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch){
     xoffset *= MouseSensitivity;
     yoffset *= MouseSensitivity;
-    
-    cout << xoffset << endl;
-    
+        
     Yaw   += xoffset;
     Pitch += yoffset;
     

@@ -44,6 +44,9 @@ Game::Game()
     // init custom Cube
     cube = new Cube(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/cube.vs", "resources/shaders/cube.frag");
     
+    // init light
+    light = new Light();
+    
     // init camera
     camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
     
@@ -73,6 +76,8 @@ int Game::render()
         
         // draw
         cube->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
+        
+        light->render();
         
         glfwSwapBuffers(window);
     }

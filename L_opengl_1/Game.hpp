@@ -7,7 +7,10 @@
 
 #include "Frame.hpp"
 #include "Cube.hpp"
+#include "Light.hpp"
+
 #include "Camera.hpp"
+
 
 class Game
 {
@@ -25,6 +28,7 @@ private:
 
     GLFWwindow * window;
     Cube* cube;
+    Light* light;
     Frame* frame;
     Camera* camera;
 };
