@@ -8,6 +8,6 @@ out vec3 LightObjectColor;
 
 void main()
 {
-    gl_Position = vec4(position, 1.0f);
+    gl_Position = fullMatrix * vec4(position, 1.0f);
     LightObjectColor = lightObjectColor;
 }
