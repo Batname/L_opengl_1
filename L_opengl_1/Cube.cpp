@@ -63,41 +63,47 @@ void Cube::loadTexture(char * texturePath, GLuint * texture)
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
-{
-    glm::mat4 fullMatrix;
-    // model to world
-    glm::mat4 model(1.0f);
-    // world to view
-    glm::mat4 view = game->getCamera()->GetViewMatrix();
-    // view to clip space
-    glm::mat4 projection = game->getCamera()->GetProjection();
-    
-    shader.use();
-
-    // bind textures
+void Cube::bindTextures() {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture1);
     glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture1"), 0);
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_2D, texture2);
     glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture2"), 1);
+}
+
+void Cube::bindLight() {
+    GLint objectColorLoc = glGetUniformLocation(shader.getProgram(), "objectColor");
+    GLint lightColorLoc  = glGetUniformLocation(shader.getProgram(), "lightColor");
+    glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
+    glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f); // Also set light's color (white)
+}
+
+void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
+{
+    shader.use();
+    bindLight();
     
-    // draw
+    glm::mat4 fullMatrix, model, view, projection;
+    
+    /* --- model to view --- */
+    model = glm::translate(model, vec3(0.0f));
+    model = glm::scale(model, glm::vec3(1.0f));
+    model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
+    
+    /* --- world to view --- */
+    view = game->getCamera()->GetViewMatrix();
+    
+    /* --- view to clip space --- */
+    projection = game->getCamera()->GetProjection();
+    
+    /* use uniform matrix transformation */
+    fullMatrix = projection * view * model;
+    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, &fullMatrix[0][0]);
+    
+    /* Draw light object */
     glBindVertexArray(VAO);
-    for (GLuint i = 0; i < cubesSize; i++) {
-        // model to view
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-        model = glm::translate(model, cubePositions[i]);
-        model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-        
-        fullMatrix = projection * view * model;
-        glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, glm::value_ptr(fullMatrix));
-        
-        // draw and reset model
-        glDrawArrays(GL_TRIANGLES, 0, verticesQty);
-        model = glm::mat4(1.0f);
-    }
+    glDrawArrays(GL_TRIANGLES, 0, verticesQty);
     glBindVertexArray(0);
 }
 

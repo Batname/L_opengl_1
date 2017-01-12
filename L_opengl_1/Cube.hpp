@@ -29,6 +29,9 @@ private:
     
     // private member
     void loadTexture(char * texturePath, GLuint * texture);
+    void bindTextures();
+    void bindLight();
+
 };
 
 #endif /* Cube_hpp */
