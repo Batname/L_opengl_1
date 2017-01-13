@@ -9,19 +9,27 @@ in vec3 FragPos;
 //uniform sampler2D ourTexture1;
 //uniform sampler2D ourTexture2;
 
-// light
+/* --- light --- */
 uniform vec3 objectColor;
 uniform vec3 lightColor;
 uniform float ambientStrength;
-
-uniform vec3 lightPosition;
+uniform vec3 lightPos;
 
 
 void main()
 {
-//    color = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);
+    // color = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);
     
+    /* --- ambient --- */
     vec3 ambient = ambientStrength * lightColor;
-    vec3 result = ambient * objectColor;
+    
+    /* --- diffuse --- */
+    vec3 norm = normalize(Normal);
+    vec3 lightDir = normalize(lightPos - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0f);
+    vec3 diffuse = diff * lightColor;
+    
+    /* --- calculate result --- */
+    vec3 result = (ambient + diffuse) * objectColor;
     color = vec4(result, 1.0f);
 }
