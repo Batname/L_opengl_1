@@ -11,9 +11,13 @@ out vec4 color;
 uniform vec3 objectColor;
 uniform vec3 lightColor;
 
+uniform float ambientStrength;
+
 void main()
 {
 //    color = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);
     
-    color = vec4(objectColor * lightColor, 1.0f);
+    vec3 ambient = ambientStrength * lightColor;
+    vec3 result = ambient * objectColor;
+    color = vec4(result, 1.0f);
 }

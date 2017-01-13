@@ -75,8 +75,10 @@ void Cube::bindTextures() {
 void Cube::bindLight() {
     GLint objectColorLoc = glGetUniformLocation(shader.getProgram(), "objectColor");
     GLint lightColorLoc  = glGetUniformLocation(shader.getProgram(), "lightColor");
+    GLint ambientStrengthLoc = glGetUniformLocation(shader.getProgram(), "ambientStrength");
     glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
     glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f); // Also set light's color (white)
+    glUniform1f(ambientStrengthLoc, 0.1f);
 }
 
 void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
