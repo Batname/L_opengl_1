@@ -19,8 +19,8 @@ Cube::Cube(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar *
     glBindVertexArray(VAO);
     glBufferData(GL_ARRAY_BUFFER, verticesSize, vertices, GL_STATIC_DRAW);
     
-    /* --- bindTexture ---*/
-    GLint stride = 5 * sizeof(GLfloat);
+    /* --- geometry ---*/
+    GLint stride = 8 * sizeof(GLfloat);
     // position
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
     glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0);
@@ -30,6 +30,11 @@ Cube::Cube(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar *
     GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texCoord"); // 1
     glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(textureAttrib);
+    
+    // normal
+    GLint normalAttrib = glGetAttribLocation(shader.getProgram(), "normal"); // 2
+    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(5 * sizeof(GLfloat)));
+    glEnableVertexAttribArray(normalAttrib);
     
     loadTexture("resources/textures/container.jpg", &texture1);
     loadTexture("resources/textures/awesomeface.png", &texture2);

@@ -2,6 +2,7 @@
 in vec2 TexCoord;
 
 out vec4 color;
+in vec3 Normal;
 
 // Texture samplers
 //uniform sampler2D ourTexture1;
@@ -10,7 +11,6 @@ out vec4 color;
 // light
 uniform vec3 objectColor;
 uniform vec3 lightColor;
-
 uniform float ambientStrength;
 
 void main()
