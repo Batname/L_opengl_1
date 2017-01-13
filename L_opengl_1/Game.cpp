@@ -3,6 +3,9 @@
 
 using namespace std;
 using namespace std::placeholders;
+using namespace glm;
+
+const vec3 Game::lightPosition = vec3(1.2f, 1.0f, 2.0f);
 
 Game::Game()
 {

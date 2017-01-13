@@ -84,6 +84,10 @@ void Cube::bindLight() {
     glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
     glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f); // Also set light's color (white)
     glUniform1f(ambientStrengthLoc, 0.1f);
+    
+    /* --- bind light position --- */
+    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
+    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
 }
 
 void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
@@ -93,10 +97,12 @@ void Cube::render(glm::vec3 * cubePositions, GLint cubesSize)
     
     glm::mat4 fullMatrix, model, view, projection;
     
-    /* --- model to view --- */
+    /* --- model to view, send it to shader --- */
     model = glm::translate(model, vec3(0.0f));
     model = glm::scale(model, glm::vec3(1.0f));
     model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
+    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "model"), 1, GL_FALSE, &model[0][0]);
+    
     
     /* --- world to view --- */
     view = game->getCamera()->GetViewMatrix();

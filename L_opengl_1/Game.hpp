@@ -23,6 +23,9 @@ public:
     GLFWwindow * getWindow();
     Camera* getCamera();
     
+    // static const
+    static const vec3 lightPosition;
+    
 private:
     int SCREEN_WIDTH, SCREEN_HEIGHT;
 

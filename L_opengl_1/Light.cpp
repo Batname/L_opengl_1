@@ -90,7 +90,7 @@ void Light::render() {
     glm::mat4 fullMatrix, model, view, projection;
     
     /* --- model to view --- */
-    model = glm::translate(model, vec3(1.2f, 1.0f, 2.0f));
+    model = glm::translate(model, game->lightPosition);
     model = glm::scale(model, glm::vec3(0.2f));
     model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
 

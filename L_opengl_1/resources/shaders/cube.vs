@@ -5,12 +5,15 @@ layout (location = 2) in vec3 normal;
 
 out vec2 TexCoord;
 out vec3 Normal;
+out vec3 FragPos;
 
 uniform mat4 fullMatrix;
+uniform mat4 model;
 
 void main()
 {
     gl_Position = fullMatrix * vec4(position, 1.0f);
-    TexCoord = vec2(texCoord.x, 1.0 - texCoord.y);
+    // TexCoord = vec2(texCoord.x, 1.0 - texCoord.y);
+    FragPos = vec3(model * vec4(position, 1.0f));
     Normal = normal;
 }
