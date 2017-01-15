@@ -1,38 +1,96 @@
 #include "ShapeGenerator.hpp"
 
+using namespace glm;
+
 ShapeData<RegularVertex> ShapeGenerator::makePlane()
 {
     ShapeData<RegularVertex> ret;
     
     RegularVertex verts[] = {
-        glm::vec3(+0.5f, +0.5f, +0.5),  // position
-        glm::vec3(+0.5f, +0.5f, +0.5),  // color
-        glm::vec3(+1.0f, +0.0f, +0.0f), // normal
+        vec3(+0.5f, +0.5f, +0.5),  // position
+        vec3(+0.5f, +0.5f, +0.5),  // color
+        vec3(+1.0f, +0.0f, +0.0f), // normal
         
-        glm::vec3(+0.5f, -0.5f, +0.5),
-        glm::vec3(+0.5f, +0.5f, +0.5),
-        glm::vec3(+1.0f, +0.0f, +0.0f),
+        vec3(+0.5f, -0.5f, +0.5),
+        vec3(+0.5f, +0.5f, +0.5),
+        vec3(+1.0f, +0.0f, +0.0f),
         
-        glm::vec3(-0.5f, +0.5f, +0.5),
-        glm::vec3(+0.5f, +0.5f, +0.5),
-        glm::vec3(+1.0f, +0.0f, +0.0f),
+        vec3(-0.5f, +0.5f, +0.5),
+        vec3(+0.5f, +0.5f, +0.5),
+        vec3(+1.0f, +0.0f, +0.0f),
         
         
-        glm::vec3(+0.5f, -0.5f, +0.5),  // position
-        glm::vec3(+0.5f, +0.5f, +0.5),  // color
-        glm::vec3(+1.0f, +0.0f, +0.0f), // normal
+        vec3(+0.5f, -0.5f, +0.5),  // position
+        vec3(+0.5f, +0.5f, +0.5),  // color
+        vec3(+1.0f, +0.0f, +0.0f), // normal
         
-        glm::vec3(-0.5f, -0.5f, +0.5),
-        glm::vec3(+0.5f, +0.5f, +0.5),
-        glm::vec3(+1.0f, +0.0f, +0.0f),
+        vec3(-0.5f, -0.5f, +0.5),
+        vec3(+0.5f, +0.5f, +0.5),
+        vec3(+1.0f, +0.0f, +0.0f),
         
-        glm::vec3(-0.5f, +0.5f, +0.5),
-        glm::vec3(+0.5f, +0.5f, +0.5),
-        glm::vec3(+1.0f, +0.0f, +0.0f)
+        vec3(-0.5f, +0.5f, +0.5),
+        vec3(+0.5f, +0.5f, +0.5),
+        vec3(+1.0f, +0.0f, +0.0f)
     };
     
-    ret.numVertices = NUM_ARRAY_ELEMENTS(verts);
+    ret.numVertices = NUM_ARRAY_ELEMENTS(verts, RegularVertex);
     ret.vertices = (RegularVertex*)malloc(sizeof(verts));
+    memcpy(ret.vertices, verts, sizeof(verts));
+    
+    return ret;
+}
+
+ShapeData<SimpleVertex> ShapeGenerator::makeLight()
+{
+    ShapeData<SimpleVertex> ret;
+    
+    RegularVertex verts[] = {
+        vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
+        
+        vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3( 0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
+        
+        vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
+        
+        vec3(0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3(0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3(0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3(0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3(0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3(0.5f,  0.5f,  0.5f), vec3(1.0f),
+        
+        vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f, -0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3( 0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
+        
+        vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f, -0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
+        vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f)
+    };
+    
+    ret.numVertices = NUM_ARRAY_ELEMENTS(verts, SimpleVertex);
+
+    ret.vertices = (SimpleVertex*)malloc(sizeof(verts));
     memcpy(ret.vertices, verts, sizeof(verts));
     
     return ret;

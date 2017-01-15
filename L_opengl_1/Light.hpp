@@ -1,36 +1,21 @@
 #ifndef Light_hpp
 #define Light_hpp
 
-#include "ShaderLoader.hpp"
+#include "Model.hpp"
 #include "includes.h"
+#include "ShapeGenerator.hpp"
 
-using namespace glm;
-
-class Light
+class Light : public Model
 {
 public:
-    struct Vertex {
-        vec3 position;
-        vec3 color;
-    };
-    
-    const static Vertex vertices[];
-    const static int verticesSize;
-    const static int numVertices;
+    explicit Light(const char* vertexFilePath, const char* fragmentFilePath);
 
-    
-    constexpr static char* vertexFilePath   = "resources/shaders/light.vs";
-    constexpr static char* fragmentFilePath = "resources/shaders/light.frag";
-
-    Light();
-
-    void render();
-    void clear();
+    virtual void render() const;
+    virtual void clear() const;
 private:
     GLuint lightVAO;
     GLuint lightVBO;
-    ShaderLoader shader;
-
+    GLuint numVertices;
 };
 
 #endif /* Light_hpp */

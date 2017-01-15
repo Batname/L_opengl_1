@@ -1,7 +1,7 @@
 #ifndef ShapeGenerator_hpp
 #define ShapeGenerator_hpp
 
-#define NUM_ARRAY_ELEMENTS(a) sizeof(a) / sizeof(*a)
+#define NUM_ARRAY_ELEMENTS(a, b) sizeof(a) / sizeof(b)
 
 #include "includes.h"
 #include "ShapeData.h"
@@ -12,6 +12,7 @@ class ShapeGenerator
 private:
 public:
     static ShapeData<RegularVertex> makePlane();
+    static ShapeData<SimpleVertex> makeLight();
 };
 
 #endif /* ShapeGenerator_hpp */

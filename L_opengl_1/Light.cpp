@@ -7,56 +7,8 @@ extern Game *game;
 using namespace std;
 using namespace glm;
 
-const Light::Vertex Light::vertices[] = {
-    vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
-    
-    vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3( 0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
-    
-    vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
-    
-    vec3(0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3(0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3(0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3(0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3(0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3(0.5f,  0.5f,  0.5f), vec3(1.0f),
-    
-    vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f, -0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3( 0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f, -0.5f, -0.5f), vec3(1.0f),
-    
-    vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f, -0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3( 0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f,  0.5f,  0.5f), vec3(1.0f),
-    vec3(-0.5f,  0.5f, -0.5f), vec3(1.0f)
-};
-
-const int Light::verticesSize = sizeof(Light::vertices);
-const int Light::numVertices = Light::verticesSize / sizeof(Light::Vertex);
-
-
-Light::Light() :
-    shader(ShaderLoader(vertexFilePath, fragmentFilePath))
+Light::Light(const char* vertexFilePath, const char* fragmentFilePath) :
+    Model(vertexFilePath, fragmentFilePath)
 {
     /* --- generate buffers ---*/
     glGenVertexArrays(1, &lightVAO);
@@ -66,25 +18,29 @@ Light::Light() :
     glBindVertexArray(lightVAO);
     glBindBuffer(GL_ARRAY_BUFFER, lightVBO);
     
+    /* --- make object --- */
+    ShapeData<SimpleVertex> light = ShapeGenerator::makeLight();
+    numVertices = light.numVertices;
+    
     /* --- bind data --- */
-    glBufferData(GL_ARRAY_BUFFER, verticesSize, vertices, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, light.vertexBufferSize(), light.vertices, GL_DYNAMIC_DRAW);
     
     /* --- setGeometry --- */
-    GLint stride = sizeof(Vertex);
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
-    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)0);
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, light.getStride(), light.getOffsetPointer(3, 0));
     glEnableVertexAttribArray(positionAttrib);
     
     GLint colorAttrib = glGetAttribLocation(shader.getProgram(), "lightObjectColor"); // 1
-    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(sizeof(vec3)));
+    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, light.getStride(), light.getOffsetPointer(3, 1));
     glEnableVertexAttribArray(colorAttrib);
     
     /* --- free recources --- */
+    light.clean();
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 };
 
-void Light::render() {
+void Light::render() const {
     shader.use();
     
     glm::mat4 fullMatrix, model, view, projection;
@@ -110,7 +66,7 @@ void Light::render() {
     glBindVertexArray(0);
 }
 
-void Light::clear() {
+void Light::clear() const {
     glDeleteVertexArrays(1, &lightVAO);
     glDeleteBuffers(1, &lightVBO);
 }

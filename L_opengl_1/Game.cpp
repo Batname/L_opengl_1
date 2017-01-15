@@ -46,7 +46,7 @@ Game::Game()
     
     /* --- init models --- */
     cube = new Cube(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/cube.vs", "resources/shaders/cube.frag");
-    light = new Light();
+    light = new Light("resources/shaders/light.vs", "resources/shaders/light.frag");
     plane = new Plane("resources/shaders/plane.vs", "resources/shaders/plane.frag");
     
     // init camera
