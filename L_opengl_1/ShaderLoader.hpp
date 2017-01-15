@@ -7,10 +7,10 @@ class ShaderLoader
 {
 public:
     ShaderLoader(const GLchar * vertexPath, const GLchar * fragmentPath);
-    void use();
+    void use() const;
     
     // getters
-    GLuint getProgram();
+    GLuint getProgram() const;
     GLuint getVertexShader();
     GLuint getFragmentShader();
 

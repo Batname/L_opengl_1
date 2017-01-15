@@ -17,8 +17,11 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     glBindVertexArray(planeVAO);
     glBindBuffer(GL_ARRAY_BUFFER, planeVBO);
     
-    /* --- buffer data --- */
+    /* --- make object --- */
     ShapeData<RegularVertex> plane = ShapeGenerator::makePlane();
+    numVertices = plane.numVertices;
+    
+    /* --- buffer data --- */
     glBufferData(GL_ARRAY_BUFFER, plane.vertexBufferSize(), plane.vertices, GL_DYNAMIC_DRAW);
     
     /* --- setGeometry --- */
@@ -40,7 +43,7 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     glBindVertexArray(0);
 }
 
-void Plane::render()
+void Plane::render() const
 {
     shader.use();
 
@@ -75,7 +78,7 @@ void Plane::render()
     
     /* Draw light object */
     glBindVertexArray(planeVAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES, 0, numVertices);
     glBindVertexArray(0);
 }
 
