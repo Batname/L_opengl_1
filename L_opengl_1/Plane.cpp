@@ -69,11 +69,7 @@ void Plane::render() const
 {
     this->preRender();
     renderModel();
-
-    /* --- bind ligth --- */
     this->renderLight();
-    
-    /* Draw light object */
     this->draw();
 }
 

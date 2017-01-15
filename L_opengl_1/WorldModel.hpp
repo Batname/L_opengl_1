@@ -16,6 +16,9 @@ protected:
     virtual void clear() const;
     virtual void draw() const;
     
+    virtual void renderTextures() const;
+    virtual void loadTextures(char* texturePath, GLuint* texture) const;
+    
     GLuint VAO;
     GLuint VBO;
     GLuint numVertices;

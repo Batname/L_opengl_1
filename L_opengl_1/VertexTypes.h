@@ -16,5 +16,11 @@ struct SimpleVertex {
     vec3 color;
 };
 
+struct VertexPosTexNorm {
+    vec3 position;
+    vec2 texture;
+    vec3 normal;
+};
+
 
 #endif /* VertexTypes_h */

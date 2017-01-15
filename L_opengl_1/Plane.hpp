@@ -12,10 +12,11 @@ public:
     Plane(const char* vertexFilePath, const char* fragmentFilePath);
     
     virtual void render() const;
-    virtual void renderModel() const;
     virtual void clear() const override ;
 protected:
 private:
+    virtual void renderModel() const;
+    
     GLuint numVertices;
 };
 

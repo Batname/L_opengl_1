@@ -1,37 +1,28 @@
 #ifndef Cube_hpp
 #define Cube_hpp
 
-#include "ShaderLoader.hpp"
-
 #include "includes.h"
 
-class Cube
+#include "WorldModel.hpp"
+#include "ShapeGenerator.hpp"
+
+class Cube : public WorldModel
 {
 public:
-    Cube(GLint verticesSize, GLfloat * vertices, GLsizei verticesQty, GLchar * vertexPath, GLchar * fragmentPath);
+    Cube(const char* vertexFilePath, const char* fragmentFilePath);
     
-    // public member
-    void clear();
-    void render(glm::vec3 * cubePositions, GLint cubesSize);
+    virtual void render() const;
+    virtual void clear() const override;
 
 protected:
 private:
-    GLint verticesSize;
-    GLfloat * vertices;
-    GLsizei verticesQty;
-    ShaderLoader shader;
-    GLuint VBO, VAO, texture1, texture2;
-    bool firstMouse;
-    GLfloat yaw;
-    GLfloat pitch;
-    GLfloat lastX;
-    GLfloat lastY;
+    GLuint texture1;
+    GLuint texture2;
+    GLuint numVertices;
     
-    // private member
-    void loadTexture(char * texturePath, GLuint * texture);
-    void bindTextures();
-    void bindLight();
-
+    virtual void renderModel() const;
+    virtual void renderLight() const override;
+    virtual void renderTextures() const override;
 };
 
 #endif /* Cube_hpp */

@@ -13,6 +13,8 @@ private:
 public:
     static ShapeData<RegularVertex> makePlane();
     static ShapeData<SimpleVertex> makeLight();
+    static ShapeData<VertexPosTexNorm> makeCube();
+
 };
 
 #endif /* ShapeGenerator_hpp */

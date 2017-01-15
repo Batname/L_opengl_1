@@ -45,7 +45,7 @@ Game::Game()
     glEnable(GL_DEPTH_TEST);
     
     /* --- init models --- */
-    cube = new Cube(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/cube.vs", "resources/shaders/cube.frag");
+    cube = new Cube("resources/shaders/cube.vs", "resources/shaders/cube.frag");
     light = new Light("resources/shaders/light.vs", "resources/shaders/light.frag");
     plane = new Plane("resources/shaders/plane.vs", "resources/shaders/plane.frag");
     
@@ -77,7 +77,7 @@ int Game::render()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         // draw
-        cube->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
+        cube->render();
         light->render();
         plane->render();
         

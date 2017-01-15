@@ -95,3 +95,59 @@ ShapeData<SimpleVertex> ShapeGenerator::makeLight()
     
     return ret;
 }
+
+ShapeData<VertexPosTexNorm> ShapeGenerator::makeCube()
+{
+    ShapeData<VertexPosTexNorm> ret;
+    
+    VertexPosTexNorm verts[] = {
+        vec3(-0.5f, -0.5f, -0.5f),  vec2( 0.0f, 0.0),      vec3(0.0f,  0.0f, -1.0f),
+        vec3(+0.5f, -0.5f, -0.5f),  vec2( 1.0f, 0.0),      vec3(0.0f,  0.0f, -1.0f),
+        vec3(+0.5f,  0.5f, -0.5f),  vec2( 1.0f, 1.0),      vec3(0.0f,  0.0f, -1.0f),
+        vec3(+0.5f,  0.5f, -0.5f),  vec2( 1.0f, 1.0),      vec3(0.0f,  0.0f, -1.0f),
+        vec3(-0.5f,  0.5f, -0.5f),  vec2( 0.0f, 1.0),      vec3(0.0f,  0.0f, -1.0f),
+        vec3(-0.5f, -0.5f, -0.5f),  vec2( 0.0f, 0.0),      vec3(0.0f,  0.0f, -1.0f),
+        
+        vec3(-0.5f, -0.5f,  0.5f),  vec2(0.0f, 0.0f),      vec3(0.0f,  0.0f, 1.0f),
+        vec3(+0.5f, -0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(0.0f,  0.0f, 1.0f),
+        vec3(+0.5f,  0.5f,  0.5f),  vec2(1.0f, 1.0f),      vec3(0.0f,  0.0f, 1.0f),
+        vec3(+0.5f,  0.5f,  0.5f),  vec2(1.0f, 1.0f),      vec3(0.0f,  0.0f, 1.0f),
+        vec3(-0.5f,  0.5f,  0.5f),  vec2(0.0f, 1.0f),      vec3(0.0f,  0.0f, 1.0f),
+        vec3(-0.5f, -0.5f,  0.5f),  vec2(0.0f, 0.0f),      vec3(0.0f,  0.0f, 1.0f),
+        
+        vec3(-0.5f,  0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(-1.0f,  0.0f,  0.0f),
+        vec3(-0.5f,  0.5f, -0.5f),  vec2(1.0f, 1.0f),      vec3(-1.0f,  0.0f,  0.0f),
+        vec3(-0.5f, -0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(-1.0f,  0.0f,  0.0f),
+        vec3(-0.5f, -0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(-1.0f,  0.0f,  0.0f),
+        vec3(-0.5f, -0.5f,  0.5f),  vec2(0.0f, 0.0f),      vec3(-1.0f,  0.0f,  0.0f),
+        vec3(-0.5f,  0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(-1.0f,  0.0f,  0.0f),
+        
+        vec3(+0.5f,  0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(1.0f,  0.0f,  0.0f),
+        vec3(+0.5f,  0.5f, -0.5f),  vec2(1.0f, 1.0f),      vec3(1.0f,  0.0f,  0.0f),
+        vec3(+0.5f, -0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(1.0f,  0.0f,  0.0f),
+        vec3(+0.5f, -0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(1.0f,  0.0f,  0.0f),
+        vec3(+0.5f, -0.5f,  0.5f),  vec2(0.0f, 0.0f),      vec3(1.0f,  0.0f,  0.0f),
+        vec3(+0.5f,  0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(1.0f,  0.0f,  0.0f),
+        
+        vec3(-0.5f, -0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(0.0f, -1.0f,  0.0f),
+        vec3(+0.5f, -0.5f, -0.5f),  vec2(1.0f, 1.0f),      vec3(0.0f, -1.0f,  0.0f),
+        vec3(+0.5f, -0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(0.0f, -1.0f,  0.0f),
+        vec3(+0.5f, -0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(0.0f, -1.0f,  0.0f),
+        vec3(-0.5f, -0.5f,  0.5f),  vec2(0.0f, 0.0f),      vec3(0.0f, -1.0f,  0.0f),
+        vec3(-0.5f, -0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(0.0f, -1.0f,  0.0f),
+        
+        vec3(-0.5f,  0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(0.0f,  1.0f,  0.0f),
+        vec3(+0.5f,  0.5f, -0.5f),  vec2(1.0f, 1.0f),      vec3(0.0f,  1.0f,  0.0f),
+        vec3(+0.5f,  0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(0.0f,  1.0f,  0.0f),
+        vec3(+0.5f,  0.5f,  0.5f),  vec2(1.0f, 0.0f),      vec3(0.0f,  1.0f,  0.0f),
+        vec3(-0.5f,  0.5f,  0.5f),  vec2(0.0f, 0.0f),      vec3(0.0f,  1.0f,  0.0f),
+        vec3(-0.5f,  0.5f, -0.5f),  vec2(0.0f, 1.0f),      vec3(0.0f,  1.0f,  0.0f)
+    };
+    
+    ret.numVertices = NUM_ARRAY_ELEMENTS(verts, VertexPosTexNorm);
+    
+    ret.vertices = (VertexPosTexNorm*)malloc(sizeof(verts));
+    memcpy(ret.vertices, verts, sizeof(verts));
+    
+    return ret;
+}
