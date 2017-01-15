@@ -23,6 +23,10 @@
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
 		18FF56431E243FCB00070095 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56411E243FCB00070095 /* Camera.cpp */; };
 		18FF56471E26E60F00070095 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56451E26E60F00070095 /* Light.cpp */; };
+		18FF566A1E2BBE7700070095 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56681E2BBE7700070095 /* Model.cpp */; };
+		18FF56711E2BC3A400070095 /* VertexTypes.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566C1E2BC17B00070095 /* VertexTypes.h */; };
+		18FF56721E2BC3A400070095 /* ShapeData.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566D1E2BC1F500070095 /* ShapeData.h */; };
+		18FF56751E2BC44800070095 /* ShapeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56731E2BC44800070095 /* ShapeGenerator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +87,12 @@
 		18FF56421E243FCB00070095 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		18FF56451E26E60F00070095 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
 		18FF56461E26E60F00070095 /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
+		18FF56681E2BBE7700070095 /* Model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		18FF56691E2BBE7700070095 /* Model.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		18FF566C1E2BC17B00070095 /* VertexTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VertexTypes.h; sourceTree = "<group>"; };
+		18FF566D1E2BC1F500070095 /* ShapeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeData.h; sourceTree = "<group>"; };
+		18FF56731E2BC44800070095 /* ShapeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeGenerator.cpp; sourceTree = "<group>"; };
+		18FF56741E2BC44800070095 /* ShapeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShapeGenerator.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,10 +187,13 @@
 		1832DD721E02E08F0007A458 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18FF566B1E2BC16400070095 /* Primitives */,
 				1832DD731E02E0A50007A458 /* Cube.cpp */,
 				1832DD741E02E0A50007A458 /* Cube.hpp */,
 				18FF56451E26E60F00070095 /* Light.cpp */,
 				18FF56461E26E60F00070095 /* Light.hpp */,
+				18FF56681E2BBE7700070095 /* Model.cpp */,
+				18FF56691E2BBE7700070095 /* Model.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -212,6 +225,17 @@
 			);
 			name = SOIL2;
 			path = ../../../../../../usr/local/include/SOIL2;
+			sourceTree = "<group>";
+		};
+		18FF566B1E2BC16400070095 /* Primitives */ = {
+			isa = PBXGroup;
+			children = (
+				18FF566C1E2BC17B00070095 /* VertexTypes.h */,
+				18FF566D1E2BC1F500070095 /* ShapeData.h */,
+				18FF56731E2BC44800070095 /* ShapeGenerator.cpp */,
+				18FF56741E2BC44800070095 /* ShapeGenerator.hpp */,
+			);
+			name = Primitives;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +295,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FF56711E2BC3A400070095 /* VertexTypes.h in Sources */,
+				18FF56721E2BC3A400070095 /* ShapeData.h in Sources */,
 				18B081BE1E0462D700669944 /* image_helper.c in Sources */,
+				18FF566A1E2BBE7700070095 /* Model.cpp in Sources */,
 				18FF56431E243FCB00070095 /* Camera.cpp in Sources */,
 				18121D8F1E158E82006FAF10 /* Game.cpp in Sources */,
 				185DD0291E0873DC0014CB12 /* Frame.cpp in Sources */,
@@ -279,6 +306,7 @@
 				1832DD751E02E0A50007A458 /* Cube.cpp in Sources */,
 				18FF56471E26E60F00070095 /* Light.cpp in Sources */,
 				18B081BD1E0462D700669944 /* image_DXT.c in Sources */,
+				18FF56751E2BC44800070095 /* ShapeGenerator.cpp in Sources */,
 				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,
 				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
