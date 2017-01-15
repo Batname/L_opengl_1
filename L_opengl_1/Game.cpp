@@ -44,11 +44,10 @@ Game::Game()
     // openGl options
     glEnable(GL_DEPTH_TEST);
     
-    // init custom Cube
+    /* --- init models --- */
     cube = new Cube(sizeof(basic_vertices), basic_vertices, 36, "resources/shaders/cube.vs", "resources/shaders/cube.frag");
-    
-    // init light
     light = new Light();
+    plane = new Plane("resources/shaders/plane.vs", "resources/shaders/plane.frag");
     
     // init camera
     camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
@@ -80,6 +79,7 @@ int Game::render()
         // draw
         cube->render(basic_cubePositions, (sizeof(basic_cubePositions) / sizeof(GLfloat) / 3));
         light->render();
+        plane->render();
         
         glfwSwapBuffers(window);
     }
@@ -87,6 +87,7 @@ int Game::render()
     // reallocate
     cube->clear();
     light->clear();
+    plane->clear();
     
     // success exit
     glfwTerminate();

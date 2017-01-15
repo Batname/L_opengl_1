@@ -8,6 +8,7 @@
 #include "Frame.hpp"
 #include "Cube.hpp"
 #include "Light.hpp"
+#include "Plane.hpp"
 
 #include "Camera.hpp"
 
@@ -32,6 +33,8 @@ private:
     GLFWwindow * window;
     Cube* cube;
     Light* light;
+    Plane* plane;
+
     Frame* frame;
     Camera* camera;
 };

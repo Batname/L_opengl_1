@@ -27,6 +27,7 @@
 		18FF56711E2BC3A400070095 /* VertexTypes.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566C1E2BC17B00070095 /* VertexTypes.h */; };
 		18FF56721E2BC3A400070095 /* ShapeData.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566D1E2BC1F500070095 /* ShapeData.h */; };
 		18FF56751E2BC44800070095 /* ShapeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56731E2BC44800070095 /* ShapeGenerator.cpp */; };
+		18FF56781E2BC7DB00070095 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56761E2BC7DB00070095 /* Plane.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +94,8 @@
 		18FF566D1E2BC1F500070095 /* ShapeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShapeData.h; sourceTree = "<group>"; };
 		18FF56731E2BC44800070095 /* ShapeGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShapeGenerator.cpp; sourceTree = "<group>"; };
 		18FF56741E2BC44800070095 /* ShapeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShapeGenerator.hpp; sourceTree = "<group>"; };
+		18FF56761E2BC7DB00070095 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
+		18FF56771E2BC7DB00070095 /* Plane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Plane.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,8 @@
 				18FF56461E26E60F00070095 /* Light.hpp */,
 				18FF56681E2BBE7700070095 /* Model.cpp */,
 				18FF56691E2BBE7700070095 /* Model.hpp */,
+				18FF56761E2BC7DB00070095 /* Plane.cpp */,
+				18FF56771E2BC7DB00070095 /* Plane.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				18B081BD1E0462D700669944 /* image_DXT.c in Sources */,
 				18FF56751E2BC44800070095 /* ShapeGenerator.cpp in Sources */,
 				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
+				18FF56781E2BC7DB00070095 /* Plane.cpp in Sources */,
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,
 				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
 				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,

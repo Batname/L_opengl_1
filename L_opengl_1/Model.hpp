@@ -1,14 +1,15 @@
 #ifndef Model_hpp
 #define Model_hpp
 
+#include "ShaderLoader.hpp"
+
 class Model
 {
 public:
     explicit Model(const char* vertexFilePath, const char* fragmentFilePath);
 protected:
 private:
-    const char* vertexFilePath;
-    const char* fragmentFilePath;
+    ShaderLoader shader;
 };
 
 #endif /* Model_hpp */
