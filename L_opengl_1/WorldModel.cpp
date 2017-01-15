@@ -1,5 +1,4 @@
 #include "WorldModel.hpp"
-
 #include "Game.hpp"
 
 extern Game *game;

@@ -1,7 +1,6 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-
 #include "callbacks.hpp"
 #include "Frame.hpp"
 #include "Cube.hpp"

@@ -1,8 +1,6 @@
 #ifndef VertexTypes_h
 #define VertexTypes_h
 
-#include "includes.h"
-
 using namespace glm;
 
 struct RegularVertex {
