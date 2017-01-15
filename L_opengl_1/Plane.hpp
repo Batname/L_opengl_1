@@ -1,8 +1,6 @@
 #ifndef Plane_hpp
 #define Plane_hpp
 
-#include "includes.h"
-
 #include "WorldModel.hpp"
 #include "ShapeGenerator.hpp"
 

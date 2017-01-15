@@ -1,7 +1,5 @@
 #include "WorldModel.hpp"
 
-
-#include "Plane.hpp"
 #include "Game.hpp"
 
 extern Game *game;

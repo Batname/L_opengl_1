@@ -2,7 +2,6 @@
 #define Light_hpp
 
 #include "Model.hpp"
-#include "includes.h"
 #include "ShapeGenerator.hpp"
 
 class Light : public Model

@@ -1,8 +1,6 @@
 #ifndef Cube_hpp
 #define Cube_hpp
 
-#include "includes.h"
-
 #include "WorldModel.hpp"
 #include "ShapeGenerator.hpp"
 

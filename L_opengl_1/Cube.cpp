@@ -1,6 +1,5 @@
 #include "Cube.hpp"
 #include "Game.hpp"
-#include "constants.h"
 
 extern Game *game;
 

@@ -1,7 +1,6 @@
 #ifndef WorldModel_hpp
 #define WorldModel_hpp
 
-#include "includes.h"
 #include "Model.hpp"
 #include "ShapeGenerator.hpp"
 

@@ -1,17 +1,13 @@
 #ifndef Game_hpp
 #define Game_hpp
 
-#include "includes.h"
 
 #include "callbacks.hpp"
-
 #include "Frame.hpp"
 #include "Cube.hpp"
 #include "Light.hpp"
 #include "Plane.hpp"
-
 #include "Camera.hpp"
-
 
 class Game
 {

@@ -1,7 +1,6 @@
 #ifndef callbacks_hpp
 #define callbacks_hpp
 
-#include "includes.h"
 #include "Camera.hpp"
 
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);

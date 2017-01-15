@@ -1,5 +1,4 @@
 #include "Light.hpp"
-
 #include "Game.hpp"
 
 extern Game *game;
