@@ -22,6 +22,10 @@ void WorldModel::renderLight() const
     /* --- bind light position --- */
     GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
     glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
+    
+    /* --- bind camera position --- */
+    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
+    glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
 }
 
 void WorldModel::preRender() const
