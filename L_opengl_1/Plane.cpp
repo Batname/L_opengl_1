@@ -61,9 +61,9 @@ void Plane::render() const
     glm::mat4 fullMatrix, model, view, projection;
     
     /* --- model to view, send it to shader --- */
-    model = glm::translate(model, vec3(1.0f));
-    model = glm::scale(model, glm::vec3(0.2f));
-    model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
+    model = glm::translate(model, vec3(0.0f));
+    model = glm::scale(model, glm::vec3(10.0f, 1.0f, 10.0f));
+    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "model"), 1, GL_FALSE, &model[0][0]);
     
     /* --- world to view --- */
