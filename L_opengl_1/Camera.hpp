@@ -6,6 +6,8 @@
 using namespace glm;
 
 class Camera {
+    friend class Game;
+    
     enum CameraMovement {
         FORWARD,
         BACKWARD,
@@ -45,8 +47,10 @@ public:
         GLfloat pitch
     );
     
-    mat4 GetViewMatrix();
-    mat4 GetProjection();
+    const mat4& GetViewMatrix() const;
+    const mat4& GetProjection() const;
+    const vec3* GetPosition() const;
+
     void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime);
     void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
     void ProcessMouseScroll(GLfloat yoffset);

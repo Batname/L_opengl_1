@@ -33,12 +33,19 @@ Camera::Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat up
     updateCameraVectors();
 }
 
-mat4 Camera::GetViewMatrix() {
+const mat4& Camera::GetViewMatrix() const
+{
     return lookAt(Position, Position + Front, Up);
 }
 
-mat4 Camera::GetProjection() {
+const mat4& Camera::GetProjection() const
+{
     return glm::perspective(45.0f, (GLfloat)WINDOW_WIDTH / (GLfloat)WINDOW_HEIGHT, 0.1f, 100.0f);
+}
+
+const vec3* Camera::GetPosition() const
+{
+    return &Position;
 }
 
 void Camera::ProcessKeyboard(CameraMovement direction, GLfloat deltaTime) {
