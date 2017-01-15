@@ -11,8 +11,9 @@ public:
     WorldModel(const char* vertexFilePath, const char* fragmentFilePath);
 protected:
 
-    virtual void clear() const;
+    virtual void preRender() const;
     virtual void renderLight() const;
+    virtual void clear() const;
     virtual void draw() const;
     
     GLuint VAO;

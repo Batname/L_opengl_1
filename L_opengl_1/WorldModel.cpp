@@ -27,6 +27,11 @@ void WorldModel::renderLight() const
     glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
 }
 
+void WorldModel::preRender() const
+{
+    shader.use();
+}
+
 void WorldModel::draw() const
 {
     glBindVertexArray(VAO);

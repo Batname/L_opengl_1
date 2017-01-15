@@ -67,7 +67,7 @@ void Plane::renderModel() const
 
 void Plane::render() const
 {
-    shader.use();
+    this->preRender();
     renderModel();
 
     /* --- bind ligth --- */
