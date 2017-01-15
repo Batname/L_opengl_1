@@ -3,20 +3,19 @@
 
 #include "includes.h"
 
-#include "Model.hpp"
+#include "WorldModel.hpp"
 #include "ShapeGenerator.hpp"
 
-class Plane : public Model
+class Plane : public WorldModel
 {
 public:
     Plane(const char* vertexFilePath, const char* fragmentFilePath);
     
     virtual void render() const;
-    virtual void clear() const;
+    virtual void renderModel() const;
+    virtual void clear() const override ;
 protected:
 private:
-    GLuint planeVAO;
-    GLuint planeVBO;
     GLuint numVertices;
 };
 

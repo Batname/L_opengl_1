@@ -7,19 +7,19 @@ using namespace std;
 using namespace glm;
 
 Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
-    Model(vertexFilePath, fragmentFilePath)
+    WorldModel(vertexFilePath, fragmentFilePath)
 {
     /* --- generate buffers --- */
-    glGenVertexArrays(1, &planeVAO);
-    glGenBuffers(1, &planeVBO);
+    glGenVertexArrays(1, &VAO);
+    glGenBuffers(1, &VBO);
     
     /* --- bind buffers --- */
-    glBindVertexArray(planeVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, planeVBO);
+    glBindVertexArray(VAO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
     
     /* --- make object --- */
     ShapeData<RegularVertex> plane = ShapeGenerator::makePlane();
-    numVertices = plane.numVertices;
+    numVertices = WorldModel::numVertices = plane.numVertices;
     
     /* --- buffer data --- */
     glBufferData(GL_ARRAY_BUFFER, plane.vertexBufferSize(), plane.vertices, GL_DYNAMIC_DRAW);
@@ -43,21 +43,9 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     glBindVertexArray(0);
 }
 
-void Plane::render() const
+void Plane::renderModel() const
 {
-    shader.use();
-
-    /* --- bind ligth --- */
-    GLint lightColorLoc  = glGetUniformLocation(shader.getProgram(), "lightColor");
-    GLint ambientStrengthLoc = glGetUniformLocation(shader.getProgram(), "ambientStrength");
-    glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f);
-    glUniform1f(ambientStrengthLoc, 0.1f);
-    
-    /* --- bind light position --- */
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
-    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
-    
-    /* --- define transformation matrix --- */
+//    /* --- define transformation matrix --- */
     glm::mat4 fullMatrix, model, view, projection;
     
     /* --- model to view, send it to shader --- */
@@ -75,15 +63,22 @@ void Plane::render() const
     /* use uniform matrix transformation */
     fullMatrix = projection * view * model;
     glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, &fullMatrix[0][0]);
+}
+
+void Plane::render() const
+{
+    shader.use();
+    renderModel();
+
+    /* --- bind ligth --- */
+    this->renderLight();
     
     /* Draw light object */
-    glBindVertexArray(planeVAO);
-    glDrawArrays(GL_TRIANGLES, 0, numVertices);
-    glBindVertexArray(0);
+    this->draw();
 }
 
 void Plane::clear() const
 {
-    glDeleteVertexArrays(1, &planeVAO);
-    glDeleteBuffers(1, &planeVBO);
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
 }

@@ -7,9 +7,11 @@ class Model
 {
 public:
     explicit Model(const char* vertexFilePath, const char* fragmentFilePath);
+    
 protected:
     ShaderLoader shader;
 private:
+    
 };
 
 #endif /* Model_hpp */

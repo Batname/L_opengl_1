@@ -28,6 +28,7 @@
 		18FF56721E2BC3A400070095 /* ShapeData.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566D1E2BC1F500070095 /* ShapeData.h */; };
 		18FF56751E2BC44800070095 /* ShapeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56731E2BC44800070095 /* ShapeGenerator.cpp */; };
 		18FF56781E2BC7DB00070095 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56761E2BC7DB00070095 /* Plane.cpp */; };
+		18FF567B1E2BE78400070095 /* WorldModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56791E2BE78400070095 /* WorldModel.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,6 +97,8 @@
 		18FF56741E2BC44800070095 /* ShapeGenerator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShapeGenerator.hpp; sourceTree = "<group>"; };
 		18FF56761E2BC7DB00070095 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
 		18FF56771E2BC7DB00070095 /* Plane.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Plane.hpp; sourceTree = "<group>"; };
+		18FF56791E2BE78400070095 /* WorldModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldModel.cpp; sourceTree = "<group>"; };
+		18FF567A1E2BE78400070095 /* WorldModel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WorldModel.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,8 @@
 				18FF56691E2BBE7700070095 /* Model.hpp */,
 				18FF56761E2BC7DB00070095 /* Plane.cpp */,
 				18FF56771E2BC7DB00070095 /* Plane.hpp */,
+				18FF56791E2BE78400070095 /* WorldModel.cpp */,
+				18FF567A1E2BE78400070095 /* WorldModel.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 			files = (
 				18FF56711E2BC3A400070095 /* VertexTypes.h in Sources */,
 				18FF56721E2BC3A400070095 /* ShapeData.h in Sources */,
+				18FF567B1E2BE78400070095 /* WorldModel.cpp in Sources */,
 				18B081BE1E0462D700669944 /* image_helper.c in Sources */,
 				18FF566A1E2BBE7700070095 /* Model.cpp in Sources */,
 				18FF56431E243FCB00070095 /* Camera.cpp in Sources */,
