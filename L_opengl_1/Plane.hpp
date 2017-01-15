@@ -11,7 +11,7 @@ class Plane : public Model
 public:
     Plane(const char* vertexFilePath, const char* fragmentFilePath);
     
-    virtual void render() const;
+    virtual void render();
     virtual void clear() const;
 protected:
 private:
