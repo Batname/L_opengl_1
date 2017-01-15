@@ -56,7 +56,6 @@
 		1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw3.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw3.3.2.dylib; sourceTree = "<group>"; };
 		1832DD611E02C06E0007A458 /* includes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = includes.h; sourceTree = "<group>"; };
 		1832DD621E02C5C00007A458 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
-		1832DD6B1E02DD0D0007A458 /* basic_vertices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basic_vertices.h; sourceTree = "<group>"; };
 		1832DD6C1E02DEBF0007A458 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
 		1832DD701E02DFA00007A458 /* ShaderLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
@@ -161,7 +160,6 @@
 				1832DD641E02CC9A0007A458 /* Intput */,
 				1832DD621E02C5C00007A458 /* constants.h */,
 				1832DD611E02C06E0007A458 /* includes.h */,
-				1832DD6B1E02DD0D0007A458 /* basic_vertices.h */,
 				18121D8D1E158E82006FAF10 /* Game.cpp */,
 				18121D8E1E158E82006FAF10 /* Game.hpp */,
 			);
