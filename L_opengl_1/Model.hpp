@@ -8,8 +8,8 @@ class Model
 public:
     explicit Model(const char* vertexFilePath, const char* fragmentFilePath);
 protected:
-private:
     ShaderLoader shader;
+private:
 };
 
 #endif /* Model_hpp */

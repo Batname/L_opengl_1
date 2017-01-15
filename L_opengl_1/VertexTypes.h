@@ -5,9 +5,11 @@
 
 using namespace glm;
 
-struct SimpleVertex {
+struct RegularVertex {
     vec3 position;
     vec3 color;
+    vec3 normal;
+
 };
 
 #endif /* VertexTypes_h */

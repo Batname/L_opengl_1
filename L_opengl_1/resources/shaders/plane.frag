@@ -2,11 +2,11 @@
 in vec2 TexCoord;
 
 out vec4 color;
-in vec3 Normal;
 in vec3 FragPos;
+in vec3 Normal;
+in vec3 Color;
 
 /* --- light --- */
-uniform vec3 objectColor;
 uniform vec3 lightColor;
 uniform float ambientStrength;
 uniform vec3 lightPos;
@@ -24,6 +24,6 @@ void main()
     vec3 diffuse = diff * lightColor;
     
     /* --- calculate result --- */
-    vec3 result = (ambient + diffuse) * objectColor;
+    vec3 result = (ambient + diffuse) * Color;
     color = vec4(result, 1.0f);
 }

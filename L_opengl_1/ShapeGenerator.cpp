@@ -1,22 +1,25 @@
 #include "ShapeGenerator.hpp"
 
-ShapeData<SimpleVertex> ShapeGenerator::makePlane()
+ShapeData<RegularVertex> ShapeGenerator::makePlane()
 {
-    ShapeData<SimpleVertex> ret;
+    ShapeData<RegularVertex> ret;
     
-    SimpleVertex verts[] = {
-        glm::vec3(+0.0f, +1.0f, +0.5),
-        glm::vec3(+1.0f, +0.0f, +0.0f),
+    RegularVertex verts[] = {
+        glm::vec3(+0.0f, +1.0f, +0.5),  // position
+        glm::vec3(+0.5f, +0.5f, +0.5),  // color
+        glm::vec3(+1.0f, +0.0f, +0.0f), // normal
         
         glm::vec3(+1.0f, -1.0f, +0.5),
+        glm::vec3(+0.5f, +0.5f, +0.5),
         glm::vec3(+0.0f, +1.0f, +0.0f),
         
         glm::vec3(-1.0f, -1.0f, +0.5),
+        glm::vec3(+0.5f, +0.5f, +0.5),
         glm::vec3(+0.0f, +0.0f, +1.0f)
     };
     
     ret.numVertices = NUM_ARRAY_ELEMENTS(verts);
-    ret.vertices = (SimpleVertex*)malloc(sizeof(verts));
+    ret.vertices = (RegularVertex*)malloc(sizeof(verts));
     memcpy(ret.vertices, verts, sizeof(verts));
     
     return ret;

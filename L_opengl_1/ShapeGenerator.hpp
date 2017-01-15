@@ -11,7 +11,7 @@ class ShapeGenerator
 {
 private:
 public:
-    static ShapeData<SimpleVertex> makePlane();
+    static ShapeData<RegularVertex> makePlane();
 };
 
 #endif /* ShapeGenerator_hpp */

@@ -14,6 +14,11 @@ struct ShapeData
         return numVertices * sizeof(T);
     }
     
+    GLint getStride() const
+    {
+        return sizeof(T);
+    }
+    
     void clean()
     {
         free(vertices);
