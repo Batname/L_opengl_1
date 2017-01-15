@@ -26,15 +26,15 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     
     /* --- setGeometry --- */
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
-    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)0);
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), plane.getOffsetPointer(3, 0));
     glEnableVertexAttribArray(positionAttrib);
     
     GLint colorAttrib = glGetAttribLocation(shader.getProgram(), "color"); // 1
-    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)(sizeof(vec3)));
+    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), plane.getOffsetPointer(3, 1));
     glEnableVertexAttribArray(colorAttrib);
     
     GLint normalAttrib = glGetAttribLocation(shader.getProgram(), "normal"); // 2
-    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)(sizeof(vec3) * 2));
+    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), plane.getOffsetPointer(3, 2));
     glEnableVertexAttribArray(normalAttrib);
     
     /* --- clean --- */
@@ -61,7 +61,7 @@ void Plane::render() const
     glm::mat4 fullMatrix, model, view, projection;
     
     /* --- model to view, send it to shader --- */
-    model = glm::translate(model, game->lightPosition);
+    model = glm::translate(model, vec3(1.0f));
     model = glm::scale(model, glm::vec3(0.2f));
     model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
     glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "model"), 1, GL_FALSE, &model[0][0]);
