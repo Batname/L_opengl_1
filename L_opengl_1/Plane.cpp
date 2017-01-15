@@ -26,15 +26,15 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     
     /* --- setGeometry --- */
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
-    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), plane.getOffsetPointer(3, 0));
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
     GLint colorAttrib = glGetAttribLocation(shader.getProgram(), "color"); // 1
-    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), plane.getOffsetPointer(3, 1));
+    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(colorAttrib);
     
     GLint normalAttrib = glGetAttribLocation(shader.getProgram(), "normal"); // 2
-    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), plane.getOffsetPointer(3, 2));
+    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)(6 * sizeof(GLfloat)));
     glEnableVertexAttribArray(normalAttrib);
     
     /* --- clean --- */

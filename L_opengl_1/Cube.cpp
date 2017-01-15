@@ -24,18 +24,18 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
     
     /* --- setGeometry --- */
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
-    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, cube.getStride(), cube.getOffsetPointer(3, 0));
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, cube.getStride(), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
     GLint textureAttrib = glGetAttribLocation(shader.getProgram(), "texCoord"); // 1
-    glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, cube.getStride(), cube.getOffsetPointer(2, 1));
+    glVertexAttribPointer(textureAttrib, 2, GL_FLOAT, GL_FALSE, cube.getStride(), (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(textureAttrib);
     
     GLint normalAttrib = glGetAttribLocation(shader.getProgram(), "normal"); // 2
-    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, cube.getStride(), cube.getOffsetPointer(3, 2));
+    glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, cube.getStride(), (GLvoid*)(5 * sizeof(GLfloat)));
     glEnableVertexAttribArray(normalAttrib);
     
-    /* --- load textures --- */s
+    /* --- load textures --- */
     loadTextures("resources/textures/container.jpg", &texture1);
     loadTextures("resources/textures/awesomeface.png", &texture2);
     

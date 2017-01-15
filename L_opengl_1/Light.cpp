@@ -27,11 +27,11 @@ Light::Light(const char* vertexFilePath, const char* fragmentFilePath) :
     
     /* --- setGeometry --- */
     GLint positionAttrib = glGetAttribLocation(shader.getProgram(), "position"); // 0
-    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, light.getStride(), light.getOffsetPointer(3, 0));
+    glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, light.getStride(), (GLvoid*)0);
     glEnableVertexAttribArray(positionAttrib);
     
     GLint colorAttrib = glGetAttribLocation(shader.getProgram(), "lightObjectColor"); // 1
-    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, light.getStride(), light.getOffsetPointer(3, 1));
+    glVertexAttribPointer(colorAttrib, 3, GL_FLOAT, GL_FALSE, light.getStride(), (GLvoid*)(3 * sizeof(GLfloat)));
     glEnableVertexAttribArray(colorAttrib);
     
     /* --- free recources --- */

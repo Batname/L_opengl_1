@@ -19,11 +19,6 @@ struct ShapeData
         return sizeof(T);
     }
     
-    GLvoid* getOffsetPointer(int size, int offset) const
-    {
-        return (GLvoid*)(size * offset * sizeof(GLfloat));
-    }
-    
     void clean()
     {
         free(vertices);
