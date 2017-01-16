@@ -13,18 +13,41 @@ WorldModel::WorldModel(const char* vertexFilePath, const char* fragmentFilePath)
 
 void WorldModel::renderLight() const
 {
-    /* --- bind ligth --- */
-    GLint lightColorLoc  = glGetUniformLocation(shader.getProgram(), "lightColor");
-    GLint ambientStrengthLoc = glGetUniformLocation(shader.getProgram(), "ambientStrength");
-    glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f);
-    glUniform1f(ambientStrengthLoc, 0.1f);
+    GLint matAmbientLoc = glGetUniformLocation(shader.getProgram(), "material.ambient");
+    GLint matDiffuseLoc = glGetUniformLocation(shader.getProgram(), "material.diffuse");
+    GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
+    GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
+    
+    GLint lightAmbientLoc  = glGetUniformLocation(shader.getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
+    
+    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
+    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
+    
+    /* --- set light material --- */
+    vec3 diffuseStrengh = glm::vec3(0.5f); // Decrease the influence
+    vec3 ambientStrengh = diffuseStrengh * glm::vec3(0.2f); // Low influence
+    
+    glUniform3f(matAmbientLoc, diffuseStrengh.x, diffuseStrengh.y, diffuseStrengh.x);
+    glUniform3f(matDiffuseLoc,  ambientStrengh.x, ambientStrengh.y, ambientStrengh.x);
+    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1f(matShineLoc,    32.0f);
+    
+    glUniform3f(matAmbientLoc, 1.0f, 0.5f, 0.31f);
+    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1f(matShineLoc,    32.0f);
+    
+    /* --- set light power --- */
+    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
+    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f); // Let's darken the light a bit to fit the scene
+    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
     
     /* --- bind light position --- */
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
     glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
     
     /* --- bind camera position --- */
-    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
 }
 
