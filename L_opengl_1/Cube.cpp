@@ -60,9 +60,12 @@ void Cube::renderLight() const
     GLint matDiffuseLoc = glGetUniformLocation(shader.getProgram(), "material.diffuse");
     GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
     GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
+    
+    GLint lightAmbientLoc  = glGetUniformLocation(shader.getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
 
-    GLint lightColorLoc  = glGetUniformLocation(shader.getProgram(), "lightColor");
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
+    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
     GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     
     /* --- set light material --- */
@@ -71,8 +74,10 @@ void Cube::renderLight() const
     glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
     glUniform1f(matShineLoc,    32.0f);
     
-    /* --- set light --- */
-    glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f);
+    /* --- set light power --- */
+    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
+    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f); // Let's darken the light a bit to fit the scene
+    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
     
     /* --- bind light position --- */
     glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
