@@ -14,6 +14,7 @@ public:
 protected:
 private:
     virtual void renderModel() const;
+    virtual void renderLight() const override;
     
     GLuint numVertices;
 };

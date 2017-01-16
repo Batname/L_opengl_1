@@ -43,6 +43,40 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     glBindVertexArray(0);
 }
 
+void Plane::renderLight() const
+{
+    GLint matAmbientStrLoc = glGetUniformLocation(shader.getProgram(), "material.ambientStr");
+    GLint matDiffuseStrLoc = glGetUniformLocation(shader.getProgram(), "material.diffuseStr");
+    GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
+    GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
+    
+    GLint lightAmbientLoc  = glGetUniformLocation(shader.getProgram(), "light.ambient");
+    GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
+    GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
+    
+    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
+    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
+    
+    /* --- set light material --- */
+    vec3 ambientStrengh = glm::vec3(0.2f); // Low influence
+    vec3 diffuseStrengh = glm::vec3(0.5f); // Decrease the influence
+    glUniform3f(matAmbientStrLoc, ambientStrengh.x, ambientStrengh.y, ambientStrengh.x);
+    glUniform3f(matDiffuseStrLoc,  diffuseStrengh.x, diffuseStrengh.y, diffuseStrengh.x);
+    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1f(matShineLoc,    32.0f);
+    
+    /* --- set light power --- */
+    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
+    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f); // Let's darken the light a bit to fit the scene
+    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
+    
+    /* --- bind light position --- */
+    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
+    
+    /* --- bind camera position --- */
+    glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
+}
+
 void Plane::renderModel() const
 {
 //    /* --- define transformation matrix --- */
