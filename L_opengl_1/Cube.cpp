@@ -56,19 +56,28 @@ void Cube::renderTextures() const
 
 void Cube::renderLight() const
 {
-    GLint objectColorLoc = glGetUniformLocation(shader.getProgram(), "objectColor");
+    GLint matAmbientLoc = glGetUniformLocation(shader.getProgram(), "material.ambient");
+    GLint matDiffuseLoc = glGetUniformLocation(shader.getProgram(), "material.diffuse");
+    GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
+    GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
+
     GLint lightColorLoc  = glGetUniformLocation(shader.getProgram(), "lightColor");
-    GLint ambientStrengthLoc = glGetUniformLocation(shader.getProgram(), "ambientStrength");
-    glUniform3f(objectColorLoc, 1.0f, 0.5f, 0.31f);
+    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
+    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
+    
+    /* --- set light material --- */
+    glUniform3f(matAmbientLoc, 1.0f, 0.5f, 0.31f);
+    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1f(matShineLoc,    32.0f);
+    
+    /* --- set light --- */
     glUniform3f(lightColorLoc,  1.0f, 1.0f, 1.0f);
-    glUniform1f(ambientStrengthLoc, 0.1f);
     
     /* --- bind light position --- */
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "lightPos");
     glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
     
     /* --- bind camera position --- */
-    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
 }
 
