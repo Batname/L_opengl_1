@@ -13,8 +13,8 @@ WorldModel::WorldModel(const char* vertexFilePath, const char* fragmentFilePath)
 
 void WorldModel::renderLight() const
 {
-    GLint matAmbientLoc = glGetUniformLocation(shader.getProgram(), "material.ambient");
-    GLint matDiffuseLoc = glGetUniformLocation(shader.getProgram(), "material.diffuse");
+    GLint matAmbientStrLoc = glGetUniformLocation(shader.getProgram(), "material.ambientStr");
+    GLint matDiffuseStrLoc = glGetUniformLocation(shader.getProgram(), "material.diffuseStr");
     GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
     GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
     
@@ -26,16 +26,10 @@ void WorldModel::renderLight() const
     GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     
     /* --- set light material --- */
+    vec3 ambientStrengh = glm::vec3(0.2f); // Low influence
     vec3 diffuseStrengh = glm::vec3(0.5f); // Decrease the influence
-    vec3 ambientStrengh = diffuseStrengh * glm::vec3(0.2f); // Low influence
-    
-    glUniform3f(matAmbientLoc, diffuseStrengh.x, diffuseStrengh.y, diffuseStrengh.x);
-    glUniform3f(matDiffuseLoc,  ambientStrengh.x, ambientStrengh.y, ambientStrengh.x);
-    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
-    glUniform1f(matShineLoc,    32.0f);
-    
-    glUniform3f(matAmbientLoc, 1.0f, 0.5f, 0.31f);
-    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.31f);
+    glUniform3f(matAmbientStrLoc, ambientStrengh.x, ambientStrengh.y, ambientStrengh.x);
+    glUniform3f(matDiffuseStrLoc,  diffuseStrengh.x, diffuseStrengh.y, diffuseStrengh.x);
     glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
     glUniform1f(matShineLoc,    32.0f);
     
