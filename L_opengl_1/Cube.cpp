@@ -65,12 +65,14 @@ void Cube::renderLight() const
     GLint lightAmbientLoc  = glGetUniformLocation(shader.getProgram(), "light.ambient");
     GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
     GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
-
     GLint lightConstantLoc = glGetUniformLocation(shader.getProgram(), "light.constant");
+    GLint lightCutOffLoc = glGetUniformLocation(shader.getProgram(), "light.cutOff");
+    GLint lightOuterCutOffLoc = glGetUniformLocation(shader.getProgram(), "light.outerCutOff");
     GLint lightLinearLoc = glGetUniformLocation(shader.getProgram(), "light.linear");
     GLint lightQuadraticLoc = glGetUniformLocation(shader.getProgram(), "light.quadratic");
-
     GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
+    GLint lightDirectionLoc = glGetUniformLocation(shader.getProgram(), "light.direction");
+    
     GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     
     /* --- set light material --- */
@@ -88,7 +90,11 @@ void Cube::renderLight() const
     glUniform1f(lightQuadraticLoc, 0.032f);
     
     /* --- bind light position --- */
-    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
+//    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
+    glUniform3f(lightPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
+    glUniform3f(lightDirectionLoc, game->getCamera()->GetFront().x, game->getCamera()->GetFront().y, game->getCamera()->GetFront().z);
+    glUniform1f(lightCutOffLoc, glm::cos(glm::radians(12.5f)));
+    glUniform1f(lightOuterCutOffLoc, glm::cos(glm::radians(17.5f)));
     
     /* --- bind camera position --- */
     glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);

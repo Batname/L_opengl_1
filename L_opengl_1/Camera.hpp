@@ -49,6 +49,7 @@ public:
     
     const mat4& GetViewMatrix() const;
     const mat4& GetProjection() const;
+    const vec3& GetFront() const;
     const vec3* GetPosition() const;
 
     void ProcessKeyboard(CameraMovement direction, GLfloat deltaTime);

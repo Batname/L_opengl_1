@@ -48,6 +48,11 @@ const vec3* Camera::GetPosition() const
     return &Position;
 }
 
+const vec3& Camera::GetFront() const
+{
+    return Front;
+}
+
 void Camera::ProcessKeyboard(CameraMovement direction, GLfloat deltaTime) {
     GLfloat velocity = MovementSpeed * deltaTime;
 
