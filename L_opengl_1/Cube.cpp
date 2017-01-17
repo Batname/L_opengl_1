@@ -36,6 +36,7 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
     
     /* --- load objects --- */
     objectsData = ShapeGenerator::getCubes();
+    lightObjects = ShapeGenerator::getLights();
         
     /* --- load textures --- */
     diffuseMap = loadTextures("resources/textures/container2.png");
@@ -58,46 +59,40 @@ void Cube::renderTextures() const
 
 void Cube::renderLight() const
 {
-    GLint matDiffuseLoc = glGetUniformLocation(shader.getProgram(), "material.diffuse");
-    GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
-    GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "viewPos"), game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
     
-    GLint lightAmbientLoc  = glGetUniformLocation(shader.getProgram(), "light.ambient");
-    GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
-    GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
-    GLint lightConstantLoc = glGetUniformLocation(shader.getProgram(), "light.constant");
-    GLint lightCutOffLoc = glGetUniformLocation(shader.getProgram(), "light.cutOff");
-    GLint lightOuterCutOffLoc = glGetUniformLocation(shader.getProgram(), "light.outerCutOff");
-    GLint lightLinearLoc = glGetUniformLocation(shader.getProgram(), "light.linear");
-    GLint lightQuadraticLoc = glGetUniformLocation(shader.getProgram(), "light.quadratic");
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
-    GLint lightDirectionLoc = glGetUniformLocation(shader.getProgram(), "light.direction");
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "material.shininess"), 32.0f);
     
-    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
+    /* --- direction light --- */
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.direction"), -0.2f, -1.0f, -0.3f);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.ambient"), 0.05f, 0.05f, 0.05f);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.diffuse"), 0.4f, 0.4f, 0.4f);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.specular"), 0.5f, 0.5f, 0.5f);
+
+    /* --- point lights --- */
+    for(unsigned int i = 0; i < lightObjects.size; i++) {
+        std::string number = std::to_string(i);
+        
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].position").c_str()), lightObjects.positions[i].x, lightObjects.positions[i].y, lightObjects.positions[i].z);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].ambient").c_str()), 0.05f, 0.05f, 0.05f);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].diffuse").c_str()), 0.8f, 0.8f, 0.8f);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].specular").c_str()), 1.0f, 1.0f, 1.0f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].constant").c_str()), 1.0f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].linear").c_str()), 0.09f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLight[" + number + "].quadratic").c_str()), 0.032f);
+    }
     
-    /* --- set light material --- */
-    glUniform1i(matDiffuseLoc,  0);
-    glUniform1i(matSpecularLoc, 1);
-    glUniform1f(matShineLoc,    32.0f);
-    
-    /* --- set light power --- */
-    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
-    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f);
-    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
-    
-    glUniform1f(lightConstantLoc, 1.0f);
-    glUniform1f(lightLinearLoc, 0.09f);
-    glUniform1f(lightQuadraticLoc, 0.032f);
-    
-    /* --- bind light position --- */
-//    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
-    glUniform3f(lightPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
-    glUniform3f(lightDirectionLoc, game->getCamera()->GetFront().x, game->getCamera()->GetFront().y, game->getCamera()->GetFront().z);
-    glUniform1f(lightCutOffLoc, glm::cos(glm::radians(12.5f)));
-    glUniform1f(lightOuterCutOffLoc, glm::cos(glm::radians(17.5f)));
-    
-    /* --- bind camera position --- */
-    glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
+    /* --- SpotLight --- */
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "spotLight.position"), game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "spotLight.direction"), game->getCamera()->GetFront().x, game->getCamera()->GetFront().y, game->getCamera()->GetFront().z);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "spotLight.ambient"), 0.0f, 0.0f, 0.0f);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "spotLight.diffuse"), 1.0f, 1.0f, 1.0f);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "spotLight.specular"), 1.0f, 1.0f, 1.0f);
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "spotLight.constant"), 1.0f);
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "spotLight.linear"), 0.09f);
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "spotLight.quadratic"), 0.032f);
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "spotLight.cutOff"), glm::cos(glm::radians(12.5f)));
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "spotLight.outerCutOff"), glm::cos(glm::radians(15.0f)));
 }
 
 void Cube::renderModel() const
@@ -142,4 +137,5 @@ void Cube::clear()
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     objectsData.clean();
+    lightObjects.clean();
 }

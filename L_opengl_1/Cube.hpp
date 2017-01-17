@@ -19,6 +19,7 @@ private:
     GLuint diffuseMap;
     GLuint specularMap;
     ObjectsData objectsData;
+    ObjectsData lightObjects;
     
     virtual void renderModel() const;
     virtual void renderLight() const override;

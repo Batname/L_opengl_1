@@ -169,3 +169,21 @@ ObjectsData ShapeGenerator::getCubes()
 
     return ret;
 }
+
+ObjectsData ShapeGenerator::getLights()
+{
+    ObjectsData ret;
+    vec3 positions[] = {
+        vec3( 0.7f,  0.2f,  2.0f),
+        vec3( 2.3f,  2.3f, -4.0f),
+        vec3( 4.0f,  2.0f, -5.0f),
+        vec3( 0.0f,  0.0f, -3.0f)
+    };
+    int QTY = sizeof(positions);
+    
+    ret.size = QTY / sizeof(vec3);
+    ret.positions = (vec3*)malloc(QTY);
+    memcpy(ret.positions, positions, QTY);
+    
+    return ret;
+}

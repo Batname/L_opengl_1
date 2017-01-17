@@ -16,6 +16,7 @@ public:
     static ShapeData<SimpleVertex> makeLight();
     static ShapeData<VertexPosTexNorm> makeCube();
     static ObjectsData getCubes();
+    static ObjectsData getLights();
 };
 
 #endif /* ShapeGenerator_hpp */
