@@ -32,8 +32,9 @@ void WorldModel::renderTextures() const
 {
 }
 
-void WorldModel::loadTextures(char* texturePath)
+GLuint WorldModel::loadTextures(char* texturePath)
 {
+    GLuint diffuseMap;
     glGenTextures(1, &diffuseMap);
     int width, height;
     unsigned char* image;
@@ -48,6 +49,8 @@ void WorldModel::loadTextures(char* texturePath)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST_MIPMAP_NEAREST);
     glBindTexture(GL_TEXTURE_2D, 0);
+    
+    return diffuseMap;
 }
 
 void WorldModel::clear() const

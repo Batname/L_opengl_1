@@ -35,10 +35,7 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
     glEnableVertexAttribArray(normalAttrib);
     
     /* --- load textures --- */
-    loadTextures("resources/textures/container2.png");
-    
-    /* --- bind textures --- */
-    glUniform1i(glGetUniformLocation(shader.getProgram(), "material.diffuse"), 0);
+    diffuseMap = loadTextures("resources/textures/container2.png");
     
     /* --- clean ---*/
     cube.clean();

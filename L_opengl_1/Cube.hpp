@@ -15,6 +15,8 @@ public:
 protected:
 private:
     GLuint numVertices;
+    GLuint diffuseMap;
+    GLuint specularMap;
     
     virtual void renderModel() const;
     virtual void renderLight() const override;
