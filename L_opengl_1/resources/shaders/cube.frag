@@ -20,10 +20,6 @@ struct Light {
     vec3 specular;
 };
 
-// Texture samplers
-//uniform sampler2D ourTexture1;
-//uniform sampler2D ourTexture2;
-
 /* --- light --- */
 uniform float       ambientStrength;
 uniform vec3        viewPos;
@@ -33,8 +29,6 @@ uniform Light       light;
 
 void main()
 {
-    // color = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);
-    
     /* --- ambient --- */
     vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoord));
     

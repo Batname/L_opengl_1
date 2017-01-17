@@ -73,7 +73,7 @@ void Cube::renderLight() const
     
     /* --- set light power --- */
     glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
-    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f); // Let's darken the light a bit to fit the scene
+    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f);
     glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
     
     /* --- bind light position --- */

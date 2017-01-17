@@ -79,7 +79,7 @@ void Plane::renderLight() const
 
 void Plane::renderModel() const
 {
-//    /* --- define transformation matrix --- */
+    /* --- define transformation matrix --- */
     glm::mat4 fullMatrix, model, view, projection;
     
     /* --- model to view, send it to shader --- */
