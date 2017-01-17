@@ -36,6 +36,7 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
     
     /* --- load textures --- */
     diffuseMap = loadTextures("resources/textures/container2.png");
+    specularMap = loadTextures("resources/textures/container2_specular.png");
     
     /* --- clean ---*/
     cube.clean();
@@ -47,6 +48,9 @@ void Cube::renderTextures() const
 {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, diffuseMap);
+    
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, specularMap);
 }
 
 void Cube::renderLight() const
@@ -64,7 +68,7 @@ void Cube::renderLight() const
     
     /* --- set light material --- */
     glUniform1i(matDiffuseLoc,  0);
-    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
+    glUniform1i(matSpecularLoc, 1);
     glUniform1f(matShineLoc,    32.0f);
     
     /* --- set light power --- */
