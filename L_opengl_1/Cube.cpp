@@ -54,7 +54,6 @@ void Cube::renderTextures() const
 
 void Cube::renderLight() const
 {
-    GLint matAmbientLoc = glGetUniformLocation(shader.getProgram(), "material.ambient");
     GLint matDiffuseLoc = glGetUniformLocation(shader.getProgram(), "material.diffuse");
     GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
     GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
@@ -67,8 +66,7 @@ void Cube::renderLight() const
     GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     
     /* --- set light material --- */
-    glUniform3f(matAmbientLoc, 1.0f, 0.5f, 0.31f);
-    glUniform3f(matDiffuseLoc,  1.0f, 0.5f, 0.31f);
+    glUniform1i(matDiffuseLoc,  0);
     glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
     glUniform1f(matShineLoc,    32.0f);
     
