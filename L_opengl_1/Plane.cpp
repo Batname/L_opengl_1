@@ -54,6 +54,10 @@ void Plane::renderLight() const
     GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
     GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
     
+    GLint lightConstantLoc = glGetUniformLocation(shader.getProgram(), "light.constant");
+    GLint lightLinearLoc = glGetUniformLocation(shader.getProgram(), "light.linear");
+    GLint lightQuadraticLoc = glGetUniformLocation(shader.getProgram(), "light.quadratic");
+    
     GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
     GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     
@@ -69,6 +73,10 @@ void Plane::renderLight() const
     glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
     glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f); // Let's darken the light a bit to fit the scene
     glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
+    
+    glUniform1f(lightConstantLoc, 1.0f);
+    glUniform1f(lightLinearLoc, 0.09f);
+    glUniform1f(lightQuadraticLoc, 0.032f);
     
     /* --- bind light position --- */
     glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
