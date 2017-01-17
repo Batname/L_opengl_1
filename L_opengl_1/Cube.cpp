@@ -35,8 +35,10 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
     glEnableVertexAttribArray(normalAttrib);
     
     /* --- load textures --- */
-    loadTextures("resources/textures/container.jpg", &texture1);
-    loadTextures("resources/textures/awesomeface.png", &texture2);
+    loadTextures("resources/textures/container2.png");
+    
+    /* --- bind textures --- */
+    glUniform1i(glGetUniformLocation(shader.getProgram(), "material.diffuse"), 0);
     
     /* --- clean ---*/
     cube.clean();
@@ -47,11 +49,7 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
 void Cube::renderTextures() const
 {
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, texture1);
-    glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture1"), 0);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, texture2);
-    glUniform1i(glGetUniformLocation(shader.getProgram(), "ourTexture2"), 1);
+    glBindTexture(GL_TEXTURE_2D, diffuseMap);
 }
 
 void Cube::renderLight() const
@@ -112,6 +110,7 @@ void Cube::render() const
     this->preRender();
     renderModel();
     renderLight();
+    renderTextures();
     this->draw();
 }
 

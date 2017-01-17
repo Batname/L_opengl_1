@@ -16,11 +16,12 @@ protected:
     virtual void draw() const;
     
     virtual void renderTextures() const;
-    virtual void loadTextures(char* texturePath, GLuint* texture) const;
+    virtual void loadTextures(char* texturePath);
     
     GLuint VAO;
     GLuint VBO;
     GLuint numVertices;
+    GLuint diffuseMap;
 
 private:
 };

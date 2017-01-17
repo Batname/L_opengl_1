@@ -14,8 +14,6 @@ public:
 
 protected:
 private:
-    GLuint texture1;
-    GLuint texture2;
     GLuint numVertices;
     
     virtual void renderModel() const;
