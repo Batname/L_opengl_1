@@ -34,6 +34,9 @@ Cube::Cube(const char* vertexFilePath, const char* fragmentFilePath) :
     glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, cube.getStride(), (GLvoid*)(5 * sizeof(GLfloat)));
     glEnableVertexAttribArray(normalAttrib);
     
+    /* --- load objects --- */
+    objectsData = ShapeGenerator::getCubes();
+        
     /* --- load textures --- */
     diffuseMap = loadTextures("resources/textures/container2.png");
     specularMap = loadTextures("resources/textures/container2_specular.png");
@@ -63,7 +66,8 @@ void Cube::renderLight() const
     GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
     GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
 
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
+//    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
+    GLuint lightDirLoc = glGetUniformLocation(shader.getProgram(), "light.direction");
     GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
     
     /* --- set light material --- */
@@ -77,7 +81,8 @@ void Cube::renderLight() const
     glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
     
     /* --- bind light position --- */
-    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
+//    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
+    glUniform3f(lightDirLoc, -0.2f, -1.0f, -0.3f);
     
     /* --- bind camera position --- */
     glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
@@ -85,13 +90,7 @@ void Cube::renderLight() const
 
 void Cube::renderModel() const
 {
-    glm::mat4 fullMatrix, model, view, projection;
-    
-    /* --- model to view, send it to shader --- */
-    model = glm::translate(model, vec3(0.0f));
-    model = glm::scale(model, glm::vec3(1.0f));
-    model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
-    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "model"), 1, GL_FALSE, &model[0][0]);
+    mat4 view, projection;
     
     /* --- world to view --- */
     view = game->getCamera()->GetViewMatrix();
@@ -99,22 +98,36 @@ void Cube::renderModel() const
     /* --- view to clip space --- */
     projection = game->getCamera()->GetProjection();
     
-    /* use uniform matrix transformation */
-    fullMatrix = projection * view * model;
-    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, &fullMatrix[0][0]);
+    /* --- draw cubes --- */
+    for(unsigned int i = 0; i < objectsData.size; i++) {
+        mat4 model, fullMatrix;
+        
+        /* --- model to view, send it to shader --- */
+        model = glm::translate(model, objectsData.positions[i]);
+        model = glm::scale(model, glm::vec3(1.0f));
+        model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "model"), 1, GL_FALSE, &model[0][0]);
+        
+        /* use uniform matrix transformation */
+        fullMatrix = projection * view * model;
+        glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, &fullMatrix[0][0]);
+        
+        this->draw();
+    }
+    
 }
 
 void Cube::render() const
 {
     this->preRender();
-    renderModel();
     renderLight();
     renderTextures();
-    this->draw();
+    renderModel();
 }
 
-void Cube::clear() const
+void Cube::clear()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    objectsData.clean();
 }

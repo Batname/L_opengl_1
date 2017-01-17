@@ -6,6 +6,7 @@
 #include "includes.h"
 #include "ShapeData.h"
 #include "VertexTypes.h"
+#include "ObjectsData.h"
 
 class ShapeGenerator
 {
@@ -14,7 +15,7 @@ public:
     static ShapeData<RegularVertex> makePlane();
     static ShapeData<SimpleVertex> makeLight();
     static ShapeData<VertexPosTexNorm> makeCube();
-
+    static ObjectsData getCubes();
 };
 
 #endif /* ShapeGenerator_hpp */

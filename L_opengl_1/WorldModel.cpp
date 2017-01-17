@@ -53,7 +53,7 @@ GLuint WorldModel::loadTextures(char* texturePath)
     return textureID;
 }
 
-void WorldModel::clear() const
+void WorldModel::clear()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);

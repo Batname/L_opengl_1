@@ -12,7 +12,7 @@ protected:
 
     virtual void preRender() const;
     virtual void renderLight() const;
-    virtual void clear() const;
+    virtual void clear();
     virtual void draw() const;
     
     virtual void renderTextures() const;

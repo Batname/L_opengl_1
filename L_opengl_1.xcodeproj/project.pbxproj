@@ -84,6 +84,7 @@
 		18B081B91E0462D700669944 /* stbi_pkm_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pkm_c.h; sourceTree = "<group>"; };
 		18B081BA1E0462D700669944 /* stbi_pvr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr.h; sourceTree = "<group>"; };
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
+		18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectsData.h; sourceTree = "<group>"; };
 		18FF56411E243FCB00070095 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		18FF56421E243FCB00070095 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		18FF56451E26E60F00070095 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 				18FF566D1E2BC1F500070095 /* ShapeData.h */,
 				18FF56731E2BC44800070095 /* ShapeGenerator.cpp */,
 				18FF56741E2BC44800070095 /* ShapeGenerator.hpp */,
+				18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */,
 			);
 			name = Primitives;
 			sourceTree = "<group>";

@@ -10,7 +10,7 @@ public:
     Plane(const char* vertexFilePath, const char* fragmentFilePath);
     
     virtual void render() const;
-    virtual void clear() const override ;
+    virtual void clear() override ;
 protected:
 private:
     virtual void renderModel() const;
