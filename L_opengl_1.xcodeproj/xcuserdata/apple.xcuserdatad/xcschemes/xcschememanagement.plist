@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>L_OpenGL_Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>L_opengl_1.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>1832DD4F1E02BAE90007A458</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>18DF3AFA1E2FE93300D26CF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

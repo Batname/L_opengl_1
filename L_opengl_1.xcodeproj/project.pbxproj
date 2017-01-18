@@ -22,6 +22,20 @@
 		18B081BE1E0462D700669944 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081AB1E0462D700669944 /* image_helper.c */; };
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
 		18DF3AF31E2FE22000D26CF8 /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */; };
+		18DF3AF61E2FE40600D26CF8 /* ModelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */; };
+		18DF3AFE1E2FE93300D26CF8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AFD1E2FE93300D26CF8 /* main.cpp */; };
+		18DF3B031E2FE95700D26CF8 /* libgtest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DF3B021E2FE95700D26CF8 /* libgtest.a */; };
+		18DF3B061E30266C00D26CF8 /* ModelMeshTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3B051E30266C00D26CF8 /* ModelMeshTest.cpp */; };
+		18DF3B071E3026C700D26CF8 /* ModelMesh.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AF51E2FE40600D26CF8 /* ModelMesh.hpp */; };
+		18DF3B081E3026D400D26CF8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5B1E02BF480007A458 /* OpenGL.framework */; };
+		18DF3B091E30273D00D26CF8 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */; };
+		18DF3B0A1E30274E00D26CF8 /* libglfw3.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */; };
+		18DF3B0B1E302CC800D26CF8 /* VertexTypes.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566C1E2BC17B00070095 /* VertexTypes.h */; };
+		18DF3B0C1E302CC800D26CF8 /* ShapeData.h in Sources */ = {isa = PBXBuildFile; fileRef = 18FF566D1E2BC1F500070095 /* ShapeData.h */; };
+		18DF3B0D1E302CC800D26CF8 /* ShapeGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56731E2BC44800070095 /* ShapeGenerator.cpp */; };
+		18DF3B0E1E302CC800D26CF8 /* ShapeGenerator.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56741E2BC44800070095 /* ShapeGenerator.hpp */; };
+		18DF3B0F1E302CC800D26CF8 /* ObjectsData.h in Sources */ = {isa = PBXBuildFile; fileRef = 18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */; };
+		18DF3B101E302D3900D26CF8 /* ModelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */; };
 		18FF56431E243FCB00070095 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56411E243FCB00070095 /* Camera.cpp */; };
 		18FF56471E26E60F00070095 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56451E26E60F00070095 /* Light.cpp */; };
 		18FF566A1E2BBE7700070095 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56681E2BBE7700070095 /* Model.cpp */; };
@@ -42,6 +56,15 @@
 				1832DD6D1E02DEDF0007A458 /* resources in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18DF3AF91E2FE93300D26CF8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -87,6 +110,12 @@
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
 		18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectsData.h; sourceTree = "<group>"; };
 		18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
+		18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelMesh.cpp; sourceTree = "<group>"; };
+		18DF3AF51E2FE40600D26CF8 /* ModelMesh.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ModelMesh.hpp; sourceTree = "<group>"; };
+		18DF3AFB1E2FE93300D26CF8 /* L_OpenGL_Tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = L_OpenGL_Tests; sourceTree = BUILT_PRODUCTS_DIR; };
+		18DF3AFD1E2FE93300D26CF8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		18DF3B021E2FE95700D26CF8 /* libgtest.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgtest.a; path = ../../../../../usr/local/Cellar/gtest/libgtest.a; sourceTree = "<group>"; };
+		18DF3B051E30266C00D26CF8 /* ModelMeshTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelMeshTest.cpp; sourceTree = "<group>"; };
 		18FF56411E243FCB00070095 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		18FF56421E243FCB00070095 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		18FF56451E26E60F00070095 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
@@ -115,6 +144,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18DF3AF81E2FE93300D26CF8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18DF3B0A1E30274E00D26CF8 /* libglfw3.3.2.dylib in Frameworks */,
+				18DF3B091E30273D00D26CF8 /* libGLEW.2.0.0.dylib in Frameworks */,
+				18DF3B081E3026D400D26CF8 /* OpenGL.framework in Frameworks */,
+				18DF3B031E2FE95700D26CF8 /* libgtest.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -122,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				1832DD521E02BAE90007A458 /* L_opengl_1 */,
+				18DF3AFC1E2FE93300D26CF8 /* L_OpenGL_Tests */,
 				1832DD511E02BAE90007A458 /* Products */,
 				1832DD5A1E02BF480007A458 /* Frameworks */,
 			);
@@ -131,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				1832DD501E02BAE90007A458 /* L_opengl_1 */,
+				18DF3AFB1E2FE93300D26CF8 /* L_OpenGL_Tests */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +191,7 @@
 		1832DD5A1E02BF480007A458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18DF3B021E2FE95700D26CF8 /* libgtest.a */,
 				18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */,
 				1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */,
 				1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */,
@@ -207,6 +250,8 @@
 				18FF56771E2BC7DB00070095 /* Plane.hpp */,
 				18FF56791E2BE78400070095 /* WorldModel.cpp */,
 				18FF567A1E2BE78400070095 /* WorldModel.hpp */,
+				18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */,
+				18DF3AF51E2FE40600D26CF8 /* ModelMesh.hpp */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -238,6 +283,23 @@
 			);
 			name = SOIL2;
 			path = ../../../../../../usr/local/include/SOIL2;
+			sourceTree = "<group>";
+		};
+		18DF3AFC1E2FE93300D26CF8 /* L_OpenGL_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				18DF3B041E30264500D26CF8 /* Tests */,
+				18DF3AFD1E2FE93300D26CF8 /* main.cpp */,
+			);
+			path = L_OpenGL_Tests;
+			sourceTree = "<group>";
+		};
+		18DF3B041E30264500D26CF8 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				18DF3B051E30266C00D26CF8 /* ModelMeshTest.cpp */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		18FF566B1E2BC16400070095 /* Primitives */ = {
@@ -272,6 +334,23 @@
 			productReference = 1832DD501E02BAE90007A458 /* L_opengl_1 */;
 			productType = "com.apple.product-type.tool";
 		};
+		18DF3AFA1E2FE93300D26CF8 /* L_OpenGL_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18DF3AFF1E2FE93300D26CF8 /* Build configuration list for PBXNativeTarget "L_OpenGL_Tests" */;
+			buildPhases = (
+				18DF3AF71E2FE93300D26CF8 /* Sources */,
+				18DF3AF81E2FE93300D26CF8 /* Frameworks */,
+				18DF3AF91E2FE93300D26CF8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = L_OpenGL_Tests;
+			productName = L_OpenGL_Tests;
+			productReference = 18DF3AFB1E2FE93300D26CF8 /* L_OpenGL_Tests */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -282,6 +361,10 @@
 				ORGANIZATIONNAME = apple;
 				TargetAttributes = {
 					1832DD4F1E02BAE90007A458 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					18DF3AFA1E2FE93300D26CF8 = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
@@ -300,6 +383,7 @@
 			projectRoot = "";
 			targets = (
 				1832DD4F1E02BAE90007A458 /* L_opengl_1 */,
+				18DF3AFA1E2FE93300D26CF8 /* L_OpenGL_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -311,6 +395,7 @@
 			files = (
 				18FF56711E2BC3A400070095 /* VertexTypes.h in Sources */,
 				18FF56721E2BC3A400070095 /* ShapeData.h in Sources */,
+				18DF3AF61E2FE40600D26CF8 /* ModelMesh.cpp in Sources */,
 				18FF567B1E2BE78400070095 /* WorldModel.cpp in Sources */,
 				18B081BE1E0462D700669944 /* image_helper.c in Sources */,
 				18FF566A1E2BBE7700070095 /* Model.cpp in Sources */,
@@ -327,6 +412,22 @@
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,
 				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
 				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18DF3AF71E2FE93300D26CF8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18DF3B101E302D3900D26CF8 /* ModelMesh.cpp in Sources */,
+				18DF3B0B1E302CC800D26CF8 /* VertexTypes.h in Sources */,
+				18DF3B0C1E302CC800D26CF8 /* ShapeData.h in Sources */,
+				18DF3B0D1E302CC800D26CF8 /* ShapeGenerator.cpp in Sources */,
+				18DF3B0E1E302CC800D26CF8 /* ShapeGenerator.hpp in Sources */,
+				18DF3B0F1E302CC800D26CF8 /* ObjectsData.h in Sources */,
+				18DF3B071E3026C700D26CF8 /* ModelMesh.hpp in Sources */,
+				18DF3B061E30266C00D26CF8 /* ModelMeshTest.cpp in Sources */,
+				18DF3AFE1E2FE93300D26CF8 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +559,44 @@
 			};
 			name = Release;
 		};
+		18DF3B001E2FE93300D26CF8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/gtest/include,
+					/usr/local/include,
+					/usr/local/Cellar/glm/0.9.8.3/include,
+					/usr/local/Cellar/glfw/3.2.1/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/gtest,
+					/usr/local/Cellar/glew/2.0.0/lib,
+					/usr/local/Cellar/glfw/3.2.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		18DF3B011E2FE93300D26CF8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/gtest/include,
+					/usr/local/include,
+					/usr/local/Cellar/glm/0.9.8.3/include,
+					/usr/local/Cellar/glfw/3.2.1/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/gtest,
+					/usr/local/Cellar/glew/2.0.0/lib,
+					/usr/local/Cellar/glfw/3.2.1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -478,6 +617,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		18DF3AFF1E2FE93300D26CF8 /* Build configuration list for PBXNativeTarget "L_OpenGL_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18DF3B001E2FE93300D26CF8 /* Debug */,
+				18DF3B011E2FE93300D26CF8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
