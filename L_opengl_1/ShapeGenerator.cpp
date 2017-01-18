@@ -9,28 +9,28 @@ ShapeData<RegularVertex> ShapeGenerator::makePlane()
     RegularVertex verts[] = {
         vec3(+0.5f, +0.5f, +0.5),  // position
         vec3(+0.5f, +0.5f, +0.5),  // color
-        vec3(+1.0f, +0.0f, +0.0f), // normal
+        vec3(+0.0f, +1.0f, +0.0f), // normal
         
         vec3(+0.5f, -0.5f, +0.5),
         vec3(+0.5f, +0.5f, +0.5),
-        vec3(+1.0f, +0.0f, +0.0f),
+        vec3(+0.0f, +1.0f, +0.0f),
         
         vec3(-0.5f, +0.5f, +0.5),
         vec3(+0.5f, +0.5f, +0.5),
-        vec3(+1.0f, +0.0f, +0.0f),
+        vec3(+0.0f, +1.0f, +0.0f),
         
         
         vec3(+0.5f, -0.5f, +0.5),  // position
         vec3(+0.5f, +0.5f, +0.5),  // color
-        vec3(+1.0f, +0.0f, +0.0f), // normal
+        vec3(+0.0f, +1.0f, +0.0f), // normal
         
         vec3(-0.5f, -0.5f, +0.5),
         vec3(+0.5f, +0.5f, +0.5),
-        vec3(+1.0f, +0.0f, +0.0f),
+        vec3(+0.0f, +1.0f, +0.0f),
         
         vec3(-0.5f, +0.5f, +0.5),
         vec3(+0.5f, +0.5f, +0.5),
-        vec3(+1.0f, +0.0f, +0.0f)
+        vec3(+0.0f, +1.0f, +0.0f)
     };
     
     ret.numVertices = NUM_ARRAY_ELEMENTS(verts, RegularVertex);
