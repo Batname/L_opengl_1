@@ -156,6 +156,8 @@ ObjectsData ShapeGenerator::getCubes()
 {
     ObjectsData ret;
     vec3 positions[] = {
+        vec3(+5.0f, 0.0f, 1.0f),
+        vec3(+3.0f, 0.0f, 1.0f),
         vec3(+1.0f, 0.0f, 1.0f),
         vec3(-1.0f, 0.0f, 1.0f),
         vec3(-3.0f, 0.0f, 1.0f),
