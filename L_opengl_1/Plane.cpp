@@ -37,6 +37,9 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
     glVertexAttribPointer(normalAttrib, 3, GL_FLOAT, GL_FALSE, plane.getStride(), (GLvoid*)(6 * sizeof(GLfloat)));
     glEnableVertexAttribArray(normalAttrib);
     
+    /* --- load objects --- */
+    lightObjects = ShapeGenerator::getLights();
+    
     /* --- clean --- */
     plane.clean();
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -45,44 +48,32 @@ Plane::Plane(const char* vertexFilePath, const char* fragmentFilePath) :
 
 void Plane::renderLight() const
 {
-    GLint matAmbientStrLoc = glGetUniformLocation(shader.getProgram(), "material.ambientStr");
-    GLint matDiffuseStrLoc = glGetUniformLocation(shader.getProgram(), "material.diffuseStr");
-    GLint matSpecularLoc = glGetUniformLocation(shader.getProgram(), "material.specular");
-    GLint matShineLoc    = glGetUniformLocation(shader.getProgram(), "material.shininess");
-    
-    GLint lightAmbientLoc  = glGetUniformLocation(shader.getProgram(), "light.ambient");
-    GLint lightDiffuseLoc  = glGetUniformLocation(shader.getProgram(), "light.diffuse");
-    GLint lightSpecularLoc = glGetUniformLocation(shader.getProgram(), "light.specular");
-    
-    GLint lightConstantLoc = glGetUniformLocation(shader.getProgram(), "light.constant");
-    GLint lightLinearLoc = glGetUniformLocation(shader.getProgram(), "light.linear");
-    GLint lightQuadraticLoc = glGetUniformLocation(shader.getProgram(), "light.quadratic");
-    
-    GLint lightPositionLoc = glGetUniformLocation(shader.getProgram(), "light.position");
-    GLint viewPositionLoc = glGetUniformLocation(shader.getProgram(), "viewPos");
-    
-    /* --- set light material --- */
+    /* --- set constants --- */
     vec3 ambientStrengh = glm::vec3(0.2f); // Low influence
     vec3 diffuseStrengh = glm::vec3(0.5f); // Decrease the influence
-    glUniform3f(matAmbientStrLoc, ambientStrengh.x, ambientStrengh.y, ambientStrengh.x);
-    glUniform3f(matDiffuseStrLoc,  diffuseStrengh.x, diffuseStrengh.y, diffuseStrengh.x);
-    glUniform3f(matSpecularLoc, 0.5f, 0.5f, 0.5f);
-    glUniform1f(matShineLoc,    32.0f);
     
-    /* --- set light power --- */
-    glUniform3f(lightAmbientLoc,  0.2f, 0.2f, 0.2f);
-    glUniform3f(lightDiffuseLoc,  0.5f, 0.5f, 0.5f); // Let's darken the light a bit to fit the scene
-    glUniform3f(lightSpecularLoc, 1.0f, 1.0f, 1.0f);
+    /* --- camera position --- */
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "viewPos"), game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
     
-    glUniform1f(lightConstantLoc, 1.0f);
-    glUniform1f(lightLinearLoc, 0.09f);
-    glUniform1f(lightQuadraticLoc, 0.032f);
+    /* --- matherials --- */
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "material.ambientStr"), ambientStrengh.x, ambientStrengh.y, ambientStrengh.x);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "material.diffuseStr"),  diffuseStrengh.x, diffuseStrengh.y, diffuseStrengh.x);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "material.specular"), 0.5f, 0.5f, 0.5f);
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "material.shininess"),    32.0f);
+
+    /* --- point lights --- */
+    for (unsigned int i = 0; i < lightObjects.size; i++) {
+        std::string number = std::to_string(i);
+        
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].position").c_str()), lightObjects.positions[i].x, lightObjects.positions[i].y, lightObjects.positions[i].z);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].ambient").c_str()),  0.2f, 0.2f, 0.2f);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].diffuse").c_str()),  0.5f, 0.5f, 0.5f);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].specular").c_str()), 1.0f, 1.0f, 1.0f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].constant").c_str()), 1.0f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("lpointLights[" + number + "].linear").c_str()), 0.09f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].quadratic").c_str()), 0.032f);
+    }
     
-    /* --- bind light position --- */
-    glUniform3f(lightPositionLoc, game->lightPosition.x, game->lightPosition.y, game->lightPosition.z);
-    
-    /* --- bind camera position --- */
-    glUniform3f(viewPositionLoc, game->getCamera()->GetPosition()->x, game->getCamera()->GetPosition()->y, game->getCamera()->GetPosition()->z);
 }
 
 void Plane::renderModel() const
@@ -119,4 +110,5 @@ void Plane::clear()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    lightObjects.clean();
 }

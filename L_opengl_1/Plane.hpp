@@ -3,6 +3,7 @@
 
 #include "WorldModel.hpp"
 #include "ShapeGenerator.hpp"
+#include "ObjectsData.h"
 
 class Plane : public WorldModel
 {
@@ -17,6 +18,7 @@ private:
     virtual void renderLight() const override;
     
     GLuint numVertices;
+    ObjectsData lightObjects;
 };
 
 #endif /* Plane_hpp */

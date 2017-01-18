@@ -176,7 +176,7 @@ ObjectsData ShapeGenerator::getLights()
     vec3 positions[] = {
         vec3( 0.7f,  1.2f,  2.0f),
         vec3( 2.3f,  2.3f, -4.0f),
-        vec3( 4.0f,  2.0f, -5.0f),
+        vec3( 4.0f,  0.0f, -5.0f),
         vec3( 0.0f,  0.0f, -3.0f)
     };
     int QTY = sizeof(positions);
