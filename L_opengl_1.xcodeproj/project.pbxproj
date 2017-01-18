@@ -21,6 +21,7 @@
 		18B081BD1E0462D700669944 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A91E0462D700669944 /* image_DXT.c */; };
 		18B081BE1E0462D700669944 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081AB1E0462D700669944 /* image_helper.c */; };
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
+		18DF3AF31E2FE22000D26CF8 /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */; };
 		18FF56431E243FCB00070095 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56411E243FCB00070095 /* Camera.cpp */; };
 		18FF56471E26E60F00070095 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56451E26E60F00070095 /* Light.cpp */; };
 		18FF566A1E2BBE7700070095 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18FF56681E2BBE7700070095 /* Model.cpp */; };
@@ -85,6 +86,7 @@
 		18B081BA1E0462D700669944 /* stbi_pvr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr.h; sourceTree = "<group>"; };
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
 		18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectsData.h; sourceTree = "<group>"; };
+		18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		18FF56411E243FCB00070095 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		18FF56421E243FCB00070095 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		18FF56451E26E60F00070095 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18DF3AF31E2FE22000D26CF8 /* libassimp.3.3.1.dylib in Frameworks */,
 				1832DD601E02BF8B0007A458 /* libglfw3.3.2.dylib in Frameworks */,
 				1832DD5E1E02BF5C0007A458 /* libGLEW.2.0.0.dylib in Frameworks */,
 				1832DD5C1E02BF480007A458 /* OpenGL.framework in Frameworks */,
@@ -146,6 +149,7 @@
 		1832DD5A1E02BF480007A458 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */,
 				1832DD5F1E02BF8B0007A458 /* libglfw3.3.2.dylib */,
 				1832DD5D1E02BF5C0007A458 /* libGLEW.2.0.0.dylib */,
 				1832DD5B1E02BF480007A458 /* OpenGL.framework */,
@@ -423,11 +427,13 @@
 					/usr/local/Cellar/glm/0.9.8.3/include,
 					/usr/local/Cellar/glfw/3.2.1/include,
 					/usr/local/include,
+					/usr/local/Cellar/assimp/3.3.1/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glew/2.0.0/lib,
 					/usr/local/Cellar/glfw/3.2.1/lib,
+					/usr/local/Cellar/assimp/3.3.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -440,11 +446,13 @@
 					/usr/local/Cellar/glm/0.9.8.3/include,
 					/usr/local/Cellar/glfw/3.2.1/include,
 					/usr/local/include,
+					/usr/local/Cellar/assimp/3.3.1/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glew/2.0.0/lib,
 					/usr/local/Cellar/glfw/3.2.1/lib,
+					/usr/local/Cellar/assimp/3.3.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
