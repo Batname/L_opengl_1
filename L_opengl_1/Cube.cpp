@@ -78,8 +78,8 @@ void Cube::renderLight() const
         glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].diffuse").c_str()), 0.8f, 0.8f, 0.8f);
         glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].specular").c_str()), 1.0f, 1.0f, 1.0f);
         glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].constant").c_str()), 1.0f);
-        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].linear").c_str()), 0.09);
-        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].quadratic").c_str()), 0.032);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].linear").c_str()), 0.09f);
+        glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].quadratic").c_str()), 0.032f);
     }
     
     /* --- SpotLight --- */

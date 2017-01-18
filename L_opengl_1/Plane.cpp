@@ -72,8 +72,8 @@ void Plane::renderLight() const
         std::string number = std::to_string(i);
         
         glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].position").c_str()), lightObjects.positions[i].x, lightObjects.positions[i].y, lightObjects.positions[i].z);
-        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].ambient").c_str()),  0.2f, 0.2f, 0.2f);
-        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].diffuse").c_str()),  0.5f, 0.5f, 0.5f);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].ambient").c_str()),  0.05f, 0.05f, 0.05f);
+        glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].diffuse").c_str()),  0.8, 0.8f, 0.8f);
         glUniform3f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].specular").c_str()), 1.0f, 1.0f, 1.0f);
         glUniform1f(glGetUniformLocation(shader.getProgram(), ("pointLights[" + number + "].constant").c_str()), 1.0f);
         glUniform1f(glGetUniformLocation(shader.getProgram(), ("lpointLights[" + number + "].linear").c_str()), 0.09f);
