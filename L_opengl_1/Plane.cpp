@@ -62,7 +62,7 @@ void Plane::renderLight() const
     glUniform1f(glGetUniformLocation(shader.getProgram(), "material.shininess"),    32.0f);
     
     /* --- direction light --- */
-    glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.direction"), -0.2f, -1.0f, -0.3f);
+    glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.direction"), 0.0f, 0.0f, 0.0f); // does not calculate it now
     glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.ambient"), 0.05f, 0.05f, 0.05f);
     glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.diffuse"), 0.4f, 0.4f, 0.4f);
     glUniform3f(glGetUniformLocation(shader.getProgram(), "dirLight.specular"), 0.5f, 0.5f, 0.5f);
