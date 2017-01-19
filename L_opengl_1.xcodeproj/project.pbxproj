@@ -21,6 +21,8 @@
 		18B081BD1E0462D700669944 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081A91E0462D700669944 /* image_DXT.c */; };
 		18B081BE1E0462D700669944 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081AB1E0462D700669944 /* image_helper.c */; };
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
+		18C409B41E3110DC00539C69 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */; };
+		18C409B51E3110DC00539C69 /* ShaderLoader.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD701E02DFA00007A458 /* ShaderLoader.hpp */; };
 		18DF3AF31E2FE22000D26CF8 /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */; };
 		18DF3AF61E2FE40600D26CF8 /* ModelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */; };
 		18DF3AFE1E2FE93300D26CF8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AFD1E2FE93300D26CF8 /* main.cpp */; };
@@ -419,6 +421,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18C409B41E3110DC00539C69 /* ShaderLoader.cpp in Sources */,
+				18C409B51E3110DC00539C69 /* ShaderLoader.hpp in Sources */,
 				18DF3B101E302D3900D26CF8 /* ModelMesh.cpp in Sources */,
 				18DF3B0B1E302CC800D26CF8 /* VertexTypes.h in Sources */,
 				18DF3B0C1E302CC800D26CF8 /* ShapeData.h in Sources */,
@@ -625,6 +629,7 @@
 				18DF3B011E2FE93300D26CF8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
