@@ -48,6 +48,10 @@ Game::Game()
     light = new Light("resources/shaders/light.vs", "resources/shaders/light.frag");
     plane = new Plane("resources/shaders/plane.vs", "resources/shaders/plane.frag");
     
+    /* --- init crisis model --- */
+    crisisShader = new ShaderLoader("resources/shaders/modelLoading.vs", "resources/shaders/modelLoading.frag");
+    crisisModel = new ModelLoader("resources/models/nanosuit2.obj");
+    
     // init camera
     camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
     

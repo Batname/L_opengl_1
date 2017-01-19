@@ -1,5 +1,7 @@
 #include "ModelLoader.hpp"
 
+using namespace std;
+
 ModelLoader::ModelLoader(const GLchar* path)
 {
     Assimp::Importer import;

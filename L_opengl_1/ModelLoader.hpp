@@ -12,7 +12,7 @@ using namespace glm;
 class ModelLoader
 {
 public:
-    explicit ModelLoader(const GLchar* path);
+    ModelLoader(const GLchar* path);
     virtual void draw(class ShaderLoader shader) const;
 private:
     vector<ModelMesh> meshes;

@@ -246,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				18FF566B1E2BC16400070095 /* Primitives */,
+				18C409B61E31152100539C69 /* ModelLoader.cpp */,
+				18C409B71E31152100539C69 /* ModelLoader.hpp */,
 				1832DD731E02E0A50007A458 /* Cube.cpp */,
 				1832DD741E02E0A50007A458 /* Cube.hpp */,
 				18FF56451E26E60F00070095 /* Light.cpp */,
@@ -316,8 +318,6 @@
 				18FF56731E2BC44800070095 /* ShapeGenerator.cpp */,
 				18FF56741E2BC44800070095 /* ShapeGenerator.hpp */,
 				18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */,
-				18C409B61E31152100539C69 /* ModelLoader.cpp */,
-				18C409B71E31152100539C69 /* ModelLoader.hpp */,
 			);
 			name = Primitives;
 			sourceTree = "<group>";
