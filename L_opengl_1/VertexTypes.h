@@ -28,12 +28,13 @@ struct OriginVertex
 {
     vec3 position;
     vec3 normal;
-    vec3 texCoords;
+    vec2 texCoords;
 };
 
 typedef struct {
     GLuint id;
     string type;
+    aiString path;
 } OriginTexture;
 
 

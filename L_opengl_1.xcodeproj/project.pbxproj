@@ -23,6 +23,8 @@
 		18B081BF1E0462D700669944 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 18B081B01E0462D700669944 /* SOIL2.c */; };
 		18C409B41E3110DC00539C69 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD6F1E02DFA00007A458 /* ShaderLoader.cpp */; };
 		18C409B51E3110DC00539C69 /* ShaderLoader.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 1832DD701E02DFA00007A458 /* ShaderLoader.hpp */; };
+		18C409B81E31152100539C69 /* ModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C409B61E31152100539C69 /* ModelLoader.cpp */; };
+		18C409B91E31152100539C69 /* ModelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C409B61E31152100539C69 /* ModelLoader.cpp */; };
 		18DF3AF31E2FE22000D26CF8 /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */; };
 		18DF3AF61E2FE40600D26CF8 /* ModelMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */; };
 		18DF3AFE1E2FE93300D26CF8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18DF3AFD1E2FE93300D26CF8 /* main.cpp */; };
@@ -110,6 +112,8 @@
 		18B081B91E0462D700669944 /* stbi_pkm_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pkm_c.h; sourceTree = "<group>"; };
 		18B081BA1E0462D700669944 /* stbi_pvr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr.h; sourceTree = "<group>"; };
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
+		18C409B61E31152100539C69 /* ModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelLoader.cpp; sourceTree = "<group>"; };
+		18C409B71E31152100539C69 /* ModelLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ModelLoader.hpp; sourceTree = "<group>"; };
 		18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectsData.h; sourceTree = "<group>"; };
 		18DF3AF21E2FE22000D26CF8 /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 		18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelMesh.cpp; sourceTree = "<group>"; };
@@ -312,6 +316,8 @@
 				18FF56731E2BC44800070095 /* ShapeGenerator.cpp */,
 				18FF56741E2BC44800070095 /* ShapeGenerator.hpp */,
 				18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */,
+				18C409B61E31152100539C69 /* ModelLoader.cpp */,
+				18C409B71E31152100539C69 /* ModelLoader.hpp */,
 			);
 			name = Primitives;
 			sourceTree = "<group>";
@@ -411,6 +417,7 @@
 				18FF56751E2BC44800070095 /* ShapeGenerator.cpp in Sources */,
 				18B081BF1E0462D700669944 /* SOIL2.c in Sources */,
 				18FF56781E2BC7DB00070095 /* Plane.cpp in Sources */,
+				18C409B81E31152100539C69 /* ModelLoader.cpp in Sources */,
 				18121D921E159454006FAF10 /* callbacks.cpp in Sources */,
 				18B081BC1E0462D700669944 /* etc1_utils.c in Sources */,
 				1832DD711E02DFA00007A458 /* ShaderLoader.cpp in Sources */,
@@ -429,6 +436,7 @@
 				18DF3B0D1E302CC800D26CF8 /* ShapeGenerator.cpp in Sources */,
 				18DF3B0E1E302CC800D26CF8 /* ShapeGenerator.hpp in Sources */,
 				18DF3B0F1E302CC800D26CF8 /* ObjectsData.h in Sources */,
+				18C409B91E31152100539C69 /* ModelLoader.cpp in Sources */,
 				18DF3B071E3026C700D26CF8 /* ModelMesh.hpp in Sources */,
 				18DF3B061E30266C00D26CF8 /* ModelMeshTest.cpp in Sources */,
 				18DF3AFE1E2FE93300D26CF8 /* main.cpp in Sources */,

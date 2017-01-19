@@ -28,6 +28,11 @@
 // SOIL2
 #include <SOIL2/SOIL2.h>
 
+// assimp
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 // custom
 #include "constants.h"
 
