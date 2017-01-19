@@ -1,8 +1,13 @@
 #include "ModelLoader.hpp"
+#include "Game.hpp"
+
+extern Game* game;
 
 using namespace std;
+using namespace glm;
 
-ModelLoader::ModelLoader(const GLchar* path)
+ModelLoader::ModelLoader(const GLchar* path, const char* vertexFilePath, const char* fragmentFilePath) :
+    shader(vertexFilePath, fragmentFilePath)
 {
     Assimp::Importer import;
     const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
@@ -17,9 +22,25 @@ ModelLoader::ModelLoader(const GLchar* path)
     processNode(scene->mRootNode, scene);
 }
 
-void ModelLoader::draw(class ShaderLoader shader) const
+void ModelLoader::draw() const
 {
+    for (GLuint i = 0; i < meshes.size(); i++ ) {
+        meshes[i].draw(shader);
+    }
+}
 
+void ModelLoader::render() const
+{
+    shader.use();
+    mat4 view = game->getCamera()->GetViewMatrix();
+    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "projection"), 1, GL_FALSE, glm::value_ptr(game->getCamera()->GetProjection()));
+    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "view"), 1, GL_FALSE, glm::value_ptr(view));
+    
+    mat4 model;
+    model = translate(model, vec3(0.0f, -1.75f, 0.0f));
+    model = scale(model, vec3(0.2f, 0.2f, 0.2f));
+    glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "model"), 1, GL_FALSE, glm::value_ptr(model));
+    draw();
 }
 
 void ModelLoader::processNode(struct aiNode* node, const aiScene* scene)

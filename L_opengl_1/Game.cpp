@@ -49,8 +49,7 @@ Game::Game()
     plane = new Plane("resources/shaders/plane.vs", "resources/shaders/plane.frag");
     
     /* --- init crisis model --- */
-    crisisShader = new ShaderLoader("resources/shaders/modelLoading.vs", "resources/shaders/modelLoading.frag");
-    crisisModel = new ModelLoader("resources/models/nanosuit2.obj");
+    crisisModel = new ModelLoader("resources/models/nanosuit2.obj", "resources/shaders/modelLoading.vs", "resources/shaders/modelLoading.frag");
     
     // init camera
     camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
@@ -83,6 +82,7 @@ int Game::render()
         cube->render();
         light->render();
         plane->render();
+        crisisModel->render();
         
         glfwSwapBuffers(window);
     }

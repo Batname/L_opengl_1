@@ -12,9 +12,11 @@ using namespace glm;
 class ModelLoader
 {
 public:
-    ModelLoader(const GLchar* path);
-    virtual void draw(class ShaderLoader shader) const;
+    ModelLoader(const GLchar* path, const char* vertexFilePath, const char* fragmentFilePath);
+    virtual void render() const;
 private:
+    ShaderLoader shader;
+    
     vector<ModelMesh> meshes;
     string directory;
     vector<OriginTexture> textures_loaded;
@@ -23,6 +25,9 @@ private:
     virtual ModelMesh processMesh(struct aiMesh* mesh, const aiScene* scene);
     virtual vector<OriginTexture> loadMaterialTextures(aiMaterial* mat, enum aiTextureType type, string typeName);
     virtual GLint TextureFromFile(const char *path, string directory) const;
+    
+    virtual void draw() const;
+
 };
 
 #endif /* ModelLoader_hpp */

@@ -8,7 +8,6 @@
 #include "Plane.hpp"
 #include "Camera.hpp"
 
-#include "ShaderLoader.hpp"
 #include "ModelLoader.hpp"
 
 class Game
@@ -36,7 +35,6 @@ private:
     Frame* frame;
     Camera* camera;
     
-    ShaderLoader* crisisShader;
     ModelLoader* crisisModel;
 };
 
