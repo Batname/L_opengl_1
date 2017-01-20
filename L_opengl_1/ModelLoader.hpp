@@ -13,7 +13,7 @@ class ModelLoader
 {
 public:
     ModelLoader(const GLchar* path, const char* vertexFilePath, const char* fragmentFilePath);
-    virtual void render() const;
+    virtual void render();
 private:
     ShaderLoader shader;
     
@@ -26,7 +26,7 @@ private:
     virtual vector<OriginTexture> loadMaterialTextures(aiMaterial* mat, enum aiTextureType type, string typeName);
     virtual GLint TextureFromFile(const char *path, string directory) const;
     
-    virtual void draw() const;
+    virtual void draw();
 
 };
 

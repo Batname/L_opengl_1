@@ -22,14 +22,14 @@ ModelLoader::ModelLoader(const GLchar* path, const char* vertexFilePath, const c
     processNode(scene->mRootNode, scene);
 }
 
-void ModelLoader::draw() const
+void ModelLoader::draw()
 {
     for (GLuint i = 0; i < meshes.size(); i++ ) {
-        meshes[i].draw(shader);
+        meshes[i].draw(&shader);
     }
 }
 
-void ModelLoader::render() const
+void ModelLoader::render()
 {
     shader.use();
 

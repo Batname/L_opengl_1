@@ -32,7 +32,7 @@ ModelMesh::ModelMesh(vector<OriginVertex> vertices, vector<GLuint> indices, vect
     glBindVertexArray(0);
 }
 
-void ModelMesh::draw(class ShaderLoader shader) const
+void ModelMesh::draw(class ShaderLoader* shader) const
 {
     GLuint diffuseNr = 1;
     GLuint specularNr = 1;
@@ -52,11 +52,11 @@ void ModelMesh::draw(class ShaderLoader shader) const
         
         number = ss.str();
         
-        glUniform1i(glGetUniformLocation(shader.getProgram(), (name + number).c_str()), i);
+        glUniform1i(glGetUniformLocation(shader->getProgram(), (name + number).c_str()), i);
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
     
-    glUniform1f(glGetUniformLocation(shader.getProgram(), "material.shinines"), 16.0f);
+    glUniform1f(glGetUniformLocation(shader->getProgram(), "material.shinines"), 16.0f);
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
@@ -65,6 +65,13 @@ void ModelMesh::draw(class ShaderLoader shader) const
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
+}
+
+void ModelMesh::clear() const
+{
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
 }
 
 ModelMesh::~ModelMesh()
