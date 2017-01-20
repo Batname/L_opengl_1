@@ -52,7 +52,7 @@ void ModelLoader::render()
     draw();
 }
 
-void ModelLoader::processNode(aiNode* node, const aiScene* scene)
+void ModelLoader::processNode(const aiNode* node, const aiScene* scene)
 {
     for (GLuint i = 0; i < node->mNumMeshes; i++) {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
@@ -64,7 +64,7 @@ void ModelLoader::processNode(aiNode* node, const aiScene* scene)
     }
 }
 
-ModelMesh ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene)
+ModelMesh ModelLoader::processMesh(const aiMesh* mesh, const aiScene* scene)
 {
     vector<OriginVertex> vertices;
     vector<GLuint> indices;
@@ -121,7 +121,7 @@ ModelMesh ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene)
     return ModelMesh(vertices, indices, textures);
 }
 
-vector<OriginTexture> ModelLoader::loadMaterialTextures(aiMaterial* mat, enum aiTextureType type, string typeName)
+vector<OriginTexture> ModelLoader::loadMaterialTextures(const aiMaterial* mat, enum aiTextureType type, string typeName)
 {
     vector<OriginTexture> textures;
     
