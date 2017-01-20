@@ -43,19 +43,19 @@ void ModelLoader::render() const
     draw();
 }
 
-void ModelLoader::processNode(struct aiNode* node, const aiScene* scene)
+void ModelLoader::processNode(aiNode* node, const aiScene* scene)
 {
     for (GLuint i = 0; i < node->mNumMeshes; i++) {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
         meshes.push_back(processMesh(mesh, scene));
     }
     
-    for(GLuint i = 0; i < node->mNumMeshes; i++) {
+    for(GLuint i = 0; i < node->mNumChildren; i++) {
         processNode(node->mChildren[i], scene);
     }
 }
 
-ModelMesh ModelLoader::processMesh(struct aiMesh* mesh, const aiScene* scene)
+ModelMesh ModelLoader::processMesh(aiMesh* mesh, const aiScene* scene)
 {
     vector<OriginVertex> vertices;
     vector<GLuint> indices;
