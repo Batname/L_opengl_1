@@ -20,9 +20,9 @@ private:
     string directory;
     vector<OriginTexture> textures_loaded;
     
-    virtual void processNode(const aiNode* node, const aiScene* scene);
-    virtual ModelMesh processMesh(const aiMesh* mesh, const aiScene* scene);
-    virtual vector<OriginTexture> loadMaterialTextures(const aiMaterial* mat, enum aiTextureType type, string typeName);
+    virtual void processNode(const struct aiNode* node, const struct aiScene* scene);
+    virtual ModelMesh processMesh(const struct aiMesh* mesh, const struct aiScene* scene);
+    virtual vector<OriginTexture> loadMaterialTextures(const struct aiMaterial* mat, enum aiTextureType type, string typeName);
     virtual GLint TextureFromFile(const char *path, string directory) const;
     
     virtual void draw();
