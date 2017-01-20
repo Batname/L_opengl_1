@@ -5,3 +5,8 @@ Model::Model(const char* vertexFilePath, const char* fragmentFilePath) :
 {
 
 }
+
+void Model::preRender() const
+{
+    shader.use();
+}

@@ -16,11 +16,6 @@ void WorldModel::renderLight() const
 
 }
 
-void WorldModel::preRender() const
-{
-    shader.use();
-}
-
 void WorldModel::draw() const
 {
     glBindVertexArray(VAO);

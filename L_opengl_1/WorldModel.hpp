@@ -10,7 +10,6 @@ public:
     WorldModel(const char* vertexFilePath, const char* fragmentFilePath);
 protected:
 
-    virtual void preRender() const;
     virtual void renderLight() const;
     virtual void clear();
     virtual void draw() const;

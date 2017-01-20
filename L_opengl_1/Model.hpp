@@ -10,6 +10,8 @@ public:
     
 protected:
     ShaderLoader shader;
+    
+    virtual void preRender() const;
 private:
     
 };
