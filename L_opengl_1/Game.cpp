@@ -51,9 +51,6 @@ Game::Game()
     /* --- init crisis model --- */
     crisisModel = new ModelLoader("resources/models/nanosuit.obj", "resources/shaders/modelLoading.vs", "resources/shaders/modelLoading.frag");
     
-    /* --- TEST CODE --- */
-    ourModel = new Model1("resources/models/nanosuit.obj");
-    
     // init camera
     camera = new Camera(vec3(0.0f, 0.0f, 3.0f));
     
@@ -69,8 +66,6 @@ Game::Game()
 
 int Game::render()
 {
-    
-    ShaderLoader shader("resources/shaders/modelLoading.vs", "resources/shaders/modelLoading.frag");
     // game loop
     while (!glfwWindowShouldClose(window)) {
         frame->calculateFrame();
@@ -88,25 +83,6 @@ int Game::render()
         light->render();
         plane->render();
         crisisModel->render();
-        
-        /* --- TEST CODE --- */
-//        shader.use();
-
-        
-//        glm::mat4 model;
-//        model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
-//        model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-//
-//        /* --- world to view --- */
-//        glm::mat4 view = camera->GetViewMatrix();
-//        
-//        /* --- view to clip space --- */
-//        glm::mat4 projection = camera->GetProjection();
-//        
-//        glm::mat4 fullMatrix = projection * view * model;
-//        glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, &fullMatrix[0][0]);
-//
-//        ourModel->Draw(shader);
         
         glfwSwapBuffers(window);
     }

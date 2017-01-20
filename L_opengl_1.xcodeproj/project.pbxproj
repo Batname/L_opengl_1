@@ -112,8 +112,6 @@
 		18B081B91E0462D700669944 /* stbi_pkm_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pkm_c.h; sourceTree = "<group>"; };
 		18B081BA1E0462D700669944 /* stbi_pvr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr.h; sourceTree = "<group>"; };
 		18B081BB1E0462D700669944 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
-		18C1C2781E32789D00FE926D /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
-		18C1C2791E3278C400FE926D /* Model1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model1.h; sourceTree = "<group>"; };
 		18C409B61E31152100539C69 /* ModelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ModelLoader.cpp; sourceTree = "<group>"; };
 		18C409B71E31152100539C69 /* ModelLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ModelLoader.hpp; sourceTree = "<group>"; };
 		18C8599D1E2E7DDF0000EDB2 /* ObjectsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectsData.h; sourceTree = "<group>"; };
@@ -262,8 +260,6 @@
 				18FF567A1E2BE78400070095 /* WorldModel.hpp */,
 				18DF3AF41E2FE40600D26CF8 /* ModelMesh.cpp */,
 				18DF3AF51E2FE40600D26CF8 /* ModelMesh.hpp */,
-				18C1C2781E32789D00FE926D /* Mesh.h */,
-				18C1C2791E3278C400FE926D /* Model1.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
