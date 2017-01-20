@@ -5,18 +5,17 @@
 #include "ShaderLoader.hpp"
 #include "ModelMesh.hpp"
 #include "VertexTypes.h"
+#include "Model.hpp"
 
 using namespace std;
 using namespace glm;
 
-class ModelLoader
+class ModelLoader : public Model
 {
 public:
     ModelLoader(const GLchar* path, const char* vertexFilePath, const char* fragmentFilePath);
     virtual void render();
-private:
-    ShaderLoader shader;
-    
+private:    
     vector<ModelMesh> meshes;
     string directory;
     vector<OriginTexture> textures_loaded;

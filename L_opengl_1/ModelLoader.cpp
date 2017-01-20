@@ -7,7 +7,7 @@ using namespace std;
 using namespace glm;
 
 ModelLoader::ModelLoader(const GLchar* path, const char* vertexFilePath, const char* fragmentFilePath) :
-    shader(vertexFilePath, fragmentFilePath)
+    Model(vertexFilePath, fragmentFilePath)
 {
     Assimp::Importer import;
     const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
