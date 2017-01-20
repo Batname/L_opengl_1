@@ -38,22 +38,25 @@ void ModelMesh::draw(class ShaderLoader shader) const
     GLuint specularNr = 1;
     
     for (GLuint i = 0; i < textures.size(); i++) {
-        glActiveTexture(GL_TEXTURE0 + 1);
         
+        glActiveTexture(GL_TEXTURE0 + i);
         stringstream ss;
         string number;
         string name = textures[i].type;
-        if (name == "texture_diffuse")
+        
+        if ("texture_diffuse" == name) {
             ss << diffuseNr++;
-        else if (name == "texture_specular")
+        } else if ("texture_specular" == name) {
             ss << specularNr++;
+        }
+        
         number = ss.str();
         
-        glUniform1f(glGetUniformLocation(shader.getProgram(), ("material." + name + number).c_str()), i);
+        glUniform1i(glGetUniformLocation(shader.getProgram(), (name + number).c_str()), i);
         glBindTexture(GL_TEXTURE_2D, textures[i].id);
     }
-    glActiveTexture(GL_TEXTURE0);
     
+    glUniform1f(glGetUniformLocation(shader.getProgram(), "material.shinines"), 16.0f);
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
