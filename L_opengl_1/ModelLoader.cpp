@@ -163,7 +163,7 @@ vector<OriginTexture> ModelLoader::loadMaterialTextures(const struct aiMaterial*
     return textures;
 }
 
-GLint ModelLoader::TextureFromFile(const char *path, string directory) const
+GLint ModelLoader::TextureFromFile(const char *path, string directory)
 {
     /* --- Generate texture ID and load texture data --- */
     string filename = string( path );

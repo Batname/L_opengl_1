@@ -25,7 +25,8 @@ private:
     virtual void processNode(const struct aiNode* node, const struct aiScene* scene);
     virtual ModelMesh processMesh(const struct aiMesh* mesh, const struct aiScene* scene);
     virtual vector<OriginTexture> loadMaterialTextures(const struct aiMaterial* mat, enum aiTextureType type, string typeName);
-    virtual GLint TextureFromFile(const char *path, string directory) const;
+    
+    static GLint TextureFromFile(const char *path, string directory);
     
     virtual void draw();
     virtual void rendelModel() const;
