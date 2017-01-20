@@ -39,7 +39,7 @@ void ModelLoader::clear() const
 void ModelLoader::rendelModel() const
 {
     glm::mat4 model;
-    model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+    model = glm::translate(model, glm::vec3(1.0f, 0.5f, 1.0f));
     model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
     
     /* --- world to view --- */
