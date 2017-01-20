@@ -9,6 +9,9 @@
 #include "Camera.hpp"
 
 #include "ModelLoader.hpp"
+#include "Mesh.h"
+
+#include "Model1.h"
 
 class Game
 {
@@ -34,8 +37,13 @@ private:
 
     Frame* frame;
     Camera* camera;
-    
+
     ModelLoader* crisisModel;
+    
+    /*--- TEST CODE --- */
+    Model1* ourModel;
+
+
 };
 
 #endif /* Game_hpp */
