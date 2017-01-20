@@ -29,10 +29,8 @@ void ModelLoader::draw()
     }
 }
 
-void ModelLoader::render()
+void ModelLoader::rendelModel() const
 {
-    shader.use();
-
     glm::mat4 model;
     model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
     model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
@@ -45,9 +43,13 @@ void ModelLoader::render()
     
     glm::mat4 fullMatrix = projection * view * model;
     glUniformMatrix4fv(glGetUniformLocation(shader.getProgram(), "fullMatrix"), 1, GL_FALSE, &fullMatrix[0][0]);
-    
-    draw();
+}
 
+void ModelLoader::render()
+{
+    this->preRender();
+    rendelModel();
+    draw();
 }
 
 void ModelLoader::processNode(aiNode* node, const aiScene* scene)

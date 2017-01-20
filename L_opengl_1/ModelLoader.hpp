@@ -26,6 +26,7 @@ private:
     virtual GLint TextureFromFile(const char *path, string directory) const;
     
     virtual void draw();
+    virtual void rendelModel() const;
 
 };
 
