@@ -18,7 +18,7 @@ public:
     ModelMesh(vector<OriginVertex> vertices, vector<GLuint> indices, vector<OriginTexture> textures);
     ~ModelMesh();
 
-    virtual void draw(class ShaderLoader* shader) const;
+    virtual void draw(const class ShaderLoader* shader) const;
     virtual void clear() const;
 private:
     GLuint VAO;

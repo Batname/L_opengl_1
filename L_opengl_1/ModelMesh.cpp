@@ -32,7 +32,7 @@ ModelMesh::ModelMesh(vector<OriginVertex> vertices, vector<GLuint> indices, vect
     glBindVertexArray(0);
 }
 
-void ModelMesh::draw(class ShaderLoader* shader) const
+void ModelMesh::draw(const class ShaderLoader* shader) const
 {
     GLuint diffuseNr = 1;
     GLuint specularNr = 1;
