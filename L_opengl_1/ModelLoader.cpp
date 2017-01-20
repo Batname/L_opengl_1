@@ -29,6 +29,13 @@ void ModelLoader::draw()
     }
 }
 
+void ModelLoader::clear() const
+{
+    for (GLuint i = 0; i < meshes.size(); i++ ) {
+        meshes[i].clear();
+    }
+}
+
 void ModelLoader::rendelModel() const
 {
     glm::mat4 model;

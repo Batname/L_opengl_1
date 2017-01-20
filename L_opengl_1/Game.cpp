@@ -91,6 +91,7 @@ int Game::render()
     cube->clear();
     light->clear();
     plane->clear();
+    crisisModel->clear();
     
     // success exit
     glfwTerminate();

@@ -15,7 +15,9 @@ class ModelLoader : public Model
 public:
     ModelLoader(const GLchar* path, const char* vertexFilePath, const char* fragmentFilePath);
     virtual void render();
-private:    
+    virtual void clear() const;
+
+private:
     vector<ModelMesh> meshes;
     string directory;
     vector<OriginTexture> textures_loaded;
@@ -27,7 +29,6 @@ private:
     
     virtual void draw();
     virtual void rendelModel() const;
-
 };
 
 #endif /* ModelLoader_hpp */
